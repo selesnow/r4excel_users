@@ -94,7 +94,7 @@ li.nm_li {
 	<li class="nm_li"><a href="#" class="nm_a">Онлайн Курсы</a>
 	    <ul class="nm_ul">
             <li class="nm_li"><a href="https://learn.needfordata.ru/r" class="nm_a">Язык R в Интернет Маркетинге</a></li>
-			<li class="nm_li"><a href="r4excel_users/" class="nm_a">Язык R для пользователей Excel</a></li>
+			<li class="nm_li"><a href="/index.html" class="nm_a">Язык R для пользователей Excel</a></li>
         </ul>
     </li>
     <li class="nm_li"><a href="/library" class="nm_a">Статьи</a></li>
