@@ -8,7 +8,7 @@ library(dplyr)
 # 2. посчитать среднюю зарплату по отделам
 
 # читаем json файл
-staff_dict <- read_json('D:\\Google Диск\\Курс 20 шагов от Excel до языка R\\materials\\lesson_10\\simple.json')
+staff_dict <- read_json('https://raw.githubusercontent.com/selesnow/r4excel_users/master/lesson_10/simple.json')
 
 # преобразуем json в tibble frame
 staff_dict <- tibble(employee = staff_dict)
@@ -30,7 +30,7 @@ staff_dict %>%
 # задача 2:
 # имеется json файл со списком сотрудников
 # вывести список сотрудников с их зоной ответвенности
-staff_dict <- read_json('D:\\Google Диск\\Курс 20 шагов от Excel до языка R\\materials\\lesson_10\\hard_data.json')
+staff_dict <- read_json('https://raw.githubusercontent.com/selesnow/r4excel_users/master/lesson_10/hard_data.json')
 
 # преобразуем json в tibble frame
 staff_dict <- tibble(employee = staff_dict)
