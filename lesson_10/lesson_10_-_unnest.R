@@ -1,11 +1,11 @@
 library(tidyr)
 library(dplyr)
+library(jsonlite)
 
 # #################
 # задача 1:
 # имеется json файл со списком сотрудников
 # 1. необходимо получить сотрудников у которых предусмотренны бонусы
-# 2. посчитать среднюю зарплату по отделам
 
 # читаем json файл
 staff_dict <- read_json('https://raw.githubusercontent.com/selesnow/r4excel_users/master/lesson_10/simple.json')
@@ -13,6 +13,7 @@ staff_dict <- read_json('https://raw.githubusercontent.com/selesnow/r4excel_user
 # преобразуем json в tibble frame
 staff_dict <- tibble(employee = staff_dict)
 
+# 2. посчитать среднюю зарплату по отделам
 # разворачиваем каждый json узел в виде отдельной строки
 # фильтруем таблицу оставляя только тех сотрудников у которых есть бонусы
 staff_dict %>%
@@ -27,7 +28,7 @@ staff_dict %>%
 
 
 # ##########################
-# задача 2:
+# задача 3:
 # имеется json файл со списком сотрудников
 # вывести список сотрудников с их зоной ответвенности
 staff_dict <- read_json('https://raw.githubusercontent.com/selesnow/r4excel_users/master/lesson_10/hard_data.json')
@@ -57,7 +58,7 @@ staff_dict %>%
   mutate(practics = paste(unlist(practics), collapse = ", "))
 
 # ##########################
-# задача 3:
+# задача 4:
 # имеется json файл со списком сотрудников
 # поднять на 20% зарплату сотрудникам владеющим языком R
 staff_dict %>%
@@ -70,7 +71,7 @@ staff_dict %>%
   filter(langs == 'R') %>%
   mutate(new_salary = salary * 1.2)
 
-# задача:
+# задача 5:
 # имеется json файл со списком сотрудников
 # поднять на 30% зарплату сотрудникам владеющим более чем одним языком программирования
 staff_dict %>%
