@@ -33,7 +33,7 @@ a.nm_a {
   text-decoration: none; /*убираем подчеркивание текста ссылок*/
   background:#696969; /*добавляем фон к пункту меню*/
   color:#fff; /*меняем цвет ссылок*/
-  padding:0px 7px; /*добавляем отступ*/
+  padding:0px 5px; /*добавляем отступ*/
   font-family: arial; /*меняем шрифт*/
   line-height:30px; /*ровняем меню по вертикали*/
   display: block; 
@@ -71,7 +71,7 @@ li.nm_li {
 <center>
 <ul class="nm_ul">
     <li class="nm_li"><a href="/" class="nm_a">Main</a></li>
-    <li class="nm_li"><a href="/" class="nm_a">R Packages</a>
+    <li class="nm_li"><a href="/" class="nm_a">Пакеты</a>
         <ul class="nm_ul">
             <li class="nm_li"><a href="/galigor" class="nm_a">galigor</a></li>
             <li class="nm_li"><a href="/ryandexdirect" class="nm_a">ryandexdirect</a></li>
