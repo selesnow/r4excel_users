@@ -101,6 +101,7 @@ li.nm_li {
     <li class="nm_li"><a href="https://alexeyseleznev.wordpress.com/" class="nm_a">Блог</a></li>
     <li class="nm_li"><a href="/news" class="nm_a">Новости</a></li>
     <li class="nm_li"><a href="/publications" class="nm_a">Архив</a></li>
+    <li class="nm_li"><a href="https://secure.wayforpay.com/button/b6dd4a7083fe0" class="nm_a">Поддержать</a></li>
 </ul>
 </center>
 
