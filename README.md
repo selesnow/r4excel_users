@@ -58,10 +58,16 @@
     + Дата публикации: 1 июня 2020
     + Видео
     + Материалы
-
+12. **Построение графиков в ggplot2 слой за слоем**
+    + Дата публикации: 8 июня 2020
+    + Видео
+    + Материалы
+    
 ## Ссылки
 * [Плейлист курса](https://www.youtube.com/playlist?list=PLD2LDq8edf4pgGg16wYMobvIYy_0MI0kF)
 * [YouTube канал автора курса](https://www.youtube.com/R4marketing/?sub_confirmation=1)
+* [Статья о курсе на proglib](https://proglib.io/p/besplatnyy-videokurs-yazyk-r-dlya-polzovateley-excel-2020-04-14)
+* [Статья о курсе на Хабре](https://habr.com/ru/post/495438/)
 
 ### Автор курса
 Алексей Селезнёв, Head of analytics dept. at [Netpeak](https://netpeak.net)
