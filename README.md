@@ -28,19 +28,19 @@
     + [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_3)
 4. **Пакет dplyr: Фильтрация по строкам, продвинутый выбор столбцов, переименование столбцов, пайплайны**
     + Дата публикации: 13 апреля 2020
-    + Видео
+    + [Видео](https://youtu.be/uI0fc3foQQE)
     + [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_4)
 5. **Пакет dplyr: Добавление новых вычисляемых столбцов, mutate, mutate_if, mutate_at, mutate_all**
     + Дата публикации: 20 апреля 2020
-    + Видео
+    + [Видео](https://youtu.be/lYYOKPcJ6Gc)
     + [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_5)
 6. **Пакет dplyr: Группировка и агрегация данных**
     + Дата публикации: 27 апреля 2020
-    + Видео
+    + [Видео](https://youtu.be/7zyL5apWm1M)
     + [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_6)
 7. **Вертикальное и горизонтальное объединение таблиц**
     + Дата публикации: 4 мая 2020
-    + Видео
+    + [Видео](https://youtu.be/oCU30z-_qUQ)
     + [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_7)
 8. **Оконные функции в R**
     + Дата публикации: 11 мая 2020
