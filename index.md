@@ -100,9 +100,9 @@ li.nm_li {
     <li class="nm_li"><a href="/library" class="nm_a">Статьи</a></li>
     <li class="nm_li"><a href="https://alexeyseleznev.wordpress.com/" class="nm_a">Ресурсы</a>
     	<ul class="nm_ul">
-            <li class="nm_li"><a href="https://www.youtube.com/R4marketing/?sub_confirmation=1" class="nm_a" target="_blank">YouTube канал</a>
-	    <li class="nm_li"><a href="https://t.me/R4marketing/" class="nm_a" target="_blank">Telegram канал</a>
-            <li class="nm_li"><a href="https://alexeyseleznev.wordpress.com/" class="nm_a" target="_blank">Блог</a>
+            <li class="nm_li"><a href="https://www.youtube.com/R4marketing/?sub_confirmation=1" class="nm_a" target="_blank">YouTube канал</a></li>
+	    <li class="nm_li"><a href="https://t.me/R4marketing/" class="nm_a" target="_blank">Telegram канал</a></li>
+            <li class="nm_li"><a href="https://alexeyseleznev.wordpress.com/" class="nm_a" target="_blank">Блог</a></li>
         </ul>
     </li>
     <li class="nm_li"><a href="/news" class="nm_a">Новости</a></li>
