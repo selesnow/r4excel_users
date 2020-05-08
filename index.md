@@ -98,7 +98,13 @@ li.nm_li {
         </ul>
     </li>
     <li class="nm_li"><a href="/library" class="nm_a">Статьи</a></li>
-    <li class="nm_li"><a href="https://alexeyseleznev.wordpress.com/" class="nm_a">Блог</a></li>
+    <li class="nm_li"><a href="https://alexeyseleznev.wordpress.com/" class="nm_a">Ресурсы</a>
+    	<ul class="nm_ul">
+            <li class="nm_li"><a href="https://www.youtube.com/R4marketing/?sub_confirmation=1" class="nm_a" target="_blank">YouTube канал</a>
+	    <li class="nm_li"><a href="https://t.me/R4marketing/" class="nm_a" target="_blank">Telegram канал</a>
+            <li class="nm_li"><a href="https://alexeyseleznev.wordpress.com/" class="nm_a" target="_blank">Блог</a>
+        </ul>
+    </li>
     <li class="nm_li"><a href="/news" class="nm_a">Новости</a></li>
     <li class="nm_li"><a href="/publications" class="nm_a">Архив</a></li>
     <li class="nm_li"><a href="https://secure.wayforpay.com/button/b6dd4a7083fe0" class="nm_a">Поддержать</a></li>
