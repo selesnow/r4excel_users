@@ -1,71 +1,71 @@
-# установка пакетов
+# СѓСЃС‚Р°РЅРѕРІРєР° РїР°РєРµС‚РѕРІ
 install.packages("dplyr")
 
-# подключение пакетов
+# РїРѕРґРєР»СЋС‡РµРЅРёРµ РїР°РєРµС‚РѕРІ
 library(vroom)
 library(dplyr)
 
-# загрузка данных
+# Р·Р°РіСЂСѓР·РєР° РґР°РЅРЅС‹С…
 ga_data <- vroom("https://raw.githubusercontent.com/selesnow/publications/master/code_example/from_excel_to_r/lesson_3/ga_nowember.csv")
 
 # ######################################################
-# фильтрация строк
-## простейший фильтр с одним условием
+# С„РёР»СЊС‚СЂР°С†РёВ¤ СЃС‚СЂРѕРє
+## РїСЂРѕСЃС‚РµР№С€РёР№ С„РёР»СЊС‚СЂ СЃ РѕРґРЅРёРј СѓСЃР»РѕРІРёРµРј
 ga_data_organic <- filter(ga_data, medium == "organic")
 
-## несколько условий
+## РЅРµСЃРєРѕР»СЊРєРѕ СѓСЃР»РѕРІРёР№
 ga_data_organic_10 <- filter(ga_data, medium == "organic" & sessions > 10 )
 
-## проверяем на соответвию значению из списка
+## РїСЂРѕРІРµСЂВ¤РµРј РЅР° СЃРѕРѕС‚РІРµС‚РІРёСЋ Р·РЅР°С‡РµРЅРёСЋ РёР· СЃРїРёСЃРєР°
 google_yandex <- filter(ga_data, source %in% c("google", "yandex", "bing"))
 
-## создаём вектор для фильтрации
+## СЃРѕР·РґР°Р„Рј РІРµРєС‚РѕСЂ РґР»В¤ С„РёР»СЊС‚СЂР°С†РёРё
 search_eng <- c("google", "yandex", "bing")
-## используем вектор для фильтрации
+## РёСЃРїРѕР»СЊР·СѓРµРј РІРµРєС‚РѕСЂ РґР»В¤ С„РёР»СЊС‚СЂР°С†РёРё
 not_searcj_eng <- filter(ga_data, ! source %in% search_eng)
 
 # ######################################################
-# выбор столбцов
-## простой выбор столбцов по названиям
-ga_data_с1 <- select(ga_data, date, sessions)
+# РІС‹Р±РѕСЂ СЃС‚РѕР»Р±С†РѕРІ
+## РїСЂРѕСЃС‚РѕР№ РІС‹Р±РѕСЂ СЃС‚РѕР»Р±С†РѕРІ РїРѕ РЅР°Р·РІР°РЅРёВ¤Рј
+ga_data_СЃ1 <- select(ga_data, date, sessions)
 
-## срез по столбцам
-ga_data_с2 <- select(ga_data, source:sessions)
+## СЃСЂРµР· РїРѕ СЃС‚РѕР»Р±С†Р°Рј
+ga_data_СЃ2 <- select(ga_data, source:sessions)
 
-## получить столбцы по названию используя регулярные выражения
-match_s  <- select_at(ga_data, vars(matches("s")))     # содержит s
-match_s2 <- select_at(ga_data, vars(contains("s")))    # содержит s
-last_s1  <- select_at(ga_data, vars(matches("s$")))    # заканчивается на s
-last_s2  <- select_at(ga_data, vars(ends_with("s")))   # заканчивается на s
-start_s1 <- select_at(ga_data, vars(matches("^s")))    # начинается на s
-start_s2 <- select_at(ga_data, vars(starts_with("s"))) # начинается на s
+## РїРѕР»СѓС‡РёС‚СЊ СЃС‚РѕР»Р±С†С‹ РїРѕ РЅР°Р·РІР°РЅРёСЋ РёСЃРїРѕР»СЊР·СѓВ¤ СЂРµРіСѓР»В¤СЂРЅС‹Рµ РІС‹СЂР°Р¶РµРЅРёВ¤
+match_s  <- select_at(ga_data, vars(matches("s")))     # СЃРѕРґРµСЂР¶РёС‚ s
+match_s2 <- select_at(ga_data, vars(contains("s")))    # СЃРѕРґРµСЂР¶РёС‚ s
+last_s1  <- select_at(ga_data, vars(matches("s$")))    # Р·Р°РєР°РЅС‡РёРІР°РµС‚СЃВ¤ РЅР° s
+last_s2  <- select_at(ga_data, vars(ends_with("s")))   # Р·Р°РєР°РЅС‡РёРІР°РµС‚СЃВ¤ РЅР° s
+start_s1 <- select_at(ga_data, vars(matches("^s")))    # РЅР°С‡РёРЅР°РµС‚СЃВ¤ РЅР° s
+start_s2 <- select_at(ga_data, vars(starts_with("s"))) # РЅР°С‡РёРЅР°РµС‚СЃВ¤ РЅР° s
 
-## выбрать только числовые столбцы
+## РІС‹Р±СЂР°С‚СЊ С‚РѕР»СЊРєРѕ С‡РёСЃР»РѕРІС‹Рµ СЃС‚РѕР»Р±С†С‹
 ga_num_column <- select_if(ga_data, is.numeric)
 ga_str_column <- select_if(ga_data, is.character)
 
-## шпаргалка
-# select - выбор столбцов по названию
-# select_at - выбор по названию с попощью доп операторов и регулярных выражений
-# select_if - выбор по типу поля, например все строковые или все числовые поля
+## С€РїР°СЂРіР°Р»РєР°
+# select - РІС‹Р±РѕСЂ СЃС‚РѕР»Р±С†РѕРІ РїРѕ РЅР°Р·РІР°РЅРёСЋ
+# select_at - РІС‹Р±РѕСЂ РїРѕ РЅР°Р·РІР°РЅРёСЋ СЃ РїРѕРїРѕС‰СЊСЋ РґРѕРї РѕРїРµСЂР°С‚РѕСЂРѕРІ Рё СЂРµРіСѓР»В¤СЂРЅС‹С… РІС‹СЂР°Р¶РµРЅРёР№
+# select_if - РІС‹Р±РѕСЂ РїРѕ С‚РёРїСѓ РїРѕР»В¤, РЅР°РїСЂРёРјРµСЂ РІСЃРµ СЃС‚СЂРѕРєРѕРІС‹Рµ РёР»Рё РІСЃРµ С‡РёСЃР»РѕРІС‹Рµ РїРѕР»В¤
 
 # ######################################################
-# переименовываем столбцы
+# РїРµСЂРµРёРјРµРЅРѕРІС‹РІР°РµРј СЃС‚РѕР»Р±С†С‹
 new_ga_data <- rename(ga_data,
                       channel  = medium,
                       refferer = source)
 
-# меняем стиль имён столбцов
+# РјРµРЅВ¤РµРј СЃС‚РёР»СЊ РёРјР„РЅ СЃС‚РѕР»Р±С†РѕРІ
 rename_if(ga_data, is.numeric, paste0, "_n")
 rename_at(ga_data, vars(matches("^s")), paste0, "_s")
 rename_all(ga_data, toupper)         
 
 # ######################################################
-# пайплайны
-## вложенные функции (как в Excel)
+# РїР°Р№РїР»Р°Р№РЅС‹
+## РІР»РѕР¶РµРЅРЅС‹Рµ С„СѓРЅРєС†РёРё (РєР°Рє РІ Excel)
 rename_all(select_if(filter(ga_data, source %in% search_eng), is.numeric), toupper)
 
-## тоже самое но через пайплайн %>%
+## С‚РѕР¶Рµ СЃР°РјРѕРµ РЅРѕ С‡РµСЂРµР· РїР°Р№РїР»Р°Р№РЅ %>%
 result <- ga_data %>%
             filter(source %in% search_eng) %>%
             select_if(is.numeric) %>%
