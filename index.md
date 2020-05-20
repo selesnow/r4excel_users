@@ -159,6 +159,9 @@ li.nm_li {
     + Дата публикации: 11 мая 2020
     + Видео
     + [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_8)
+    
+<iframe id="otpwgt-wt101907" src="https://onlinetestpad.com/htu2qee7l3ls4" frameborder="0" style="width:100%;" onload="var f = document.getElementById('otpwgt-wt101907'); var h = 0; var listener = function (event) { if (event.origin.indexOf('onlinetestpad') == -1) { return; }; h = parseInt(event.data); if (!isNaN(h)) f.style.height = h + 'px'; }; function addEvent(elem, evnt, func) { if (elem.addEventListener) { elem.addEventListener(evnt, func, false); } else if (elem.attachEvent) { elem.attachEvent('on' + evnt, func); } else { elem['on' + evnt] = func; } }; addEvent(window, 'message', listener);" scrolling="no" ></iframe>
+
 9. **Преобразование таблиц из широкого формата в длинный и наоборот**
     + Дата публикации: 18 мая 2020
     + Видео
