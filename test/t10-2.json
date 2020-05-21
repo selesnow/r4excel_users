@@ -1,0 +1,132 @@
+{
+  "shops": {
+    "starMarket": {
+      "schedule": {
+        "mon": 1,
+        "tue": 1,
+        "wed": 1,
+        "thu": 1,
+        "fri": 1,
+        "sat": 0,
+        "sun": 0
+      },
+      "staff": [
+        {
+          "name": "Alex",
+          "position": "director"
+        },
+        {
+          "name": "Anna",
+          "position": "seller"
+        },
+        {
+          "name": "Olga",
+          "position": "seller"
+        }
+      ],
+      "square": 58
+    },
+    "wow_shop": {
+      "schedule": {
+        "mon": 0,
+        "tue": 1,
+        "wed": 1,
+        "thu": 0,
+        "fri": 1,
+        "sat": 1,
+        "sun": 1
+      },
+      "staff": [
+        {
+          "name": "Linda",
+          "position": "director"
+        },
+        {
+          "name": "Paul",
+          "position": "deputy director"
+        },
+        {
+          "name": "Max",
+          "position": "seller"
+        },
+        {
+          "name": "Nadine",
+          "position": "seller"
+        },
+        {
+          "name": "Julia",
+          "position": "seller"
+        }
+      ],
+      "square": 90
+    },
+    "all_for_travel": {
+      "schedule": {
+        "mon": 1,
+        "tue": 0,
+        "wed": 0,
+        "thu": 1,
+        "fri": 1,
+        "sat": 0,
+        "sun": 1
+      },
+      "staff": [
+        {
+          "name": "Nick",
+          "position": "director"
+        },
+        {
+          "name": "Kira",
+          "position": "seller"
+        }
+      ],
+      "square": 40
+    },
+    "magic_world": {
+      "schedule": {
+        "mon": 1,
+        "tue": 1,
+        "wed": 1,
+        "thu": 1,
+        "fri": 1,
+        "sat": 1,
+        "sun": 1
+      },
+      "staff": [
+        {
+          "name": "Andrey",
+          "position": "director"
+        },
+        {
+          "name": "Leonid",
+          "position": "deputy director"
+        },
+        {
+          "name": "Mark",
+          "position": "accountant"
+        },
+        {
+          "name": "Nina",
+          "position": "seller"
+        },
+        {
+          "name": "Brad",
+          "position": "seller"
+        },
+        {
+          "name": "Bob",
+          "position": "seller"
+        },
+        {
+          "name": "Tom",
+          "position": "seller"
+        },
+        {
+          "name": "Jane",
+          "position": "seller"
+        }
+      ],
+      "square": 140
+    }
+  }
+} 
