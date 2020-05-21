@@ -51,12 +51,12 @@
     + [Тест](https://onlinetestpad.com/t/rlanguage4excelusers-7)
 8. **Оконные функции в R**
     + Дата публикации: 11 мая 2020
-    + Видео
+    + [Видео](https://youtu.be/SS0LRdmyvvY)
     + [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_8)
     + [Тест](https://onlinetestpad.com/t/rlanguage4excelusers-8)
 9. **Преобразование таблиц из широкого формата в длинный и наоборот**
     + Дата публикации: 18 мая 2020
-    + Видео
+    + [Видео](https://youtu.be/C72nlpBo9Cc)
     + [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_9)
     + [Тест](https://onlinetestpad.com/t/rlanguage4excelusers-9)
 10. **Работа с вложенными столбцами**
