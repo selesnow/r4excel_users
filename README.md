@@ -18,50 +18,67 @@
 1. **Установка языка R и среды разработки RStudio**
     + Дата публикации: 23 марта 2020
     + [Видео](https://www.youtube.com/watch?v=wFUoaeGEMmY&list=PLD2LDq8edf4pgGg16wYMobvIYy_0MI0kF&index=2&t=0s)
+    + [Тест](https://onlinetestpad.com/t/rlanguage4excelusers-1)
 2. **Основные структуры данных в R и установка и подключение пакетов**
     + Дата публикации: 30 марта 2020
     + [Видео](https://youtu.be/GwqoGHa8wjQ)
     + [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_2)
+    + [Тест](https://onlinetestpad.com/t/rlanguage4excelusers-2)
 3. **Чтение данных из TSV, CSV, Excel файлов и Google Таблиц**
     + Дата публикации: 6 апреля 2020
     + [Видео](https://youtu.be/vVFFtgcBp-w)
     + [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_3)
+    + [Тест](https://onlinetestpad.com/t/rlanguage4excelusers-3)
 4. **Пакет dplyr: Фильтрация по строкам, продвинутый выбор столбцов, переименование столбцов, пайплайны**
     + Дата публикации: 13 апреля 2020
     + [Видео](https://youtu.be/uI0fc3foQQE)
     + [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_4)
+    + [Тест](https://onlinetestpad.com/t/rlanguage4excelusers-4)
 5. **Пакет dplyr: Добавление новых вычисляемых столбцов, mutate, mutate_if, mutate_at, mutate_all**
     + Дата публикации: 20 апреля 2020
     + [Видео](https://youtu.be/lYYOKPcJ6Gc)
     + [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_5)
+    + [Тест](https://onlinetestpad.com/t/rlanguage4excelusers-5)
 6. **Пакет dplyr: Группировка и агрегация данных**
     + Дата публикации: 27 апреля 2020
     + [Видео](https://youtu.be/7zyL5apWm1M)
     + [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_6)
+    + [Тест](https://onlinetestpad.com/t/rlanguage4excelusers-6)
 7. **Вертикальное и горизонтальное объединение таблиц**
     + Дата публикации: 4 мая 2020
     + [Видео](https://youtu.be/oCU30z-_qUQ)
     + [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_7)
+    + [Тест](https://onlinetestpad.com/t/rlanguage4excelusers-7)
 8. **Оконные функции в R**
     + Дата публикации: 11 мая 2020
     + Видео
     + [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_8)
+    + [Тест](https://onlinetestpad.com/t/rlanguage4excelusers-8)
 9. **Преобразование таблиц из широкого формата в длинный и наоборот**
     + Дата публикации: 18 мая 2020
     + Видео
     + [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_9)
+    + [Тест](https://onlinetestpad.com/t/rlanguage4excelusers-9)
 10. **Работа с вложенными столбцами**
     + Дата публикации: 25 мая 2020
     + Видео
     + Материалы
+    + Тест
 11. **Быстрая визуализация данных с помощью ggplot2 и функции qplot**
     + Дата публикации: 1 июня 2020
     + Видео
     + Материалы
+    + Тест
 12. **Построение графиков в ggplot2 слой за слоем**
     + Дата публикации: 8 июня 2020
     + Видео
     + Материалы
+    + Тест
+13. **рИзменение элементов графика и темы в ggplot2**
+    + Дата публикации: 15 июня 2020
+    + Видео
+    + Материалы
+    + Тест
     
 ## Ссылки
 * [Плейлист курса](https://www.youtube.com/playlist?list=PLD2LDq8edf4pgGg16wYMobvIYy_0MI0kF)
