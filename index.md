@@ -129,55 +129,75 @@ li.nm_li {
 
 ## Программа
 ### Установка языка R и среды разработки RStudio
-    + Дата публикации: 23 марта 2020
-    + [Видео](https://www.youtube.com/watch?v=wFUoaeGEMmY&list=PLD2LDq8edf4pgGg16wYMobvIYy_0MI0kF&index=2&t=0s)
+
++ Дата публикации: 23 марта 2020
++ [Видео](https://www.youtube.com/watch?v=wFUoaeGEMmY&list=PLD2LDq8edf4pgGg16wYMobvIYy_0MI0kF&index=2&t=0s)
++ [Тест](https://onlinetestpad.com/t/rlanguage4excelusers-1)
 
 #### Видео 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/wFUoaeGEMmY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-2. **Основные структуры данных в R и установка и подключение пакетов**
-    + Дата публикации: 30 марта 2020
-    + [Видео](https://youtu.be/GwqoGHa8wjQ)
-    + [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_2)
-3. **Чтение данных из TSV, CSV, Excel файлов и Google Таблиц**
-    + Дата публикации: 6 апреля 2020
-    + Видео
-    + [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_3)
-4. **Пакет dplyr: Фильтрация по строкам, продвинутый выбор столбцов, переименование столбцов, пайплайны**
-    + Дата публикации: 13 апреля 2020
-    + Видео
-    + [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_4)
-5. **Пакет dplyr: Добавление новых вычисляемых столбцов, mutate, mutate_if, mutate_at, mutate_all**
-    + Дата публикации: 20 апреля 2020
-    + Видео
-    + [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_5)
-6. **Пакет dplyr: Группировка и агрегация данных**
-    + Дата публикации: 27 апреля 2020
-    + Видео
-    + [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_6)
-7. **Вертикальное и горизонтальное объединение таблиц**
-    + Дата публикации: 4 мая 2020
-    + Видео
-    + [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_7)
-8. **Оконные функции в R**
-    + Дата публикации: 11 мая 2020
-    + Видео
-    + [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_8)
+#### Тест
+<iframe id="otpwgt-wt101485" src="https://onlinetestpad.com/hslufgna375xa" frameborder="0" style="width:100%;" onload="var f = document.getElementById('otpwgt-wt101485'); var h = 0; var listener = function (event) { if (event.origin.indexOf('onlinetestpad') == -1) { return; }; h = parseInt(event.data); if (!isNaN(h)) f.style.height = h + 'px'; }; function addEvent(elem, evnt, func) { if (elem.addEventListener) { elem.addEventListener(evnt, func, false); } else if (elem.attachEvent) { elem.attachEvent('on' + evnt, func); } else { elem['on' + evnt] = func; } }; addEvent(window, 'message', listener);" scrolling="no" ></iframe>
+
+### Основные структуры данных в R и установка и подключение пакетов
++ Дата публикации: 30 марта 2020
++ [Видео](https://youtu.be/GwqoGHa8wjQ)
++ [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_2)
+    
+### Чтение данных из TSV, CSV, Excel файлов и Google Таблиц**
++ Дата публикации: 6 апреля 2020
++ [Видео](https://www.youtube.com/embed/GwqoGHa8wjQ)
++ [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_3)
++ [Тест](https://onlinetestpad.com/t/rlanguage4excelusers-1)
+
+#### Видео 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GwqoGHa8wjQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+#### Тест
+<iframe id="otpwgt-wt101505" src="https://onlinetestpad.com/hr5y6i3gyunfu" frameborder="0" style="width:100%;" onload="var f = document.getElementById('otpwgt-wt101505'); var h = 0; var listener = function (event) { if (event.origin.indexOf('onlinetestpad') == -1) { return; }; h = parseInt(event.data); if (!isNaN(h)) f.style.height = h + 'px'; }; function addEvent(elem, evnt, func) { if (elem.addEventListener) { elem.addEventListener(evnt, func, false); } else if (elem.attachEvent) { elem.attachEvent('on' + evnt, func); } else { elem['on' + evnt] = func; } }; addEvent(window, 'message', listener);" scrolling="no" ></iframe>
+
+### Пакет dplyr: Фильтрация по строкам, продвинутый выбор столбцов, переименование столбцов, пайплайны
++ Дата публикации: 13 апреля 2020
++ Видео
++ [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_4)
+
+### Пакет dplyr: Добавление новых вычисляемых столбцов, mutate, mutate_if, mutate_at, mutate_all
++ Дата публикации: 20 апреля 2020
++ Видео
++ [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_5)
+
+### Пакет dplyr: Группировка и агрегация данных
++ Дата публикации: 27 апреля 2020
++ Видео
++ [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_6)
+    
+### Вертикальное и горизонтальное объединение таблиц
++ Дата публикации: 4 мая 2020
++ Видео
++ [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_7)
+
+### Оконные функции в R
++ Дата публикации: 11 мая 2020
++ Видео
++ [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_8)
     
 <iframe id="otpwgt-wt101907" src="https://onlinetestpad.com/htu2qee7l3ls4" frameborder="0" style="width:100%;" onload="var f = document.getElementById('otpwgt-wt101907'); var h = 0; var listener = function (event) { if (event.origin.indexOf('onlinetestpad') == -1) { return; }; h = parseInt(event.data); if (!isNaN(h)) f.style.height = h + 'px'; }; function addEvent(elem, evnt, func) { if (elem.addEventListener) { elem.addEventListener(evnt, func, false); } else if (elem.attachEvent) { elem.attachEvent('on' + evnt, func); } else { elem['on' + evnt] = func; } }; addEvent(window, 'message', listener);" scrolling="no" ></iframe>
 
-9. **Преобразование таблиц из широкого формата в длинный и наоборот**
-    + Дата публикации: 18 мая 2020
-    + Видео
-    + Материалы
-10. **Работа с вложенными столбцами**
-    + Дата публикации: 25 мая 2020
-    + Видео
-    + Материалы
-11. **Быстрая визуализация данных с помощью ggplot2 и функции qplot**
-    + Дата публикации: 1 июня 2020
-    + Видео
-    + Материалы
+### Преобразование таблиц из широкого формата в длинный и наоборот
++ Дата публикации: 18 мая 2020
++ Видео
++ Материалы
+
+### Работа с вложенными столбцами
++ Дата публикации: 25 мая 2020
++ Видео
++ Материалы
+
+### Быстрая визуализация данных с помощью ggplot2 и функции qplot**
++ Дата публикации: 1 июня 2020
++ Видео
++ Материалы
 
 ## Ссылки
 * [Плейлист курса](https://www.youtube.com/playlist?list=PLD2LDq8edf4pgGg16wYMobvIYy_0MI0kF)
