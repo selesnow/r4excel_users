@@ -188,9 +188,9 @@ li.nm_li {
 
 ### 5. Пакет dplyr: Добавление новых вычисляемых столбцов, mutate, mutate_if, mutate_at, mutate_all
 + Дата публикации: 20 апреля 2020
-+ Видео
++ [Видео](https://www.youtube.com/embed/lYYOKPcJ6Gc)
 + [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_5)
-+ [Тест](https://onlinetestpad.com/t/rlanguage4excelusers-4)
++ [Тест](https://onlinetestpad.com/t/rlanguage4excelusers-5)
 
 #### Видео 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/lYYOKPcJ6Gc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -202,9 +202,16 @@ li.nm_li {
 
 ### 6. Пакет dplyr: Группировка и агрегация данных
 + Дата публикации: 27 апреля 2020
-+ Видео
++ [Видео](https://www.youtube.com/embed/7zyL5apWm1M)
 + [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_6)
-    
++ [Тест](https://onlinetestpad.com/t/rlanguage4excelusers-6)
+
+#### Видео 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7zyL5apWm1M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+#### Тест
+<iframe id="otpwgt-wt101824" src="https://onlinetestpad.com/hq5csabhvfezm" frameborder="0" style="width:100%;" onload="var f = document.getElementById('otpwgt-wt101824'); var h = 0; var listener = function (event) { if (event.origin.indexOf('onlinetestpad') == -1) { return; }; h = parseInt(event.data); if (!isNaN(h)) f.style.height = h + 'px'; }; function addEvent(elem, evnt, func) { if (elem.addEventListener) { elem.addEventListener(evnt, func, false); } else if (elem.attachEvent) { elem.attachEvent('on' + evnt, func); } else { elem['on' + evnt] = func; } }; addEvent(window, 'message', listener);" scrolling="no" ></iframe>
+
 ### 7. Вертикальное и горизонтальное объединение таблиц
 + Дата публикации: 4 мая 2020
 + Видео
