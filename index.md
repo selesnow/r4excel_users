@@ -128,9 +128,13 @@ li.nm_li {
 Все материалы и видео лекции курса совершенно бесплатны, но при желании вы можете поддержать автора курса переводом произвольной суммы, для этого перейдите по [ссылке](https://secure.wayforpay.com/payment/r4excel_users)
 
 ## Программа
-1. **Установка языка R и среды разработки RStudio**
+### Установка языка R и среды разработки RStudio
     + Дата публикации: 23 марта 2020
     + [Видео](https://www.youtube.com/watch?v=wFUoaeGEMmY&list=PLD2LDq8edf4pgGg16wYMobvIYy_0MI0kF&index=2&t=0s)
+
+#### Видео 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wFUoaeGEMmY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 2. **Основные структуры данных в R и установка и подключение пакетов**
     + Дата публикации: 30 марта 2020
     + [Видео](https://youtu.be/GwqoGHa8wjQ)
