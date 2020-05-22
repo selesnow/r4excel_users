@@ -165,49 +165,69 @@ li.nm_li {
 + [Тест](https://onlinetestpad.com/t/rlanguage4excelusers-3)
 
 #### Видео 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/k4v5cfLuUAQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/vVFFtgcBp-w" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 #### Тест
 <iframe id="otpwgt-wt101545" src="https://onlinetestpad.com/hrjuikkvlaif2" frameborder="0" style="width:100%;" onload="var f = document.getElementById('otpwgt-wt101545'); var h = 0; var listener = function (event) { if (event.origin.indexOf('onlinetestpad') == -1) { return; }; h = parseInt(event.data); if (!isNaN(h)) f.style.height = h + 'px'; }; function addEvent(elem, evnt, func) { if (elem.addEventListener) { elem.addEventListener(evnt, func, false); } else if (elem.attachEvent) { elem.attachEvent('on' + evnt, func); } else { elem['on' + evnt] = func; } }; addEvent(window, 'message', listener);" scrolling="no" ></iframe>
+    
+---
 
-### Пакет dplyr: Фильтрация по строкам, продвинутый выбор столбцов, переименование столбцов, пайплайны
+### 4. Пакет dplyr: Фильтрация по строкам, продвинутый выбор столбцов, переименование столбцов, пайплайны
 + Дата публикации: 13 апреля 2020
-+ Видео
++ [Видео](https://www.youtube.com/embed/uI0fc3foQQE)
 + [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_4)
++ [Тест](https://onlinetestpad.com/t/rlanguage4excelusers-4)
 
-### Пакет dplyr: Добавление новых вычисляемых столбцов, mutate, mutate_if, mutate_at, mutate_all
+#### Видео 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/uI0fc3foQQE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+#### Тест
+<iframe id="otpwgt-wt101563" src="https://onlinetestpad.com/hraspc33hmk2s" frameborder="0" style="width:100%;" onload="var f = document.getElementById('otpwgt-wt101563'); var h = 0; var listener = function (event) { if (event.origin.indexOf('onlinetestpad') == -1) { return; }; h = parseInt(event.data); if (!isNaN(h)) f.style.height = h + 'px'; }; function addEvent(elem, evnt, func) { if (elem.addEventListener) { elem.addEventListener(evnt, func, false); } else if (elem.attachEvent) { elem.attachEvent('on' + evnt, func); } else { elem['on' + evnt] = func; } }; addEvent(window, 'message', listener);" scrolling="no" ></iframe>
+
+---
+
+### 5. Пакет dplyr: Добавление новых вычисляемых столбцов, mutate, mutate_if, mutate_at, mutate_all
 + Дата публикации: 20 апреля 2020
 + Видео
 + [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_5)
++ [Тест](https://onlinetestpad.com/t/rlanguage4excelusers-4)
 
-### Пакет dplyr: Группировка и агрегация данных
+#### Видео 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/lYYOKPcJ6Gc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+#### Тест
+<iframe id="otpwgt-wt101791" src="https://onlinetestpad.com/hrsxbocwedwmc" frameborder="0" style="width:100%;" onload="var f = document.getElementById('otpwgt-wt101791'); var h = 0; var listener = function (event) { if (event.origin.indexOf('onlinetestpad') == -1) { return; }; h = parseInt(event.data); if (!isNaN(h)) f.style.height = h + 'px'; }; function addEvent(elem, evnt, func) { if (elem.addEventListener) { elem.addEventListener(evnt, func, false); } else if (elem.attachEvent) { elem.attachEvent('on' + evnt, func); } else { elem['on' + evnt] = func; } }; addEvent(window, 'message', listener);" scrolling="no" ></iframe>
+
+---
+
+### 6. Пакет dplyr: Группировка и агрегация данных
 + Дата публикации: 27 апреля 2020
 + Видео
 + [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_6)
     
-### Вертикальное и горизонтальное объединение таблиц
+### 7. Вертикальное и горизонтальное объединение таблиц
 + Дата публикации: 4 мая 2020
 + Видео
 + [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_7)
 
-### Оконные функции в R
+### 8. Оконные функции в R
 + Дата публикации: 11 мая 2020
 + Видео
 + [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_8)
     
 <iframe id="otpwgt-wt101907" src="https://onlinetestpad.com/htu2qee7l3ls4" frameborder="0" style="width:100%;" onload="var f = document.getElementById('otpwgt-wt101907'); var h = 0; var listener = function (event) { if (event.origin.indexOf('onlinetestpad') == -1) { return; }; h = parseInt(event.data); if (!isNaN(h)) f.style.height = h + 'px'; }; function addEvent(elem, evnt, func) { if (elem.addEventListener) { elem.addEventListener(evnt, func, false); } else if (elem.attachEvent) { elem.attachEvent('on' + evnt, func); } else { elem['on' + evnt] = func; } }; addEvent(window, 'message', listener);" scrolling="no" ></iframe>
 
-### Преобразование таблиц из широкого формата в длинный и наоборот
+### 9. Преобразование таблиц из широкого формата в длинный и наоборот
 + Дата публикации: 18 мая 2020
 + Видео
 + Материалы
 
-### Работа с вложенными столбцами
+### 10. Работа с вложенными столбцами
 + Дата публикации: 25 мая 2020
 + Видео
 + Материалы
 
-### Быстрая визуализация данных с помощью ggplot2 и функции qplot**
+### 11. Быстрая визуализация данных с помощью ggplot2 и функции qplot
 + Дата публикации: 1 июня 2020
 + Видео
 + Материалы
