@@ -128,8 +128,10 @@ li.nm_li {
 Все материалы и видео лекции курса совершенно бесплатны, но при желании вы можете поддержать автора курса переводом произвольной суммы, для этого перейдите по [ссылке](https://secure.wayforpay.com/payment/r4excel_users)
 
 ## Программа
-### Установка языка R и среды разработки RStudio
 
+---
+
+### 1. Установка языка R и среды разработки RStudio
 + Дата публикации: 23 марта 2020
 + [Видео](https://www.youtube.com/watch?v=wFUoaeGEMmY&list=PLD2LDq8edf4pgGg16wYMobvIYy_0MI0kF&index=2&t=0s)
 + [Тест](https://onlinetestpad.com/t/rlanguage4excelusers-1)
@@ -140,22 +142,24 @@ li.nm_li {
 #### Тест
 <iframe id="otpwgt-wt101485" src="https://onlinetestpad.com/hslufgna375xa" frameborder="0" style="width:100%;" onload="var f = document.getElementById('otpwgt-wt101485'); var h = 0; var listener = function (event) { if (event.origin.indexOf('onlinetestpad') == -1) { return; }; h = parseInt(event.data); if (!isNaN(h)) f.style.height = h + 'px'; }; function addEvent(elem, evnt, func) { if (elem.addEventListener) { elem.addEventListener(evnt, func, false); } else if (elem.attachEvent) { elem.attachEvent('on' + evnt, func); } else { elem['on' + evnt] = func; } }; addEvent(window, 'message', listener);" scrolling="no" ></iframe>
 
-### Основные структуры данных в R и установка и подключение пакетов
+---
+
+### 2. Основные структуры данных в R и установка и подключение пакетов
 + Дата публикации: 30 марта 2020
 + [Видео](https://youtu.be/GwqoGHa8wjQ)
 + [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_2)
-    
-### Чтение данных из TSV, CSV, Excel файлов и Google Таблиц**
-+ Дата публикации: 6 апреля 2020
-+ [Видео](https://www.youtube.com/embed/GwqoGHa8wjQ)
-+ [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_3)
-+ [Тест](https://onlinetestpad.com/t/rlanguage4excelusers-1)
++ [Тест](https://onlinetestpad.com/t/rlanguage4excelusers-2)
 
 #### Видео 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/GwqoGHa8wjQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 #### Тест
 <iframe id="otpwgt-wt101505" src="https://onlinetestpad.com/hr5y6i3gyunfu" frameborder="0" style="width:100%;" onload="var f = document.getElementById('otpwgt-wt101505'); var h = 0; var listener = function (event) { if (event.origin.indexOf('onlinetestpad') == -1) { return; }; h = parseInt(event.data); if (!isNaN(h)) f.style.height = h + 'px'; }; function addEvent(elem, evnt, func) { if (elem.addEventListener) { elem.addEventListener(evnt, func, false); } else if (elem.attachEvent) { elem.attachEvent('on' + evnt, func); } else { elem['on' + evnt] = func; } }; addEvent(window, 'message', listener);" scrolling="no" ></iframe>
+    
+### Чтение данных из TSV, CSV, Excel файлов и Google Таблиц
++ Дата публикации: 6 апреля 2020
++ [Видео](https://www.youtube.com/embed/GwqoGHa8wjQ)
++ [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_3)
 
 ### Пакет dplyr: Фильтрация по строкам, продвинутый выбор столбцов, переименование столбцов, пайплайны
 + Дата публикации: 13 апреля 2020
