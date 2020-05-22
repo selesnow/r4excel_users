@@ -156,10 +156,19 @@ li.nm_li {
 #### Тест
 <iframe id="otpwgt-wt101505" src="https://onlinetestpad.com/hr5y6i3gyunfu" frameborder="0" style="width:100%;" onload="var f = document.getElementById('otpwgt-wt101505'); var h = 0; var listener = function (event) { if (event.origin.indexOf('onlinetestpad') == -1) { return; }; h = parseInt(event.data); if (!isNaN(h)) f.style.height = h + 'px'; }; function addEvent(elem, evnt, func) { if (elem.addEventListener) { elem.addEventListener(evnt, func, false); } else if (elem.attachEvent) { elem.attachEvent('on' + evnt, func); } else { elem['on' + evnt] = func; } }; addEvent(window, 'message', listener);" scrolling="no" ></iframe>
     
-### Чтение данных из TSV, CSV, Excel файлов и Google Таблиц
+---
+
+### 3. Чтение данных из TSV, CSV, Excel файлов и Google Таблиц
 + Дата публикации: 6 апреля 2020
 + [Видео](https://www.youtube.com/embed/GwqoGHa8wjQ)
 + [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_3)
++ [Тест](https://onlinetestpad.com/t/rlanguage4excelusers-3)
+
+#### Видео 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/k4v5cfLuUAQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+#### Тест
+<iframe id="otpwgt-wt101545" src="https://onlinetestpad.com/hrjuikkvlaif2" frameborder="0" style="width:100%;" onload="var f = document.getElementById('otpwgt-wt101545'); var h = 0; var listener = function (event) { if (event.origin.indexOf('onlinetestpad') == -1) { return; }; h = parseInt(event.data); if (!isNaN(h)) f.style.height = h + 'px'; }; function addEvent(elem, evnt, func) { if (elem.addEventListener) { elem.addEventListener(evnt, func, false); } else if (elem.attachEvent) { elem.attachEvent('on' + evnt, func); } else { elem['on' + evnt] = func; } }; addEvent(window, 'message', listener);" scrolling="no" ></iframe>
 
 ### Пакет dplyr: Фильтрация по строкам, продвинутый выбор столбцов, переименование столбцов, пайплайны
 + Дата публикации: 13 апреля 2020
