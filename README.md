@@ -61,24 +61,24 @@
     + [Тест](https://onlinetestpad.com/t/rlanguage4excelusers-9)
 10. **Работа с вложенными столбцами**
     + Дата публикации: 25 мая 2020
-    + Видео
-    + Материалы
-    + Тест
+    + [Видео](https://youtu.be/jMTx34aGhw4)
+    + [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_10)
+    + [Тест](https://onlinetestpad.com/t/rlanguage4excelusers-10)
 11. **Быстрая визуализация данных с помощью ggplot2 и функции qplot**
     + Дата публикации: 1 июня 2020
-    + Видео
-    + Материалы
-    + Тест
+    + [Видео](https://youtu.be/bWaYo5cU6rk)
+    + [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_11)
+    + [Тест](https://onlinetestpad.com/t/rlanguage4excelusers-11)
 12. **Построение графиков в ggplot2 слой за слоем**
     + Дата публикации: 8 июня 2020
-    + Видео
-    + Материалы
-    + Тест
-13. **рИзменение элементов графика и темы в ggplot2**
+    + [Видео](https://youtu.be/9CDDKaZOp7M)
+    + [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_12)
+    + [Тест](https://onlinetestpad.com/t/rlanguage4excelusers-12)
+13. **Изменение элементов графика и темы в ggplot2**
     + Дата публикации: 15 июня 2020
-    + Видео
-    + Материалы
-    + Тест
+    + [Видео](https://youtu.be/8ZXzWx7gx4Q)
+    + [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_13)
+    + [Тест](https://onlinetestpad.com/t/rlanguage4excelusers-13)
     
 ## Ссылки
 * [Плейлист курса](https://www.youtube.com/playlist?list=PLD2LDq8edf4pgGg16wYMobvIYy_0MI0kF)
