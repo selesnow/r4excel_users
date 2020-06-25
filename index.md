@@ -244,8 +244,8 @@ li.nm_li {
 
 ### 9. Преобразование таблиц из широкого формата в длинный и наоборот
 + Дата публикации: 18 мая 2020
-+ [Видео]()
-+ [Материалы]()
++ [Видео](https://youtu.be/C72nlpBo9Cc)
++ [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_9)
 + [Тест](https://onlinetestpad.com/t/rlanguage4excelusers-9)
 
 #### Видео 
@@ -258,15 +258,63 @@ li.nm_li {
 
 ### 10. Работа с вложенными столбцами
 + Дата публикации: 25 мая 2020
-+ Видео
-+ Материалы
++ [Видео](https://youtu.be/jMTx34aGhw4)
++ [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_10)
++ [Тест](https://onlinetestpad.com/t/rlanguage4excelusers-10)
+
+#### Видео 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jMTx34aGhw4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+#### Тест
+<!-- Online Test Pad Test Widget (#102602)-->
+<div id="otp_wgt_hqyo5ogpgs6he"></div>
+<script type="text/javascript">
+    var otp_wjs_dt = (new Date).getTime();
+    (function (w, d, n, s) {
+        w[n] = w[n] || [];
+        w[n].push(function () {
+            otp_render_widget(d.getElementById("otp_wgt_hqyo5ogpgs6he"), 'onlinetestpad.com', 'hqyo5ogpgs6he');
+        });
+        s = d.createElement("script");
+        s.type = "text/javascript";
+        s.src = "//onlinetestpad.com/js/widget.js?" + otp_wjs_dt;
+        s.async = true;
+        d.getElementsByTagName("head")[0].appendChild(s);
+    })(this, this.document, "otp_widget_callbacks");
+</script>
 
 ---
 
 ### 11. Быстрая визуализация данных с помощью ggplot2 и функции qplot
 + Дата публикации: 1 июня 2020
-+ Видео
-+ Материалы
++ [Видео](https://youtu.be/bWaYo5cU6rk)
++ [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_11)
++ [Тест](https://onlinetestpad.com/t/rlanguage4excelusers-11)
+
+#### Видео 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/bWaYo5cU6rk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+---
+
+### 12. Построение графиков слой за слоем в ggplot2
++ Дата публикации: 8 июня 2020
++ [Видео](https://youtu.be/9CDDKaZOp7M)
++ [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_12)
++ [Тест](https://onlinetestpad.com/t/rlanguage4excelusers-12)
+
+#### Видео 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/9CDDKaZOp7M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+---
+
+### 13. Применение тем и изменение элементов графика в ggplot2
++ Дата публикации: 15 июня 2020
++ [Видео](https://youtu.be/8ZXzWx7gx4Q)
++ [Материалы](https://github.com/selesnow/r4excel_users/tree/master/lesson_13)
++ [Тест](https://onlinetestpad.com/t/rlanguage4excelusers-13)
+
+#### Видео 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8ZXzWx7gx4Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ---
 
