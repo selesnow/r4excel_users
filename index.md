@@ -294,6 +294,24 @@ li.nm_li {
 #### Видео 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/bWaYo5cU6rk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+#### Тест
+<!-- Online Test Pad Test Widget (#102884)-->
+<div id="otp_wgt_hqppakvzokeb2"></div>
+<script type="text/javascript">
+    var otp_wjs_dt = (new Date).getTime();
+    (function (w, d, n, s) {
+        w[n] = w[n] || [];
+        w[n].push(function () {
+            otp_render_widget(d.getElementById("otp_wgt_hqppakvzokeb2"), 'onlinetestpad.com', 'hqppakvzokeb2');
+        });
+        s = d.createElement("script");
+        s.type = "text/javascript";
+        s.src = "//onlinetestpad.com/js/widget.js?" + otp_wjs_dt;
+        s.async = true;
+        d.getElementsByTagName("head")[0].appendChild(s);
+    })(this, this.document, "otp_widget_callbacks");
+</script>
+
 ---
 
 ### 12. Построение графиков слой за слоем в ggplot2
@@ -305,6 +323,24 @@ li.nm_li {
 #### Видео 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/9CDDKaZOp7M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+#### Тест
+<!-- Online Test Pad Test Widget (#103117)-->
+<div id="otp_wgt_hq35jkiquujzu"></div>
+<script type="text/javascript">
+    var otp_wjs_dt = (new Date).getTime();
+    (function (w, d, n, s) {
+        w[n] = w[n] || [];
+        w[n].push(function () {
+            otp_render_widget(d.getElementById("otp_wgt_hq35jkiquujzu"), 'onlinetestpad.com', 'hq35jkiquujzu');
+        });
+        s = d.createElement("script");
+        s.type = "text/javascript";
+        s.src = "//onlinetestpad.com/js/widget.js?" + otp_wjs_dt;
+        s.async = true;
+        d.getElementsByTagName("head")[0].appendChild(s);
+    })(this, this.document, "otp_widget_callbacks");
+</script>
+
 ---
 
 ### 13. Применение тем и изменение элементов графика в ggplot2
@@ -315,6 +351,24 @@ li.nm_li {
 
 #### Видео 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/8ZXzWx7gx4Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+#### Тест
+<!-- Online Test Pad Test Widget (#103907)-->
+<div id="otp_wgt_hqm3wsahkkfeo"></div>
+<script type="text/javascript">
+    var otp_wjs_dt = (new Date).getTime();
+    (function (w, d, n, s) {
+        w[n] = w[n] || [];
+        w[n].push(function () {
+            otp_render_widget(d.getElementById("otp_wgt_hqm3wsahkkfeo"), 'onlinetestpad.com', 'hqm3wsahkkfeo');
+        });
+        s = d.createElement("script");
+        s.type = "text/javascript";
+        s.src = "//onlinetestpad.com/js/widget.js?" + otp_wjs_dt;
+        s.async = true;
+        d.getElementsByTagName("head")[0].appendChild(s);
+    })(this, this.document, "otp_widget_callbacks");
+</script>
 
 ---
 
