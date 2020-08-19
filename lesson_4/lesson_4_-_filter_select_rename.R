@@ -11,10 +11,10 @@ ga_data <- vroom("https://raw.githubusercontent.com/selesnow/publications/master
 # ######################################################
 # фильтраци¤ строк
 ## простейший фильтр с одним условием
-ga_data_organic <- filter(ga_data, medium == "organic")
+ga_data_organic <- filter(ga_data, medium == "organic") #название таблицы, условие фильтрации (поле медиум, значения только органик); сохранение данных в новую таблицу
 
 ## несколько условий
-ga_data_organic_10 <- filter(ga_data, medium == "organic" & sessions > 10 )
+ga_data_organic_10 <- filter(ga_data, medium == "organic" & sessions > 10 )#тоже самое + 2-ое условие
 
 ## провер¤ем на соответвию значению из списка
 google_yandex <- filter(ga_data, source %in% c("google", "yandex", "bing"))
@@ -22,7 +22,7 @@ google_yandex <- filter(ga_data, source %in% c("google", "yandex", "bing"))
 ## создаЄм вектор дл¤ фильтрации
 search_eng <- c("google", "yandex", "bing")
 ## используем вектор дл¤ фильтрации
-not_searcj_eng <- filter(ga_data, ! source %in% search_eng)
+not_searcj_eng <- filter(ga_data, ! source %in% search_eng) #обращаемся к вектору фильтрации
 
 # ######################################################
 # выбор столбцов
@@ -56,16 +56,16 @@ new_ga_data <- rename(ga_data,
                       refferer = source)
 
 # мен¤ем стиль имЄн столбцов
-rename_if(ga_data, is.numeric, paste0, "_n")
+rename_if(ga_data, is.numeric, paste0, "_n") #прибавляем к названию числовых столбцов _n в конце
 rename_at(ga_data, vars(matches("^s")), paste0, "_s")
-rename_all(ga_data, toupper)         
+rename_all(ga_data, toupper) #переименование столбцов в верхний регистр
 
 # ######################################################
 # пайплайны
 ## вложенные функции (как в Excel)
 rename_all(select_if(filter(ga_data, source %in% search_eng), is.numeric), toupper)
 
-## тоже самое но через пайплайн %>%
+## тоже самое но через пайплайн %>% пошаговые шаги без сложнастей
 result <- ga_data %>%
             filter(source %in% search_eng) %>%
             select_if(is.numeric) %>%
