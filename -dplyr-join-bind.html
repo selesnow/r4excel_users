@@ -53,6 +53,15 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-114798296-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-114798296-1');
+</script>
 
 
 <style type="text/css">
@@ -274,14 +283,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="описание-6" class="section level2" number="7.1">
 <h2><span class="header-section-number">7.1</span> Описание</h2>
 <p>Этот урок поможет вам разобраться с операциями вертикального и горизонтального объединения таблиц.</p>
-<p>Вертикальное объединение является аналогом операции UNION в языке запросов SQL.</p>
+<p>Вертикальное объединение является аналогом операции <code>UNION</code> в языке запросов SQL.</p>
 <p>Горизонтальное объединение пользователям Excel более известно благодаря функции ВПР, в SQL такие операции осуществляются операцией JOIN.</p>
-<p>В ходе урока мы решим практическую задачу, в ходе которой будем использовать пакеты dplyr, readxl, tidyr и stringr.</p>
+<p>В ходе урока мы решим практическую задачу, в ходе которой будем использовать пакеты <code>dplyr</code>, <code>readxl</code>, <code>tidyr</code> и <code>stringr</code>.</p>
 <p>Основные функции которые мы рассмотрим:</p>
-<p>bind_rows - вертикальное объединение таблиц
-left_join - горизонтальное объединение таблиц
-semi_join - включающее объединение таблиц
-anti_join - исключающее объединение таблиц</p>
+<ul>
+<li><code>bind_rows</code> - вертикальное объединение таблиц</li>
+<li><code>left_join</code> - горизонтальное объединение таблиц</li>
+<li><code>semi_join</code> - включающее объединение таблиц</li>
+<li><code>anti_join</code> - исключающее объединение таблиц</li>
+</ul>
 </div>
 <div id="видео-6" class="section level2" number="7.2">
 <h2><span class="header-section-number">7.2</span> Видео</h2>
