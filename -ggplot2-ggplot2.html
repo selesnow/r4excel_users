@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Урок 12 Пакет ggplot2: Построение графиков слой за слоем в ggplot2 | Язык R для пользователей Excel</title>
+  <meta name="description" content="Бесплатный видео курс по языку R" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Урок 12 Пакет ggplot2: Построение графиков слой за слоем в ggplot2 | Язык R для пользователей Excel" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Бесплатный видео курс по языку R" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Урок 12 Пакет ggplot2: Построение графиков слой за слоем в ggplot2 | Язык R для пользователей Excel" />
+  
+  <meta name="twitter:description" content="Бесплатный видео курс по языку R" />
+  
+
+<meta name="author" content="Алексей Селезнёв" />
+
+
+<meta name="date" content="2021-05-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="-ggplot2-ggplot2-qplot.html"/>
+<link rel="next" href="-ggplot2-ggplot2-ggthemes-ggthemr.html"/>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Язык R для пользователей Excel</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Введение</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#предисловие"><i class="fa fa-check"></i>Предисловие</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#о-курсе"><i class="fa fa-check"></i>О курсе</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#для-кого-этот-курс"><i class="fa fa-check"></i>Для кого этот курс</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#об-авторе"><i class="fa fa-check"></i>Об авторе</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#программа-курса"><i class="fa fa-check"></i>Программа курса</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#благодарности"><i class="fa fa-check"></i>Благодарности</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#ссылки"><i class="fa fa-check"></i>Ссылки</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="-r-rstudio.html"><a href="-r-rstudio.html"><i class="fa fa-check"></i><b>1</b> Устновка R и RStudio</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="-r-rstudio.html"><a href="-r-rstudio.html#описание"><i class="fa fa-check"></i><b>1.1</b> Описание</a></li>
+<li class="chapter" data-level="1.2" data-path="-r-rstudio.html"><a href="-r-rstudio.html#видео"><i class="fa fa-check"></i><b>1.2</b> Видео</a></li>
+<li class="chapter" data-level="1.3" data-path="-r-rstudio.html"><a href="-r-rstudio.html#тест"><i class="fa fa-check"></i><b>1.3</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="-r-.html"><a href="-r-.html"><i class="fa fa-check"></i><b>2</b> Основные структуры данных в R и установка и подключение пакетов</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="-r-.html"><a href="-r-.html#описание-1"><i class="fa fa-check"></i><b>2.1</b> Описание</a></li>
+<li class="chapter" data-level="2.2" data-path="-r-.html"><a href="-r-.html#видео-1"><i class="fa fa-check"></i><b>2.2</b> Видео</a></li>
+<li class="chapter" data-level="2.3" data-path="-r-.html"><a href="-r-.html#материалы"><i class="fa fa-check"></i><b>2.3</b> Материалы</a></li>
+<li class="chapter" data-level="2.4" data-path="-r-.html"><a href="-r-.html#код"><i class="fa fa-check"></i><b>2.4</b> Код</a></li>
+<li class="chapter" data-level="2.5" data-path="-r-.html"><a href="-r-.html#тест-1"><i class="fa fa-check"></i><b>2.5</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="-tsv-csv-excel-google-.html"><a href="-tsv-csv-excel-google-.html"><i class="fa fa-check"></i><b>3</b> Чтение данных из TSV, CSV, Excel файлов и Google Таблиц</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="-tsv-csv-excel-google-.html"><a href="-tsv-csv-excel-google-.html#описание-2"><i class="fa fa-check"></i><b>3.1</b> Описание</a></li>
+<li class="chapter" data-level="3.2" data-path="-tsv-csv-excel-google-.html"><a href="-tsv-csv-excel-google-.html#видео-2"><i class="fa fa-check"></i><b>3.2</b> Видео</a></li>
+<li class="chapter" data-level="3.3" data-path="-tsv-csv-excel-google-.html"><a href="-tsv-csv-excel-google-.html#материалы-1"><i class="fa fa-check"></i><b>3.3</b> Материалы</a></li>
+<li class="chapter" data-level="3.4" data-path="-tsv-csv-excel-google-.html"><a href="-tsv-csv-excel-google-.html#код-1"><i class="fa fa-check"></i><b>3.4</b> Код</a></li>
+<li class="chapter" data-level="3.5" data-path="-tsv-csv-excel-google-.html"><a href="-tsv-csv-excel-google-.html#тест-2"><i class="fa fa-check"></i><b>3.5</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="-dplyr-.html"><a href="-dplyr-.html"><i class="fa fa-check"></i><b>4</b> Пакет dplyr: Фильтрация по строкам, продвинутый выбор столбцов, переименование столбцов, пайплайны</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="-dplyr-.html"><a href="-dplyr-.html#описание-3"><i class="fa fa-check"></i><b>4.1</b> Описание</a></li>
+<li class="chapter" data-level="4.2" data-path="-dplyr-.html"><a href="-dplyr-.html#видео-3"><i class="fa fa-check"></i><b>4.2</b> Видео</a></li>
+<li class="chapter" data-level="4.3" data-path="-dplyr-.html"><a href="-dplyr-.html#материалы-2"><i class="fa fa-check"></i><b>4.3</b> Материалы</a></li>
+<li class="chapter" data-level="4.4" data-path="-dplyr-.html"><a href="-dplyr-.html#код-2"><i class="fa fa-check"></i><b>4.4</b> Код</a></li>
+<li class="chapter" data-level="4.5" data-path="-dplyr-.html"><a href="-dplyr-.html#тест-3"><i class="fa fa-check"></i><b>4.5</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="-dplyr-mutate-mutate-if-mutate-at-mutate-all.html"><a href="-dplyr-mutate-mutate-if-mutate-at-mutate-all.html"><i class="fa fa-check"></i><b>5</b> Пакет dplyr: Добавление новых вычисляемых столбцов, mutate, mutate_if, mutate_at, mutate_all</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="-dplyr-mutate-mutate-if-mutate-at-mutate-all.html"><a href="-dplyr-mutate-mutate-if-mutate-at-mutate-all.html#описание-4"><i class="fa fa-check"></i><b>5.1</b> Описание</a></li>
+<li class="chapter" data-level="5.2" data-path="-dplyr-mutate-mutate-if-mutate-at-mutate-all.html"><a href="-dplyr-mutate-mutate-if-mutate-at-mutate-all.html#видео-4"><i class="fa fa-check"></i><b>5.2</b> Видео</a></li>
+<li class="chapter" data-level="5.3" data-path="-dplyr-mutate-mutate-if-mutate-at-mutate-all.html"><a href="-dplyr-mutate-mutate-if-mutate-at-mutate-all.html#материалы-3"><i class="fa fa-check"></i><b>5.3</b> Материалы</a></li>
+<li class="chapter" data-level="5.4" data-path="-dplyr-mutate-mutate-if-mutate-at-mutate-all.html"><a href="-dplyr-mutate-mutate-if-mutate-at-mutate-all.html#код-3"><i class="fa fa-check"></i><b>5.4</b> Код</a></li>
+<li class="chapter" data-level="5.5" data-path="-dplyr-mutate-mutate-if-mutate-at-mutate-all.html"><a href="-dplyr-mutate-mutate-if-mutate-at-mutate-all.html#тест-4"><i class="fa fa-check"></i><b>5.5</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="-dplyr-group-by-summarise.html"><a href="-dplyr-group-by-summarise.html"><i class="fa fa-check"></i><b>6</b> Пакет dplyr: Группировка и агрегация данных, group_by, summarise</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="-dplyr-group-by-summarise.html"><a href="-dplyr-group-by-summarise.html#описание-5"><i class="fa fa-check"></i><b>6.1</b> Описание</a></li>
+<li class="chapter" data-level="6.2" data-path="-dplyr-group-by-summarise.html"><a href="-dplyr-group-by-summarise.html#видео-5"><i class="fa fa-check"></i><b>6.2</b> Видео</a></li>
+<li class="chapter" data-level="6.3" data-path="-dplyr-group-by-summarise.html"><a href="-dplyr-group-by-summarise.html#материалы-4"><i class="fa fa-check"></i><b>6.3</b> Материалы</a></li>
+<li class="chapter" data-level="6.4" data-path="-dplyr-group-by-summarise.html"><a href="-dplyr-group-by-summarise.html#код-4"><i class="fa fa-check"></i><b>6.4</b> Код</a></li>
+<li class="chapter" data-level="6.5" data-path="-dplyr-group-by-summarise.html"><a href="-dplyr-group-by-summarise.html#тест-5"><i class="fa fa-check"></i><b>6.5</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="-dplyr-join-bind.html"><a href="-dplyr-join-bind.html"><i class="fa fa-check"></i><b>7</b> Пакет dplyr: Вертикальное и горизонтальное объединение таблиц, join, bind</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="-dplyr-join-bind.html"><a href="-dplyr-join-bind.html#описание-6"><i class="fa fa-check"></i><b>7.1</b> Описание</a></li>
+<li class="chapter" data-level="7.2" data-path="-dplyr-join-bind.html"><a href="-dplyr-join-bind.html#видео-6"><i class="fa fa-check"></i><b>7.2</b> Видео</a></li>
+<li class="chapter" data-level="7.3" data-path="-dplyr-join-bind.html"><a href="-dplyr-join-bind.html#материалы-5"><i class="fa fa-check"></i><b>7.3</b> Материалы</a></li>
+<li class="chapter" data-level="7.4" data-path="-dplyr-join-bind.html"><a href="-dplyr-join-bind.html#код-5"><i class="fa fa-check"></i><b>7.4</b> Код</a></li>
+<li class="chapter" data-level="7.5" data-path="-dplyr-join-bind.html"><a href="-dplyr-join-bind.html#тест-6"><i class="fa fa-check"></i><b>7.5</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="-r.html"><a href="-r.html"><i class="fa fa-check"></i><b>8</b> Оконные функции в R</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="-r.html"><a href="-r.html#описание-7"><i class="fa fa-check"></i><b>8.1</b> Описание</a></li>
+<li class="chapter" data-level="8.2" data-path="-r.html"><a href="-r.html#видео-7"><i class="fa fa-check"></i><b>8.2</b> Видео</a></li>
+<li class="chapter" data-level="8.3" data-path="-r.html"><a href="-r.html#материалы-6"><i class="fa fa-check"></i><b>8.3</b> Материалы</a></li>
+<li class="chapter" data-level="8.4" data-path="-r.html"><a href="-r.html#код-6"><i class="fa fa-check"></i><b>8.4</b> Код</a></li>
+<li class="chapter" data-level="8.5" data-path="-r.html"><a href="-r.html#тест-7"><i class="fa fa-check"></i><b>8.5</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="-tidyr-pivot-longer-pivot-wider.html"><a href="-tidyr-pivot-longer-pivot-wider.html"><i class="fa fa-check"></i><b>9</b> Пакет tidyr: Преобразование таблиц из широкого формата в длинный и наоборот, pivot_longer, pivot_wider</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="-tidyr-pivot-longer-pivot-wider.html"><a href="-tidyr-pivot-longer-pivot-wider.html#описание-8"><i class="fa fa-check"></i><b>9.1</b> Описание</a></li>
+<li class="chapter" data-level="9.2" data-path="-tidyr-pivot-longer-pivot-wider.html"><a href="-tidyr-pivot-longer-pivot-wider.html#видео-8"><i class="fa fa-check"></i><b>9.2</b> Видео</a></li>
+<li class="chapter" data-level="9.3" data-path="-tidyr-pivot-longer-pivot-wider.html"><a href="-tidyr-pivot-longer-pivot-wider.html#материалы-7"><i class="fa fa-check"></i><b>9.3</b> Материалы</a></li>
+<li class="chapter" data-level="9.4" data-path="-tidyr-pivot-longer-pivot-wider.html"><a href="-tidyr-pivot-longer-pivot-wider.html#код-7"><i class="fa fa-check"></i><b>9.4</b> Код</a></li>
+<li class="chapter" data-level="9.5" data-path="-tidyr-pivot-longer-pivot-wider.html"><a href="-tidyr-pivot-longer-pivot-wider.html#тест-8"><i class="fa fa-check"></i><b>9.5</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="-tidyr-unnest-longer-unnest-wider.html"><a href="-tidyr-unnest-longer-unnest-wider.html"><i class="fa fa-check"></i><b>10</b> Пакет tidyr: Работа с вложенными столбцами, unnest_longer, unnest_wider</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="-tidyr-unnest-longer-unnest-wider.html"><a href="-tidyr-unnest-longer-unnest-wider.html#описание-9"><i class="fa fa-check"></i><b>10.1</b> Описание</a></li>
+<li class="chapter" data-level="10.2" data-path="-tidyr-unnest-longer-unnest-wider.html"><a href="-tidyr-unnest-longer-unnest-wider.html#видео-9"><i class="fa fa-check"></i><b>10.2</b> Видео</a></li>
+<li class="chapter" data-level="10.3" data-path="-tidyr-unnest-longer-unnest-wider.html"><a href="-tidyr-unnest-longer-unnest-wider.html#материалы-8"><i class="fa fa-check"></i><b>10.3</b> Материалы</a></li>
+<li class="chapter" data-level="10.4" data-path="-tidyr-unnest-longer-unnest-wider.html"><a href="-tidyr-unnest-longer-unnest-wider.html#код-8"><i class="fa fa-check"></i><b>10.4</b> Код</a></li>
+<li class="chapter" data-level="10.5" data-path="-tidyr-unnest-longer-unnest-wider.html"><a href="-tidyr-unnest-longer-unnest-wider.html#тест-9"><i class="fa fa-check"></i><b>10.5</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="-ggplot2-ggplot2-qplot.html"><a href="-ggplot2-ggplot2-qplot.html"><i class="fa fa-check"></i><b>11</b> Пакет ggplot2: Быстрая визуализация данных с помощью ggplot2 и функции qplot</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="-ggplot2-ggplot2-qplot.html"><a href="-ggplot2-ggplot2-qplot.html#описание-10"><i class="fa fa-check"></i><b>11.1</b> Описание</a></li>
+<li class="chapter" data-level="11.2" data-path="-ggplot2-ggplot2-qplot.html"><a href="-ggplot2-ggplot2-qplot.html#видео-10"><i class="fa fa-check"></i><b>11.2</b> Видео</a></li>
+<li class="chapter" data-level="11.3" data-path="-ggplot2-ggplot2-qplot.html"><a href="-ggplot2-ggplot2-qplot.html#материалы-9"><i class="fa fa-check"></i><b>11.3</b> Материалы</a></li>
+<li class="chapter" data-level="11.4" data-path="-ggplot2-ggplot2-qplot.html"><a href="-ggplot2-ggplot2-qplot.html#код-9"><i class="fa fa-check"></i><b>11.4</b> Код</a></li>
+<li class="chapter" data-level="11.5" data-path="-ggplot2-ggplot2-qplot.html"><a href="-ggplot2-ggplot2-qplot.html#тест-10"><i class="fa fa-check"></i><b>11.5</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="-ggplot2-ggplot2.html"><a href="-ggplot2-ggplot2.html"><i class="fa fa-check"></i><b>12</b> Пакет ggplot2: Построение графиков слой за слоем в ggplot2</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="-ggplot2-ggplot2.html"><a href="-ggplot2-ggplot2.html#описание-11"><i class="fa fa-check"></i><b>12.1</b> Описание</a></li>
+<li class="chapter" data-level="12.2" data-path="-ggplot2-ggplot2.html"><a href="-ggplot2-ggplot2.html#видео-11"><i class="fa fa-check"></i><b>12.2</b> Видео</a></li>
+<li class="chapter" data-level="12.3" data-path="-ggplot2-ggplot2.html"><a href="-ggplot2-ggplot2.html#материалы-10"><i class="fa fa-check"></i><b>12.3</b> Материалы</a></li>
+<li class="chapter" data-level="12.4" data-path="-ggplot2-ggplot2.html"><a href="-ggplot2-ggplot2.html#код-10"><i class="fa fa-check"></i><b>12.4</b> Код</a></li>
+<li class="chapter" data-level="12.5" data-path="-ggplot2-ggplot2.html"><a href="-ggplot2-ggplot2.html#тест-11"><i class="fa fa-check"></i><b>12.5</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="-ggplot2-ggplot2-ggthemes-ggthemr.html"><a href="-ggplot2-ggplot2-ggthemes-ggthemr.html"><i class="fa fa-check"></i><b>13</b> Пакет ggplot2: Применение тем и изменение элементов графика в ggplot2 (ggthemes, ggthemr)</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="-ggplot2-ggplot2-ggthemes-ggthemr.html"><a href="-ggplot2-ggplot2-ggthemes-ggthemr.html#описание-12"><i class="fa fa-check"></i><b>13.1</b> Описание</a></li>
+<li class="chapter" data-level="13.2" data-path="-ggplot2-ggplot2-ggthemes-ggthemr.html"><a href="-ggplot2-ggplot2-ggthemes-ggthemr.html#видео-12"><i class="fa fa-check"></i><b>13.2</b> Видео</a></li>
+<li class="chapter" data-level="13.3" data-path="-ggplot2-ggplot2-ggthemes-ggthemr.html"><a href="-ggplot2-ggplot2-ggthemes-ggthemr.html#материалы-11"><i class="fa fa-check"></i><b>13.3</b> Материалы</a></li>
+<li class="chapter" data-level="13.4" data-path="-ggplot2-ggplot2-ggthemes-ggthemr.html"><a href="-ggplot2-ggplot2-ggthemes-ggthemr.html#код-11"><i class="fa fa-check"></i><b>13.4</b> Код</a></li>
+<li class="chapter" data-level="13.5" data-path="-ggplot2-ggplot2-ggthemes-ggthemr.html"><a href="-ggplot2-ggplot2-ggthemes-ggthemr.html#тест-12"><i class="fa fa-check"></i><b>13.5</b> Тест</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Alexey Seleznev</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Язык R для пользователей Excel</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="пакет-ggplot2-построение-графиков-слой-за-слоем-в-ggplot2" class="section level1" number="12">
+<h1><span class="header-section-number">Урок 12</span> Пакет ggplot2: Построение графиков слой за слоем в ggplot2</h1>
+<div id="описание-11" class="section level2" number="12.1">
+<h2><span class="header-section-number">12.1</span> Описание</h2>
+<p>В этом уроке мы продолжаем изучать пакет ggplot2, предназначенный для построения графиков на языке R.</p>
+<p>Данное видео поможет вам разобраться в грамматике построения графики, которая лежит в основе ggplot2.</p>
+<p>Мы разберёмся с основными слоями и эстетиками пакета, и научимся изменять график накладывая на него новые слои.</p>
+</div>
+<div id="видео-11" class="section level2" number="12.2">
+<h2><span class="header-section-number">12.2</span> Видео</h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/9CDDKaZOp7M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+</div>
+<div id="материалы-10" class="section level2" number="12.3">
+<h2><span class="header-section-number">12.3</span> Материалы</h2>
+<p>Все материалы к данному уроку можно найти по <a href="https://github.com/selesnow/r4excel_users/tree/master/lesson_12">ссылке</a>.</p>
+</div>
+<div id="код-10" class="section level2" number="12.4">
+<h2><span class="header-section-number">12.4</span> Код</h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="-ggplot2-ggplot2.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb11-2"><a href="-ggplot2-ggplot2.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb11-3"><a href="-ggplot2-ggplot2.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb11-4"><a href="-ggplot2-ggplot2.html#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
+<span id="cb11-5"><a href="-ggplot2-ggplot2.html#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="-ggplot2-ggplot2.html#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># чтение данных</span></span>
+<span id="cb11-7"><a href="-ggplot2-ggplot2.html#cb11-7" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">&#39;https://raw.githubusercontent.com/selesnow/r4excel_users/master/lesson_12/sales.csv&#39;</span>)</span>
+<span id="cb11-8"><a href="-ggplot2-ggplot2.html#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="-ggplot2-ggplot2.html#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co"># структура данных</span></span>
+<span id="cb11-10"><a href="-ggplot2-ggplot2.html#cb11-10" aria-hidden="true" tabindex="-1"></a>data</span>
+<span id="cb11-11"><a href="-ggplot2-ggplot2.html#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data)</span>
+<span id="cb11-12"><a href="-ggplot2-ggplot2.html#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="-ggplot2-ggplot2.html#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co"># продажи по месяцам, столбчатая диаграмма</span></span>
+<span id="cb11-14"><a href="-ggplot2-ggplot2.html#cb11-14" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb11-15"><a href="-ggplot2-ggplot2.html#cb11-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">month =</span> <span class="fu">format</span>(date, <span class="st">&quot;%Y-%m&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb11-16"><a href="-ggplot2-ggplot2.html#cb11-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(month) <span class="sc">%&gt;%</span></span>
+<span id="cb11-17"><a href="-ggplot2-ggplot2.html#cb11-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">transactions =</span> <span class="fu">n_distinct</span>(id)) <span class="sc">%&gt;%</span></span>
+<span id="cb11-18"><a href="-ggplot2-ggplot2.html#cb11-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>( <span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> transactions) ) <span class="sc">+</span>  <span class="co"># основной слой</span></span>
+<span id="cb11-19"><a href="-ggplot2-ggplot2.html#cb11-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>( <span class="fu">aes</span>( <span class="at">fill =</span> transactions ),       <span class="co"># слой столбцатой диаграммы</span></span>
+<span id="cb11-20"><a href="-ggplot2-ggplot2.html#cb11-20" aria-hidden="true" tabindex="-1"></a>              <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb11-21"><a href="-ggplot2-ggplot2.html#cb11-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Количество продаж за 2019 год&quot;</span>, <span class="co"># заголовок</span></span>
+<span id="cb11-22"><a href="-ggplot2-ggplot2.html#cb11-22" aria-hidden="true" tabindex="-1"></a>         <span class="at">subtitle =</span> <span class="st">&quot;по месяцам&quot;</span>)  <span class="sc">+</span>              <span class="co"># подзаголовок</span></span>
+<span id="cb11-23"><a href="-ggplot2-ggplot2.html#cb11-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">&quot;Месяц&quot;</span>) <span class="sc">+</span>                               <span class="co"># подпись X</span></span>
+<span id="cb11-24"><a href="-ggplot2-ggplot2.html#cb11-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">&quot;Количество продаж&quot;</span>) <span class="sc">+</span>                   <span class="co"># подпись y</span></span>
+<span id="cb11-25"><a href="-ggplot2-ggplot2.html#cb11-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(<span class="at">low =</span> <span class="st">&quot;red&quot;</span>,             <span class="co"># цвет заливки, минимального значения</span></span>
+<span id="cb11-26"><a href="-ggplot2-ggplot2.html#cb11-26" aria-hidden="true" tabindex="-1"></a>                       <span class="at">mid =</span> <span class="st">&quot;gray&quot;</span>,            <span class="co">#               средние значения</span></span>
+<span id="cb11-27"><a href="-ggplot2-ggplot2.html#cb11-27" aria-hidden="true" tabindex="-1"></a>                       <span class="at">midpoint =</span> <span class="fl">81.5</span>,         <span class="co">#               что считать средним значением</span></span>
+<span id="cb11-28"><a href="-ggplot2-ggplot2.html#cb11-28" aria-hidden="true" tabindex="-1"></a>                       <span class="at">high =</span> <span class="st">&quot;limegreen&quot;</span>)      <span class="co">#               максимальные значения</span></span>
+<span id="cb11-29"><a href="-ggplot2-ggplot2.html#cb11-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-30"><a href="-ggplot2-ggplot2.html#cb11-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Динамика продаж по менеджерам</span></span>
+<span id="cb11-31"><a href="-ggplot2-ggplot2.html#cb11-31" aria-hidden="true" tabindex="-1"></a><span class="co"># задаём все настройки через главный слой</span></span>
+<span id="cb11-32"><a href="-ggplot2-ggplot2.html#cb11-32" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb11-33"><a href="-ggplot2-ggplot2.html#cb11-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">month =</span> <span class="fu">format</span>(date, <span class="st">&quot;%Y-%m&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb11-34"><a href="-ggplot2-ggplot2.html#cb11-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(month, manager_id) <span class="sc">%&gt;%</span></span>
+<span id="cb11-35"><a href="-ggplot2-ggplot2.html#cb11-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">sales_sum =</span> <span class="fu">sum</span>(summ)) <span class="sc">%&gt;%</span></span>
+<span id="cb11-36"><a href="-ggplot2-ggplot2.html#cb11-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>( <span class="fu">aes</span>(<span class="at">x =</span> month, </span>
+<span id="cb11-37"><a href="-ggplot2-ggplot2.html#cb11-37" aria-hidden="true" tabindex="-1"></a>              <span class="at">y =</span> sales_sum, </span>
+<span id="cb11-38"><a href="-ggplot2-ggplot2.html#cb11-38" aria-hidden="true" tabindex="-1"></a>              <span class="at">group =</span> manager_id,</span>
+<span id="cb11-39"><a href="-ggplot2-ggplot2.html#cb11-39" aria-hidden="true" tabindex="-1"></a>              <span class="at">colour =</span> manager_id) ) <span class="sc">+</span> </span>
+<span id="cb11-40"><a href="-ggplot2-ggplot2.html#cb11-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>( <span class="at">size =</span> <span class="fl">0.1</span> ) <span class="sc">+</span></span>
+<span id="cb11-41"><a href="-ggplot2-ggplot2.html#cb11-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>( <span class="at">size =</span> <span class="dv">1</span>  ) </span>
+<span id="cb11-42"><a href="-ggplot2-ggplot2.html#cb11-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-43"><a href="-ggplot2-ggplot2.html#cb11-43" aria-hidden="true" tabindex="-1"></a><span class="co"># переносим настройки в отдельные слои</span></span>
+<span id="cb11-44"><a href="-ggplot2-ggplot2.html#cb11-44" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb11-45"><a href="-ggplot2-ggplot2.html#cb11-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">month =</span> <span class="fu">format</span>(date, <span class="st">&quot;%Y-%m&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb11-46"><a href="-ggplot2-ggplot2.html#cb11-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(month, manager_id) <span class="sc">%&gt;%</span></span>
+<span id="cb11-47"><a href="-ggplot2-ggplot2.html#cb11-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">sales_sum =</span> <span class="fu">sum</span>(summ)) <span class="sc">%&gt;%</span></span>
+<span id="cb11-48"><a href="-ggplot2-ggplot2.html#cb11-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>( <span class="fu">aes</span>(<span class="at">x =</span> month, </span>
+<span id="cb11-49"><a href="-ggplot2-ggplot2.html#cb11-49" aria-hidden="true" tabindex="-1"></a>              <span class="at">y =</span> sales_sum) ) <span class="sc">+</span> </span>
+<span id="cb11-50"><a href="-ggplot2-ggplot2.html#cb11-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>( <span class="fu">aes</span>(<span class="at">group =</span> manager_id, </span>
+<span id="cb11-51"><a href="-ggplot2-ggplot2.html#cb11-51" aria-hidden="true" tabindex="-1"></a>                 <span class="at">colour =</span> manager_id) ) <span class="sc">+</span></span>
+<span id="cb11-52"><a href="-ggplot2-ggplot2.html#cb11-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>( <span class="fu">aes</span>(<span class="at">group =</span> manager_id, </span>
+<span id="cb11-53"><a href="-ggplot2-ggplot2.html#cb11-53" aria-hidden="true" tabindex="-1"></a>                  <span class="at">colour =</span> manager_id) ) </span>
+<span id="cb11-54"><a href="-ggplot2-ggplot2.html#cb11-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-55"><a href="-ggplot2-ggplot2.html#cb11-55" aria-hidden="true" tabindex="-1"></a><span class="co"># разбиваем на графики</span></span>
+<span id="cb11-56"><a href="-ggplot2-ggplot2.html#cb11-56" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb11-57"><a href="-ggplot2-ggplot2.html#cb11-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>( id, shop ) <span class="sc">%&gt;%</span></span>
+<span id="cb11-58"><a href="-ggplot2-ggplot2.html#cb11-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>( <span class="at">count =</span> <span class="fu">sum</span>(count) ) <span class="sc">%&gt;%</span></span>
+<span id="cb11-59"><a href="-ggplot2-ggplot2.html#cb11-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>( <span class="fu">aes</span>(<span class="at">x =</span> count) ) <span class="sc">+</span></span>
+<span id="cb11-60"><a href="-ggplot2-ggplot2.html#cb11-60" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">&quot;cyan3&quot;</span>, <span class="at">color =</span> <span class="st">&quot;cyan4&quot;</span>) <span class="sc">+</span></span>
+<span id="cb11-61"><a href="-ggplot2-ggplot2.html#cb11-61" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid</span>( <span class="sc">~</span>shop )</span>
+<span id="cb11-62"><a href="-ggplot2-ggplot2.html#cb11-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-63"><a href="-ggplot2-ggplot2.html#cb11-63" aria-hidden="true" tabindex="-1"></a><span class="co"># переворачиваем график</span></span>
+<span id="cb11-64"><a href="-ggplot2-ggplot2.html#cb11-64" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb11-65"><a href="-ggplot2-ggplot2.html#cb11-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(id, manager_id) <span class="sc">%&gt;%</span></span>
+<span id="cb11-66"><a href="-ggplot2-ggplot2.html#cb11-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">transaction_summ =</span> <span class="fu">sum</span>(summ)) <span class="sc">%&gt;%</span></span>
+<span id="cb11-67"><a href="-ggplot2-ggplot2.html#cb11-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(manager_id) <span class="sc">%&gt;%</span></span>
+<span id="cb11-68"><a href="-ggplot2-ggplot2.html#cb11-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_summ =</span> <span class="fu">mean</span>(transaction_summ)) <span class="sc">%&gt;%</span></span>
+<span id="cb11-69"><a href="-ggplot2-ggplot2.html#cb11-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>( <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(<span class="at">.f =</span> manager_id,</span>
+<span id="cb11-70"><a href="-ggplot2-ggplot2.html#cb11-70" aria-hidden="true" tabindex="-1"></a>                              <span class="at">.x =</span> avg_summ, </span>
+<span id="cb11-71"><a href="-ggplot2-ggplot2.html#cb11-71" aria-hidden="true" tabindex="-1"></a>                              <span class="at">.fun =</span> median), </span>
+<span id="cb11-72"><a href="-ggplot2-ggplot2.html#cb11-72" aria-hidden="true" tabindex="-1"></a>              <span class="at">y =</span> avg_summ) ) <span class="sc">+</span></span>
+<span id="cb11-73"><a href="-ggplot2-ggplot2.html#cb11-73" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">fill =</span> avg_summ), </span>
+<span id="cb11-74"><a href="-ggplot2-ggplot2.html#cb11-74" aria-hidden="true" tabindex="-1"></a>             <span class="at">show.legend =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb11-75"><a href="-ggplot2-ggplot2.html#cb11-75" aria-hidden="true" tabindex="-1"></a>             <span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
+<span id="cb11-76"><a href="-ggplot2-ggplot2.html#cb11-76" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_flip</span>() <span class="sc">+</span> <span class="co"># переворачиваем график</span></span>
+<span id="cb11-77"><a href="-ggplot2-ggplot2.html#cb11-77" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">&quot;coral1&quot;</span>, <span class="at">high =</span> <span class="st">&quot;limegreen&quot;</span>) <span class="sc">+</span></span>
+<span id="cb11-78"><a href="-ggplot2-ggplot2.html#cb11-78" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">&quot;Менеджер&quot;</span>) <span class="sc">+</span></span>
+<span id="cb11-79"><a href="-ggplot2-ggplot2.html#cb11-79" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">&quot;Средний чек&quot;</span>) <span class="sc">+</span></span>
+<span id="cb11-80"><a href="-ggplot2-ggplot2.html#cb11-80" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Средний чек за 2019 год&quot;</span>, <span class="co"># заголовок</span></span>
+<span id="cb11-81"><a href="-ggplot2-ggplot2.html#cb11-81" aria-hidden="true" tabindex="-1"></a>         <span class="at">subtitle =</span> <span class="st">&quot;по менеджерам&quot;</span>)</span></code></pre></div>
+</div>
+<div id="тест-11" class="section level2" number="12.5">
+<h2><span class="header-section-number">12.5</span> Тест</h2>
+<iframe src="https://onlinetestpad.com/widget-hq35jkiquujzu" frameborder="0" scrolling="no" id="otp_ifr_hq35jkiquujzu_qwvwe" style="width: 650px; height: 898px;" uids="[&quot;e6ffk2am35ngi&quot;,&quot;hq35jkiquujzu&quot;]">
+</iframe>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="-ggplot2-ggplot2-qplot.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="-ggplot2-ggplot2-ggthemes-ggthemr.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/12-ggplot2-layers.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["r-for-excel-users.pdf", "r-for-excel-users.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
