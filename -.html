@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Решение задач на программирование | Язык R для пользователей Excel</title>
+  <meta name="description" content="Бесплатный видео курс по языку R" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Решение задач на программирование | Язык R для пользователей Excel" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Бесплатный видео курс по языку R" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Решение задач на программирование | Язык R для пользователей Excel" />
+  
+  <meta name="twitter:description" content="Бесплатный видео курс по языку R" />
+  
+
+<meta name="author" content="Алексей Селезнёв" />
+
+
+<meta name="date" content="2021-05-26" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="-ggplot2-ggplot2-ggthemes-ggthemr.html"/>
+
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-114798296-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-114798296-1');
+</script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Язык R для пользователей Excel</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Введение</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#предисловие"><i class="fa fa-check"></i>Предисловие</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#о-курсе"><i class="fa fa-check"></i>О курсе</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#для-кого-этот-курс"><i class="fa fa-check"></i>Для кого этот курс</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#об-авторе"><i class="fa fa-check"></i>Об авторе</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#программа-курса"><i class="fa fa-check"></i>Программа курса</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#благодарности"><i class="fa fa-check"></i>Благодарности</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#ссылки"><i class="fa fa-check"></i>Ссылки</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="-r-rstudio.html"><a href="-r-rstudio.html"><i class="fa fa-check"></i><b>1</b> Устновка R и RStudio</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="-r-rstudio.html"><a href="-r-rstudio.html#описание"><i class="fa fa-check"></i><b>1.1</b> Описание</a></li>
+<li class="chapter" data-level="1.2" data-path="-r-rstudio.html"><a href="-r-rstudio.html#видео"><i class="fa fa-check"></i><b>1.2</b> Видео</a></li>
+<li class="chapter" data-level="1.3" data-path="-r-rstudio.html"><a href="-r-rstudio.html#тест"><i class="fa fa-check"></i><b>1.3</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="-r-.html"><a href="-r-.html"><i class="fa fa-check"></i><b>2</b> Основные структуры данных в R и установка и подключение пакетов</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="-r-.html"><a href="-r-.html#описание-1"><i class="fa fa-check"></i><b>2.1</b> Описание</a></li>
+<li class="chapter" data-level="2.2" data-path="-r-.html"><a href="-r-.html#видео-1"><i class="fa fa-check"></i><b>2.2</b> Видео</a></li>
+<li class="chapter" data-level="2.3" data-path="-r-.html"><a href="-r-.html#материалы"><i class="fa fa-check"></i><b>2.3</b> Материалы</a></li>
+<li class="chapter" data-level="2.4" data-path="-r-.html"><a href="-r-.html#код"><i class="fa fa-check"></i><b>2.4</b> Код</a></li>
+<li class="chapter" data-level="2.5" data-path="-r-.html"><a href="-r-.html#тест-1"><i class="fa fa-check"></i><b>2.5</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="-tsv-csv-excel-google-.html"><a href="-tsv-csv-excel-google-.html"><i class="fa fa-check"></i><b>3</b> Чтение данных из TSV, CSV, Excel файлов и Google Таблиц</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="-tsv-csv-excel-google-.html"><a href="-tsv-csv-excel-google-.html#описание-2"><i class="fa fa-check"></i><b>3.1</b> Описание</a></li>
+<li class="chapter" data-level="3.2" data-path="-tsv-csv-excel-google-.html"><a href="-tsv-csv-excel-google-.html#видео-2"><i class="fa fa-check"></i><b>3.2</b> Видео</a></li>
+<li class="chapter" data-level="3.3" data-path="-tsv-csv-excel-google-.html"><a href="-tsv-csv-excel-google-.html#материалы-1"><i class="fa fa-check"></i><b>3.3</b> Материалы</a></li>
+<li class="chapter" data-level="3.4" data-path="-tsv-csv-excel-google-.html"><a href="-tsv-csv-excel-google-.html#код-1"><i class="fa fa-check"></i><b>3.4</b> Код</a></li>
+<li class="chapter" data-level="3.5" data-path="-tsv-csv-excel-google-.html"><a href="-tsv-csv-excel-google-.html#тест-2"><i class="fa fa-check"></i><b>3.5</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="-dplyr-.html"><a href="-dplyr-.html"><i class="fa fa-check"></i><b>4</b> Пакет dplyr: Фильтрация по строкам, продвинутый выбор столбцов, переименование столбцов, пайплайны</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="-dplyr-.html"><a href="-dplyr-.html#описание-3"><i class="fa fa-check"></i><b>4.1</b> Описание</a></li>
+<li class="chapter" data-level="4.2" data-path="-dplyr-.html"><a href="-dplyr-.html#видео-3"><i class="fa fa-check"></i><b>4.2</b> Видео</a></li>
+<li class="chapter" data-level="4.3" data-path="-dplyr-.html"><a href="-dplyr-.html#материалы-2"><i class="fa fa-check"></i><b>4.3</b> Материалы</a></li>
+<li class="chapter" data-level="4.4" data-path="-dplyr-.html"><a href="-dplyr-.html#код-2"><i class="fa fa-check"></i><b>4.4</b> Код</a></li>
+<li class="chapter" data-level="4.5" data-path="-dplyr-.html"><a href="-dplyr-.html#тест-3"><i class="fa fa-check"></i><b>4.5</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="-dplyr-mutate-mutate-if-mutate-at-mutate-all.html"><a href="-dplyr-mutate-mutate-if-mutate-at-mutate-all.html"><i class="fa fa-check"></i><b>5</b> Пакет dplyr: Добавление новых вычисляемых столбцов, mutate, mutate_if, mutate_at, mutate_all</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="-dplyr-mutate-mutate-if-mutate-at-mutate-all.html"><a href="-dplyr-mutate-mutate-if-mutate-at-mutate-all.html#описание-4"><i class="fa fa-check"></i><b>5.1</b> Описание</a></li>
+<li class="chapter" data-level="5.2" data-path="-dplyr-mutate-mutate-if-mutate-at-mutate-all.html"><a href="-dplyr-mutate-mutate-if-mutate-at-mutate-all.html#видео-4"><i class="fa fa-check"></i><b>5.2</b> Видео</a></li>
+<li class="chapter" data-level="5.3" data-path="-dplyr-mutate-mutate-if-mutate-at-mutate-all.html"><a href="-dplyr-mutate-mutate-if-mutate-at-mutate-all.html#материалы-3"><i class="fa fa-check"></i><b>5.3</b> Материалы</a></li>
+<li class="chapter" data-level="5.4" data-path="-dplyr-mutate-mutate-if-mutate-at-mutate-all.html"><a href="-dplyr-mutate-mutate-if-mutate-at-mutate-all.html#код-3"><i class="fa fa-check"></i><b>5.4</b> Код</a></li>
+<li class="chapter" data-level="5.5" data-path="-dplyr-mutate-mutate-if-mutate-at-mutate-all.html"><a href="-dplyr-mutate-mutate-if-mutate-at-mutate-all.html#тест-4"><i class="fa fa-check"></i><b>5.5</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="-dplyr-group-by-summarise.html"><a href="-dplyr-group-by-summarise.html"><i class="fa fa-check"></i><b>6</b> Пакет dplyr: Группировка и агрегация данных, group_by, summarise</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="-dplyr-group-by-summarise.html"><a href="-dplyr-group-by-summarise.html#описание-5"><i class="fa fa-check"></i><b>6.1</b> Описание</a></li>
+<li class="chapter" data-level="6.2" data-path="-dplyr-group-by-summarise.html"><a href="-dplyr-group-by-summarise.html#видео-5"><i class="fa fa-check"></i><b>6.2</b> Видео</a></li>
+<li class="chapter" data-level="6.3" data-path="-dplyr-group-by-summarise.html"><a href="-dplyr-group-by-summarise.html#материалы-4"><i class="fa fa-check"></i><b>6.3</b> Материалы</a></li>
+<li class="chapter" data-level="6.4" data-path="-dplyr-group-by-summarise.html"><a href="-dplyr-group-by-summarise.html#код-4"><i class="fa fa-check"></i><b>6.4</b> Код</a></li>
+<li class="chapter" data-level="6.5" data-path="-dplyr-group-by-summarise.html"><a href="-dplyr-group-by-summarise.html#тест-5"><i class="fa fa-check"></i><b>6.5</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="-dplyr-join-bind.html"><a href="-dplyr-join-bind.html"><i class="fa fa-check"></i><b>7</b> Пакет dplyr: Вертикальное и горизонтальное объединение таблиц, join, bind</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="-dplyr-join-bind.html"><a href="-dplyr-join-bind.html#описание-6"><i class="fa fa-check"></i><b>7.1</b> Описание</a></li>
+<li class="chapter" data-level="7.2" data-path="-dplyr-join-bind.html"><a href="-dplyr-join-bind.html#видео-6"><i class="fa fa-check"></i><b>7.2</b> Видео</a></li>
+<li class="chapter" data-level="7.3" data-path="-dplyr-join-bind.html"><a href="-dplyr-join-bind.html#материалы-5"><i class="fa fa-check"></i><b>7.3</b> Материалы</a></li>
+<li class="chapter" data-level="7.4" data-path="-dplyr-join-bind.html"><a href="-dplyr-join-bind.html#код-5"><i class="fa fa-check"></i><b>7.4</b> Код</a></li>
+<li class="chapter" data-level="7.5" data-path="-dplyr-join-bind.html"><a href="-dplyr-join-bind.html#тест-6"><i class="fa fa-check"></i><b>7.5</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="-r.html"><a href="-r.html"><i class="fa fa-check"></i><b>8</b> Оконные функции в R</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="-r.html"><a href="-r.html#описание-7"><i class="fa fa-check"></i><b>8.1</b> Описание</a></li>
+<li class="chapter" data-level="8.2" data-path="-r.html"><a href="-r.html#видео-7"><i class="fa fa-check"></i><b>8.2</b> Видео</a></li>
+<li class="chapter" data-level="8.3" data-path="-r.html"><a href="-r.html#материалы-6"><i class="fa fa-check"></i><b>8.3</b> Материалы</a></li>
+<li class="chapter" data-level="8.4" data-path="-r.html"><a href="-r.html#код-6"><i class="fa fa-check"></i><b>8.4</b> Код</a></li>
+<li class="chapter" data-level="8.5" data-path="-r.html"><a href="-r.html#тест-7"><i class="fa fa-check"></i><b>8.5</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="-tidyr-pivot-longer-pivot-wider.html"><a href="-tidyr-pivot-longer-pivot-wider.html"><i class="fa fa-check"></i><b>9</b> Пакет tidyr: Преобразование таблиц из широкого формата в длинный и наоборот, pivot_longer, pivot_wider</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="-tidyr-pivot-longer-pivot-wider.html"><a href="-tidyr-pivot-longer-pivot-wider.html#описание-8"><i class="fa fa-check"></i><b>9.1</b> Описание</a></li>
+<li class="chapter" data-level="9.2" data-path="-tidyr-pivot-longer-pivot-wider.html"><a href="-tidyr-pivot-longer-pivot-wider.html#видео-8"><i class="fa fa-check"></i><b>9.2</b> Видео</a></li>
+<li class="chapter" data-level="9.3" data-path="-tidyr-pivot-longer-pivot-wider.html"><a href="-tidyr-pivot-longer-pivot-wider.html#материалы-7"><i class="fa fa-check"></i><b>9.3</b> Материалы</a></li>
+<li class="chapter" data-level="9.4" data-path="-tidyr-pivot-longer-pivot-wider.html"><a href="-tidyr-pivot-longer-pivot-wider.html#код-7"><i class="fa fa-check"></i><b>9.4</b> Код</a></li>
+<li class="chapter" data-level="9.5" data-path="-tidyr-pivot-longer-pivot-wider.html"><a href="-tidyr-pivot-longer-pivot-wider.html#тест-8"><i class="fa fa-check"></i><b>9.5</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="-tidyr-unnest-longer-unnest-wider.html"><a href="-tidyr-unnest-longer-unnest-wider.html"><i class="fa fa-check"></i><b>10</b> Пакет tidyr: Работа с вложенными столбцами, unnest_longer, unnest_wider</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="-tidyr-unnest-longer-unnest-wider.html"><a href="-tidyr-unnest-longer-unnest-wider.html#описание-9"><i class="fa fa-check"></i><b>10.1</b> Описание</a></li>
+<li class="chapter" data-level="10.2" data-path="-tidyr-unnest-longer-unnest-wider.html"><a href="-tidyr-unnest-longer-unnest-wider.html#видео-9"><i class="fa fa-check"></i><b>10.2</b> Видео</a></li>
+<li class="chapter" data-level="10.3" data-path="-tidyr-unnest-longer-unnest-wider.html"><a href="-tidyr-unnest-longer-unnest-wider.html#материалы-8"><i class="fa fa-check"></i><b>10.3</b> Материалы</a></li>
+<li class="chapter" data-level="10.4" data-path="-tidyr-unnest-longer-unnest-wider.html"><a href="-tidyr-unnest-longer-unnest-wider.html#код-8"><i class="fa fa-check"></i><b>10.4</b> Код</a></li>
+<li class="chapter" data-level="10.5" data-path="-tidyr-unnest-longer-unnest-wider.html"><a href="-tidyr-unnest-longer-unnest-wider.html#тест-9"><i class="fa fa-check"></i><b>10.5</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="-ggplot2-ggplot2-qplot.html"><a href="-ggplot2-ggplot2-qplot.html"><i class="fa fa-check"></i><b>11</b> Пакет ggplot2: Быстрая визуализация данных с помощью ggplot2 и функции qplot</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="-ggplot2-ggplot2-qplot.html"><a href="-ggplot2-ggplot2-qplot.html#описание-10"><i class="fa fa-check"></i><b>11.1</b> Описание</a></li>
+<li class="chapter" data-level="11.2" data-path="-ggplot2-ggplot2-qplot.html"><a href="-ggplot2-ggplot2-qplot.html#видео-10"><i class="fa fa-check"></i><b>11.2</b> Видео</a></li>
+<li class="chapter" data-level="11.3" data-path="-ggplot2-ggplot2-qplot.html"><a href="-ggplot2-ggplot2-qplot.html#материалы-9"><i class="fa fa-check"></i><b>11.3</b> Материалы</a></li>
+<li class="chapter" data-level="11.4" data-path="-ggplot2-ggplot2-qplot.html"><a href="-ggplot2-ggplot2-qplot.html#код-9"><i class="fa fa-check"></i><b>11.4</b> Код</a></li>
+<li class="chapter" data-level="11.5" data-path="-ggplot2-ggplot2-qplot.html"><a href="-ggplot2-ggplot2-qplot.html#тест-10"><i class="fa fa-check"></i><b>11.5</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="-ggplot2-ggplot2.html"><a href="-ggplot2-ggplot2.html"><i class="fa fa-check"></i><b>12</b> Пакет ggplot2: Построение графиков слой за слоем в ggplot2</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="-ggplot2-ggplot2.html"><a href="-ggplot2-ggplot2.html#описание-11"><i class="fa fa-check"></i><b>12.1</b> Описание</a></li>
+<li class="chapter" data-level="12.2" data-path="-ggplot2-ggplot2.html"><a href="-ggplot2-ggplot2.html#видео-11"><i class="fa fa-check"></i><b>12.2</b> Видео</a></li>
+<li class="chapter" data-level="12.3" data-path="-ggplot2-ggplot2.html"><a href="-ggplot2-ggplot2.html#материалы-10"><i class="fa fa-check"></i><b>12.3</b> Материалы</a></li>
+<li class="chapter" data-level="12.4" data-path="-ggplot2-ggplot2.html"><a href="-ggplot2-ggplot2.html#код-10"><i class="fa fa-check"></i><b>12.4</b> Код</a></li>
+<li class="chapter" data-level="12.5" data-path="-ggplot2-ggplot2.html"><a href="-ggplot2-ggplot2.html#тест-11"><i class="fa fa-check"></i><b>12.5</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="-ggplot2-ggplot2-ggthemes-ggthemr.html"><a href="-ggplot2-ggplot2-ggthemes-ggthemr.html"><i class="fa fa-check"></i><b>13</b> Пакет ggplot2: Применение тем и изменение элементов графика в ggplot2 (ggthemes, ggthemr)</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="-ggplot2-ggplot2-ggthemes-ggthemr.html"><a href="-ggplot2-ggplot2-ggthemes-ggthemr.html#описание-12"><i class="fa fa-check"></i><b>13.1</b> Описание</a></li>
+<li class="chapter" data-level="13.2" data-path="-ggplot2-ggplot2-ggthemes-ggthemr.html"><a href="-ggplot2-ggplot2-ggthemes-ggthemr.html#видео-12"><i class="fa fa-check"></i><b>13.2</b> Видео</a></li>
+<li class="chapter" data-level="13.3" data-path="-ggplot2-ggplot2-ggthemes-ggthemr.html"><a href="-ggplot2-ggplot2-ggthemes-ggthemr.html#материалы-11"><i class="fa fa-check"></i><b>13.3</b> Материалы</a></li>
+<li class="chapter" data-level="13.4" data-path="-ggplot2-ggplot2-ggthemes-ggthemr.html"><a href="-ggplot2-ggplot2-ggthemes-ggthemr.html#код-11"><i class="fa fa-check"></i><b>13.4</b> Код</a></li>
+<li class="chapter" data-level="13.5" data-path="-ggplot2-ggplot2-ggthemes-ggthemr.html"><a href="-ggplot2-ggplot2-ggthemes-ggthemr.html#тест-12"><i class="fa fa-check"></i><b>13.5</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="-.html"><a href="-.html"><i class="fa fa-check"></i>Решение задач на программирование</a>
+<ul>
+<li class="chapter" data-level="" data-path="-.html"><a href="-.html#урок-6"><i class="fa fa-check"></i>Урок 6</a>
+<ul>
+<li class="chapter" data-level="" data-path="-.html"><a href="-.html#задание-4"><i class="fa fa-check"></i>Задание 4</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="-.html"><a href="-.html#урок-7"><i class="fa fa-check"></i>Урок 7</a>
+<ul>
+<li class="chapter" data-level="" data-path="-.html"><a href="-.html#задание-3"><i class="fa fa-check"></i>Задание 3</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="-.html"><a href="-.html#урок-8"><i class="fa fa-check"></i>Урок 8</a>
+<ul>
+<li class="chapter" data-level="" data-path="-.html"><a href="-.html#задание-2"><i class="fa fa-check"></i>Задание 2</a></li>
+<li class="chapter" data-level="" data-path="-.html"><a href="-.html#задание-3-1"><i class="fa fa-check"></i>Задание 3</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="-.html"><a href="-.html#урок-9"><i class="fa fa-check"></i>Урок 9</a>
+<ul>
+<li class="chapter" data-level="" data-path="-.html"><a href="-.html#задание-2-1"><i class="fa fa-check"></i>Задание 2</a></li>
+<li class="chapter" data-level="" data-path="-.html"><a href="-.html#задание-4-1"><i class="fa fa-check"></i>Задание 4</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="-.html"><a href="-.html#урок-10"><i class="fa fa-check"></i>Урок 10</a>
+<ul>
+<li class="chapter" data-level="" data-path="-.html"><a href="-.html#задание-2-2"><i class="fa fa-check"></i>Задание 2</a></li>
+<li class="chapter" data-level="" data-path="-.html"><a href="-.html#задание-3-2"><i class="fa fa-check"></i>Задание 3</a></li>
+<li class="chapter" data-level="" data-path="-.html"><a href="-.html#задание-4-2"><i class="fa fa-check"></i>Задание 4</a></li>
+<li class="chapter" data-level="" data-path="-.html"><a href="-.html#задание-5"><i class="fa fa-check"></i>Задание 5</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="-.html"><a href="-.html#урок-11"><i class="fa fa-check"></i>Урок 11</a>
+<ul>
+<li class="chapter" data-level="" data-path="-.html"><a href="-.html#задание-2-3"><i class="fa fa-check"></i>Задание 2</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Alexey Seleznev</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Язык R для пользователей Excel</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="решение-задач-на-программирование" class="section level1 unnumbered">
+<h1>Решение задач на программирование</h1>
+<p>В этом разделе приведены примеры решений представленных в курсе практических задач. Т.е. данный раздел предназначен для того, что бы вы могли сравнить свои решения с приведёнными тут, или же найти подсказку, если в течении длительного времени у вас не получается решить какую-либо из практических задач.</p>
+<div id="урок-6" class="section level2 unnumbered">
+<h2>Урок 6</h2>
+<div id="задание-4" class="section level3 unnumbered">
+<h3>Задание 4</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="-.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-2"><a href="-.html#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="-.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># создаём набор данных</span></span>
+<span id="cb1-4"><a href="-.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">50</span>)</span>
+<span id="cb1-5"><a href="-.html#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="-.html#cb1-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">col1 =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>), <span class="at">size =</span> <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb1-7"><a href="-.html#cb1-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">col2 =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">50</span>, <span class="dv">5</span>, <span class="dv">10</span>),</span>
+<span id="cb1-8"><a href="-.html#cb1-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">col3 =</span> <span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">50</span>, <span class="dv">15</span>, <span class="dv">50</span>),</span>
+<span id="cb1-9"><a href="-.html#cb1-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">col4 =</span> <span class="fu">sample</span>(letters, <span class="dv">50</span>, <span class="cn">TRUE</span>),</span>
+<span id="cb1-10"><a href="-.html#cb1-10" aria-hidden="true" tabindex="-1"></a>             <span class="at">col5 =</span> <span class="fu">sample</span>(LETTERS, <span class="dv">50</span>, <span class="cn">TRUE</span>))</span>
+<span id="cb1-11"><a href="-.html#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="-.html#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># решение</span></span>
+<span id="cb1-13"><a href="-.html#cb1-13" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb1-14"><a href="-.html#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(col1) <span class="sc">%&gt;%</span>               <span class="co"># группируем</span></span>
+<span id="cb1-15"><a href="-.html#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg =</span> <span class="fu">mean</span>(col2)) <span class="sc">%&gt;%</span>  <span class="co"># считаем среднее</span></span>
+<span id="cb1-16"><a href="-.html#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(col1 <span class="sc">==</span> <span class="st">&#39;b&#39;</span>) <span class="sc">%&gt;%</span>          <span class="co"># фильтруем по нужной группе</span></span>
+<span id="cb1-17"><a href="-.html#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(avg)                      <span class="co"># выбираем нужный столбец</span></span></code></pre></div>
+</div>
+</div>
+<div id="урок-7" class="section level2 unnumbered">
+<h2>Урок 7</h2>
+<div id="задание-3" class="section level3 unnumbered">
+<h3>Задание 3</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="-.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># код для генерации таблиц</span></span>
+<span id="cb2-2"><a href="-.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb2-3"><a href="-.html#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="-.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">50</span>)</span>
+<span id="cb2-5"><a href="-.html#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="-.html#cb2-6" aria-hidden="true" tabindex="-1"></a>xdf <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">xkey  =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>), <span class="at">size =</span> <span class="dv">150</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-7"><a href="-.html#cb2-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">count =</span> <span class="fu">sample</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">150</span>, <span class="cn">TRUE</span>))</span>
+<span id="cb2-8"><a href="-.html#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="-.html#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="-.html#cb2-10" aria-hidden="true" tabindex="-1"></a>ydf <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">xcode =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;e&quot;</span>),</span>
+<span id="cb2-11"><a href="-.html#cb2-11" aria-hidden="true" tabindex="-1"></a>              <span class="at">name  =</span> <span class="fu">c</span>(<span class="st">&quot;banan&quot;</span>, <span class="st">&quot;apple&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;kiwi&quot;</span>, <span class="st">&quot;cherry&quot;</span>),</span>
+<span id="cb2-12"><a href="-.html#cb2-12" aria-hidden="true" tabindex="-1"></a>              <span class="at">price =</span> <span class="fu">c</span>(<span class="fl">4.3</span>, <span class="fl">2.1</span>, <span class="fl">3.3</span>, <span class="fl">4.7</span>, <span class="fl">3.7</span>))</span>
+<span id="cb2-13"><a href="-.html#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="-.html#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># решение</span></span>
+<span id="cb2-15"><a href="-.html#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(</span>
+<span id="cb2-16"><a href="-.html#cb2-16" aria-hidden="true" tabindex="-1"></a>    xdf,</span>
+<span id="cb2-17"><a href="-.html#cb2-17" aria-hidden="true" tabindex="-1"></a>    ydf,</span>
+<span id="cb2-18"><a href="-.html#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;xkey&quot;</span> <span class="ot">=</span> <span class="st">&quot;xcode&quot;</span>)</span>
+<span id="cb2-19"><a href="-.html#cb2-19" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-20"><a href="-.html#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb2-21"><a href="-.html#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">sum =</span> count <span class="sc">*</span> price</span>
+<span id="cb2-22"><a href="-.html#cb2-22" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-23"><a href="-.html#cb2-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-24"><a href="-.html#cb2-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total =</span> <span class="fu">sum</span>(sum)) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-25"><a href="-.html#cb2-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(name <span class="sc">==</span> <span class="st">&quot;kiwi&quot;</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="урок-8" class="section level2 unnumbered">
+<h2>Урок 8</h2>
+<div id="задание-2" class="section level3 unnumbered">
+<h3>Задание 2</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="-.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb3-2"><a href="-.html#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="-.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># создаём таблицу с которой будем работать</span></span>
+<span id="cb3-4"><a href="-.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">50</span>)</span>
+<span id="cb3-5"><a href="-.html#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="-.html#cb3-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">step  =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">60</span>, <span class="dv">2</span>),</span>
+<span id="cb3-7"><a href="-.html#cb3-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">group =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;A&quot;</span>, <span class="dv">60</span>), <span class="fu">rep</span>(<span class="st">&quot;B&quot;</span>, <span class="dv">60</span>)),</span>
+<span id="cb3-8"><a href="-.html#cb3-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">val   =</span> <span class="fu">round</span>(<span class="fu">runif</span>(<span class="dv">120</span>, <span class="dv">100</span>, <span class="dv">1000</span>), <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-9"><a href="-.html#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(step)</span>
+<span id="cb3-10"><a href="-.html#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="-.html#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># объект в который запишем результат вычислений</span></span>
+<span id="cb3-12"><a href="-.html#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># нарастающий итог обязательно надо записывать в столбец run</span></span>
+<span id="cb3-13"><a href="-.html#cb3-13" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb3-14"><a href="-.html#cb3-14" aria-hidden="true" tabindex="-1"></a>       <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-15"><a href="-.html#cb3-15" aria-hidden="true" tabindex="-1"></a>       <span class="fu">mutate</span>(<span class="at">run =</span> <span class="fu">cumsum</span>(val))</span>
+<span id="cb3-16"><a href="-.html#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="-.html#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># выводим в консоль результат который надо скопировать и вставить в виде ответа</span></span>
+<span id="cb3-18"><a href="-.html#cb3-18" aria-hidden="true" tabindex="-1"></a>res <span class="sc">%&gt;%</span></span>
+<span id="cb3-19"><a href="-.html#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>( step <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">32</span>, <span class="dv">18</span>) <span class="sc">&amp;</span> group <span class="sc">==</span> <span class="st">&quot;A&quot;</span> <span class="sc">|</span> step <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">48</span>, <span class="dv">51</span>) <span class="sc">&amp;</span> group <span class="sc">==</span> <span class="st">&quot;B&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-20"><a href="-.html#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>( group, step ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-21"><a href="-.html#cb3-21" aria-hidden="true" tabindex="-1"></a>  .<span class="sc">$</span>run <span class="sc">%&gt;%</span></span>
+<span id="cb3-22"><a href="-.html#cb3-22" aria-hidden="true" tabindex="-1"></a>  cat</span></code></pre></div>
+</div>
+<div id="задание-3-1" class="section level3 unnumbered">
+<h3>Задание 3</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="-.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb4-2"><a href="-.html#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="-.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># создаём таблицу с которой будем работать</span></span>
+<span id="cb4-4"><a href="-.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">50</span>)</span>
+<span id="cb4-5"><a href="-.html#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="-.html#cb4-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">step  =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">60</span>, <span class="dv">2</span>),</span>
+<span id="cb4-7"><a href="-.html#cb4-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">group =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;A&quot;</span>, <span class="dv">60</span>), <span class="fu">rep</span>(<span class="st">&quot;B&quot;</span>, <span class="dv">60</span>)),</span>
+<span id="cb4-8"><a href="-.html#cb4-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">val   =</span> <span class="fu">round</span>(<span class="fu">runif</span>(<span class="dv">120</span>, <span class="dv">100</span>, <span class="dv">1000</span>), <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-9"><a href="-.html#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(step)</span>
+<span id="cb4-10"><a href="-.html#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="-.html#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># решение</span></span>
+<span id="cb4-12"><a href="-.html#cb4-12" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb4-13"><a href="-.html#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-14"><a href="-.html#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">growth =</span> val <span class="sc">-</span> <span class="fu">lag</span>(val)) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-15"><a href="-.html#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_growth =</span> <span class="fu">mean</span>(growth, <span class="at">na.rm=</span><span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-16"><a href="-.html#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&quot;B&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-17"><a href="-.html#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(avg_growth)</span></code></pre></div>
+</div>
+</div>
+<div id="урок-9" class="section level2 unnumbered">
+<h2>Урок 9</h2>
+<div id="задание-2-1" class="section level3 unnumbered">
+<h3>Задание 2</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="-.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb5-2"><a href="-.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb5-3"><a href="-.html#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="-.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">50</span>)</span>
+<span id="cb5-5"><a href="-.html#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="-.html#cb5-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">shop =</span> <span class="fu">c</span>(<span class="st">&quot;starMarket&quot;</span>, <span class="st">&quot;euroshop&quot;</span>, <span class="st">&quot;wowsales&quot;</span>),</span>
+<span id="cb5-7"><a href="-.html#cb5-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">jan  =</span> <span class="fu">runif</span>(<span class="dv">3</span>, <span class="dv">10000</span>, <span class="dv">25000</span>),</span>
+<span id="cb5-8"><a href="-.html#cb5-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">feb  =</span> <span class="fu">runif</span>(<span class="dv">3</span>, <span class="dv">10000</span>, <span class="dv">25000</span>),</span>
+<span id="cb5-9"><a href="-.html#cb5-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">mar  =</span> <span class="fu">runif</span>(<span class="dv">3</span>, <span class="dv">10000</span>, <span class="dv">25000</span>),</span>
+<span id="cb5-10"><a href="-.html#cb5-10" aria-hidden="true" tabindex="-1"></a>             <span class="at">apr  =</span> <span class="fu">runif</span>(<span class="dv">3</span>, <span class="dv">10000</span>, <span class="dv">25000</span>),</span>
+<span id="cb5-11"><a href="-.html#cb5-11" aria-hidden="true" tabindex="-1"></a>             <span class="at">may  =</span> <span class="fu">runif</span>(<span class="dv">3</span>, <span class="dv">10000</span>, <span class="dv">25000</span>),</span>
+<span id="cb5-12"><a href="-.html#cb5-12" aria-hidden="true" tabindex="-1"></a>             <span class="at">jun  =</span> <span class="fu">runif</span>(<span class="dv">3</span>, <span class="dv">10000</span>, <span class="dv">25000</span>),</span>
+<span id="cb5-13"><a href="-.html#cb5-13" aria-hidden="true" tabindex="-1"></a>             <span class="at">jul  =</span> <span class="fu">runif</span>(<span class="dv">3</span>, <span class="dv">10000</span>, <span class="dv">25000</span>),</span>
+<span id="cb5-14"><a href="-.html#cb5-14" aria-hidden="true" tabindex="-1"></a>             <span class="at">aug  =</span> <span class="fu">runif</span>(<span class="dv">3</span>, <span class="dv">10000</span>, <span class="dv">25000</span>),</span>
+<span id="cb5-15"><a href="-.html#cb5-15" aria-hidden="true" tabindex="-1"></a>             <span class="at">sep  =</span> <span class="fu">runif</span>(<span class="dv">3</span>, <span class="dv">10000</span>, <span class="dv">25000</span>),</span>
+<span id="cb5-16"><a href="-.html#cb5-16" aria-hidden="true" tabindex="-1"></a>             <span class="at">oct  =</span> <span class="fu">runif</span>(<span class="dv">3</span>, <span class="dv">10000</span>, <span class="dv">25000</span>),</span>
+<span id="cb5-17"><a href="-.html#cb5-17" aria-hidden="true" tabindex="-1"></a>             <span class="at">nov  =</span> <span class="fu">runif</span>(<span class="dv">3</span>, <span class="dv">10000</span>, <span class="dv">25000</span>),</span>
+<span id="cb5-18"><a href="-.html#cb5-18" aria-hidden="true" tabindex="-1"></a>             <span class="at">dec  =</span> <span class="fu">runif</span>(<span class="dv">3</span>, <span class="dv">10000</span>, <span class="dv">25000</span>))</span>
+<span id="cb5-19"><a href="-.html#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="-.html#cb5-20" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb5-21"><a href="-.html#cb5-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb5-22"><a href="-.html#cb5-22" aria-hidden="true" tabindex="-1"></a>    jan<span class="sc">:</span>dec, </span>
+<span id="cb5-23"><a href="-.html#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&#39;month&#39;</span>, </span>
+<span id="cb5-24"><a href="-.html#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;sales&quot;</span></span>
+<span id="cb5-25"><a href="-.html#cb5-25" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-26"><a href="-.html#cb5-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(shop) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-27"><a href="-.html#cb5-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">sales =</span> <span class="fu">sum</span>(sales)) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-28"><a href="-.html#cb5-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(sales) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-29"><a href="-.html#cb5-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(shop)</span></code></pre></div>
+</div>
+<div id="задание-4-1" class="section level3 unnumbered">
+<h3>Задание 4</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="-.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb6-2"><a href="-.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb6-3"><a href="-.html#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="-.html#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">50</span>)</span>
+<span id="cb6-5"><a href="-.html#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="-.html#cb6-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span></span>
+<span id="cb6-7"><a href="-.html#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&#39;Alex&#39;</span>, <span class="dv">3</span>), <span class="fu">rep</span>(<span class="st">&#39;John&#39;</span>, <span class="dv">3</span>), <span class="fu">rep</span>(<span class="st">&#39;Tom&#39;</span>, <span class="dv">3</span>)),</span>
+<span id="cb6-8"><a href="-.html#cb6-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">key  =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;sale&quot;</span>, <span class="st">&#39;refund&#39;</span>, <span class="st">&#39;discount&#39;</span>), <span class="dv">3</span>),</span>
+<span id="cb6-9"><a href="-.html#cb6-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">val  =</span> <span class="fu">c</span>(<span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">1000</span>, <span class="dv">2000</span>), <span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">100</span>, <span class="dv">250</span>), <span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">50</span>, <span class="dv">150</span>),</span>
+<span id="cb6-10"><a href="-.html#cb6-10" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">1000</span>, <span class="dv">2000</span>), <span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">100</span>, <span class="dv">250</span>), <span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">50</span>, <span class="dv">150</span>),</span>
+<span id="cb6-11"><a href="-.html#cb6-11" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">1000</span>, <span class="dv">2000</span>), <span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">100</span>, <span class="dv">250</span>), <span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">50</span>, <span class="dv">150</span>)))</span>
+<span id="cb6-12"><a href="-.html#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="-.html#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># решение</span></span>
+<span id="cb6-14"><a href="-.html#cb6-14" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb6-15"><a href="-.html#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb6-16"><a href="-.html#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from  =</span> key,</span>
+<span id="cb6-17"><a href="-.html#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span>  val</span>
+<span id="cb6-18"><a href="-.html#cb6-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-19"><a href="-.html#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb6-20"><a href="-.html#cb6-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_sum =</span> sale <span class="sc">-</span> refund <span class="sc">-</span> discount</span>
+<span id="cb6-21"><a href="-.html#cb6-21" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-22"><a href="-.html#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(total_sum) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-23"><a href="-.html#cb6-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, total_sum)</span></code></pre></div>
+</div>
+</div>
+<div id="урок-10" class="section level2 unnumbered">
+<h2>Урок 10</h2>
+<div id="задание-2-2" class="section level3 unnumbered">
+<h3>Задание 2</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="-.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
+<span id="cb7-2"><a href="-.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb7-3"><a href="-.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb7-4"><a href="-.html#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="-.html#cb7-5" aria-hidden="true" tabindex="-1"></a>json <span class="ot">&lt;-</span> <span class="fu">read_json</span>(<span class="at">path =</span> <span class="st">&#39;https://raw.githubusercontent.com/selesnow/r4excel_users/master/test/t10-1.json&#39;</span>)</span>
+<span id="cb7-6"><a href="-.html#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="-.html#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># решение</span></span>
+<span id="cb7-8"><a href="-.html#cb7-8" aria-hidden="true" tabindex="-1"></a>json <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">json =</span> json)</span>
+<span id="cb7-9"><a href="-.html#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="-.html#cb7-10" aria-hidden="true" tabindex="-1"></a>json <span class="sc">%&gt;%</span></span>
+<span id="cb7-11"><a href="-.html#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_wider</span>(json) <span class="sc">%&gt;%</span></span>
+<span id="cb7-12"><a href="-.html#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(department) <span class="sc">%&gt;%</span></span>
+<span id="cb7-13"><a href="-.html#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avgage =</span> <span class="fu">mean</span>(age)) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-14"><a href="-.html#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(department <span class="sc">==</span> <span class="st">&quot;IT&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-15"><a href="-.html#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(avgage)</span></code></pre></div>
+</div>
+<div id="задание-3-2" class="section level3 unnumbered">
+<h3>Задание 3</h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="-.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
+<span id="cb8-2"><a href="-.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb8-3"><a href="-.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb8-4"><a href="-.html#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="-.html#cb8-5" aria-hidden="true" tabindex="-1"></a>json <span class="ot">&lt;-</span> <span class="fu">read_json</span>(<span class="at">path =</span> <span class="st">&#39;https://raw.githubusercontent.com/selesnow/r4excel_users/master/test/t10-2.json&#39;</span>)</span>
+<span id="cb8-6"><a href="-.html#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="-.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># решение</span></span>
+<span id="cb8-8"><a href="-.html#cb8-8" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">data =</span> json)</span>
+<span id="cb8-9"><a href="-.html#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="-.html#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># cредняя площадь магазина</span></span>
+<span id="cb8-11"><a href="-.html#cb8-11" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb8-12"><a href="-.html#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_longer</span>(data) <span class="sc">%&gt;%</span></span>
+<span id="cb8-13"><a href="-.html#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_wider</span>(data) <span class="sc">%&gt;%</span></span>
+<span id="cb8-14"><a href="-.html#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(square) <span class="sc">%&gt;%</span></span>
+<span id="cb8-15"><a href="-.html#cb8-15" aria-hidden="true" tabindex="-1"></a>  unlist <span class="sc">%&gt;%</span></span>
+<span id="cb8-16"><a href="-.html#cb8-16" aria-hidden="true" tabindex="-1"></a>  mean</span></code></pre></div>
+</div>
+<div id="задание-4-2" class="section level3 unnumbered">
+<h3>Задание 4</h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="-.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
+<span id="cb9-2"><a href="-.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb9-3"><a href="-.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb9-4"><a href="-.html#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="-.html#cb9-5" aria-hidden="true" tabindex="-1"></a>json <span class="ot">&lt;-</span> <span class="fu">read_json</span>(<span class="at">path =</span> <span class="st">&#39;https://raw.githubusercontent.com/selesnow/r4excel_users/master/test/t10-2.json&#39;</span>)</span>
+<span id="cb9-6"><a href="-.html#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="-.html#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># решение</span></span>
+<span id="cb9-8"><a href="-.html#cb9-8" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">data =</span> json)</span>
+<span id="cb9-9"><a href="-.html#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="-.html#cb9-10" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb9-11"><a href="-.html#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_longer</span>(data) <span class="sc">%&gt;%</span></span>
+<span id="cb9-12"><a href="-.html#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_wider</span>(data) <span class="sc">%&gt;%</span></span>
+<span id="cb9-13"><a href="-.html#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_longer</span>(schedule) <span class="sc">%&gt;%</span></span>
+<span id="cb9-14"><a href="-.html#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(data_id, schedule_id, schedule) <span class="sc">%&gt;%</span></span>
+<span id="cb9-15"><a href="-.html#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>( schedule_id <span class="sc">==</span> <span class="st">&#39;sun&#39;</span> <span class="sc">&amp;</span> schedule <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-16"><a href="-.html#cb9-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(data_id)</span></code></pre></div>
+</div>
+<div id="задание-5" class="section level3 unnumbered">
+<h3>Задание 5</h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="-.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb10-2"><a href="-.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb10-3"><a href="-.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb10-4"><a href="-.html#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb10-5"><a href="-.html#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="-.html#cb10-6" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/selesnow/r4excel_users/master/test/production_calendar.csv&quot;</span>)</span>
+<span id="cb10-7"><a href="-.html#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="-.html#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># решение</span></span>
+<span id="cb10-9"><a href="-.html#cb10-9" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb10-10"><a href="-.html#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(January<span class="sc">:</span>December, <span class="at">names_to =</span> <span class="st">&quot;month&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;days&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-11"><a href="-.html#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">days =</span> <span class="fu">str_split</span>(days, <span class="st">&quot;,&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-12"><a href="-.html#cb10-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_longer</span>(days) <span class="sc">%&gt;%</span></span>
+<span id="cb10-13"><a href="-.html#cb10-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>( Year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">2005</span>, <span class="dv">2008</span>, <span class="dv">2012</span>, <span class="dv">2017</span>) <span class="sc">&amp;</span> <span class="fu">str_detect</span>(days, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">*&quot;</span>) ) <span class="sc">%&gt;%</span></span>
+<span id="cb10-14"><a href="-.html#cb10-14" aria-hidden="true" tabindex="-1"></a>  nrow</span></code></pre></div>
+</div>
+</div>
+<div id="урок-11" class="section level2 unnumbered">
+<h2>Урок 11</h2>
+<div id="задание-2-3" class="section level3 unnumbered">
+<h3>Задание 2</h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="-.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb11-2"><a href="-.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb11-3"><a href="-.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb11-4"><a href="-.html#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="-.html#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb11-6"><a href="-.html#cb11-6" aria-hidden="true" tabindex="-1"></a>sales_data <span class="ot">&lt;-</span> </span>
+<span id="cb11-7"><a href="-.html#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv2</span>(<span class="st">&#39;https://raw.githubusercontent.com/selesnow/r4excel_users/master/lesson_11/sales_data.csv&#39;</span>)</span>
+<span id="cb11-8"><a href="-.html#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="-.html#cb11-9" aria-hidden="true" tabindex="-1"></a>sales_data <span class="sc">%&gt;%</span> </span>
+<span id="cb11-10"><a href="-.html#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(shop, brand) <span class="sc">%&gt;%</span></span>
+<span id="cb11-11"><a href="-.html#cb11-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">count =</span> <span class="fu">sum</span>(count)) <span class="sc">%&gt;%</span></span>
+<span id="cb11-12"><a href="-.html#cb11-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">qplot</span>(<span class="at">data =</span> .,</span>
+<span id="cb11-13"><a href="-.html#cb11-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> brand, </span>
+<span id="cb11-14"><a href="-.html#cb11-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> count,</span>
+<span id="cb11-15"><a href="-.html#cb11-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">fill =</span> brand,</span>
+<span id="cb11-16"><a href="-.html#cb11-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">geom =</span> <span class="st">&#39;col&#39;</span>,</span>
+<span id="cb11-17"><a href="-.html#cb11-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">facets =</span> <span class="sc">~</span> shop)</span></code></pre></div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="-ggplot2-ggplot2-ggthemes-ggthemr.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/14-solutions.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["r-for-excel-users.pdf", "r-for-excel-users.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
