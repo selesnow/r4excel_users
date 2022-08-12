@@ -1,0 +1,6 @@
+book_filename: "r-for-excel-users"
+language:
+  ui:
+    chapter_name: "Урок "
+delete_merged_file: true
+output_dir: "docs"

@@ -1,0 +1,112 @@
+# Пакет tidyr: Работа с вложенными столбцами, unnest_longer, unnest_wider
+## Описание
+JSON и XML являются чрезвычайно популярными форматами хранения и обмена информацией, как правило, за счёт своей компактности.
+
+Но анализировать данные представленные в таких форматах сложно, поэтому их перед анализом необходимо привести к табличному виду, именно этому мы и научимся в данном видео.
+
+Урок посвящён пакету `tidyr`, входящему в ядро библиотеки `tidyverse`, и функциям `unnest_longer()`, `unnest_wider()` и hoist().
+
+## Видео
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jMTx34aGhw4?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+## Материалы
+Все материалы к данному уроку можно найти по [ссылке](https://github.com/selesnow/r4excel_users/tree/master/lesson_10).
+
++ [simple.json](https://github.com/selesnow/r4excel_users/raw/52ce5604b653ee0490c299907b7184992d5a5107/lesson_10/simple.json)
++ [hard_data.json](https://github.com/selesnow/r4excel_users/raw/52ce5604b653ee0490c299907b7184992d5a5107/lesson_10/hard_data.json)
+
+## Код
+```{r eval=FALSE}
+library(tidyr)
+library(dplyr)
+library(jsonlite)
+
+# #################
+# задача 1:
+# имеется json файл со списком сотрудников
+# 1. необходимо получить сотрудников у которых предусмотренны бонусы
+
+# читаем json файл
+staff_dict <- read_json('https://raw.githubusercontent.com/selesnow/r4excel_users/master/lesson_10/simple.json')
+
+# преобразуем json в tibble frame
+staff_dict <- tibble(employee = staff_dict)
+
+# 2. посчитать среднюю зарплату по отделам
+# разворачиваем каждый json узел в виде отдельной строки
+# фильтруем таблицу оставляя только тех сотрудников у которых есть бонусы
+staff_dict %>%
+  unnest_wider(employee) %>%
+  filter(bonus > 0)
+
+# считаем среднюю зарплату по отделам
+staff_dict %>%
+  unnest_wider(employee) %>%
+  group_by(department) %>%
+  summarise(average_salary = mean(salary))
+
+
+# ##########################
+# задача 3:
+# имеется json файл со списком сотрудников
+# вывести список сотрудников с их зоной ответвенности
+staff_dict <- read_json('https://raw.githubusercontent.com/selesnow/r4excel_users/master/lesson_10/hard_data.json')
+
+# преобразуем json в tibble frame
+staff_dict <- tibble(employee = staff_dict)
+
+## вариант решения #1
+staff_dict %>%
+  unnest_wider(employee) %>%
+  select(name, department, salary, skills) %>%
+  unnest_wider(skills) %>%
+  select(name, department, salary, practics) %>% 
+  unnest_longer(practics) %>%
+  group_by(name, department, salary) %>%
+  summarise(practics = paste(practics, collapse = ", "))
+
+## вариант решения #2 
+staff_dict %>%
+  hoist(employee, 
+        name = "name",
+        department = "department",
+        salary = "salary",
+        practics = c("skills", "practics")) %>%
+  select(-employee) %>%
+  group_by(name, department, salary) %>%
+  mutate(practics = paste(unlist(practics), collapse = ", "))
+
+# ##########################
+# задача 4:
+# имеется json файл со списком сотрудников
+# поднять на 20% зарплату сотрудникам владеющим языком R
+staff_dict %>%
+  hoist(employee, 
+        name = "name",
+        salary = "salary",
+        langs = c("skills", "lang")) %>% 
+  select(-employee) %>%
+  unnest_longer(langs) %>%
+  filter(langs == 'R') %>%
+  mutate(new_salary = salary * 1.2)
+
+# задача 5:
+# имеется json файл со списком сотрудников
+# поднять на 30% зарплату сотрудникам владеющим более чем одним языком программирования
+staff_dict %>%
+  hoist(employee, 
+        name = "name",
+        salary = "salary",
+        langs = c("skills", "lang")) %>% 
+  select(-employee) %>%
+  group_by(name) %>%
+  unnest_longer(langs) %>%
+  filter( ! is.na(langs) ) %>%
+  group_by( name, salary ) %>%
+  summarise( langs_num = length(langs) ) %>%
+  filter(langs_num > 1) %>%
+  mutate( new_salary =  salary * 1.3 )
+```
+
+## Тест
+<iframe src="https://onlinetestpad.com/widget-hqyo5ogpgs6he" frameborder="0" scrolling="yes" id="otp_ifr_hqyo5ogpgs6he_qqwag" style="width: 650px; height: 898px;" uids="[&quot;hd3myfsckzkxw&quot;,&quot;hqyo5ogpgs6he&quot;]"></iframe>

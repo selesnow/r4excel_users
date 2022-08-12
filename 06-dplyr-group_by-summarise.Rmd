@@ -1,0 +1,80 @@
+# Пакет dplyr: Группировка и агрегация данных, group_by, summarise
+## Описание
+В этом видео мы разберём одну из основных операций анализа данных, группировку и агрегацию. В ходе урока мы будем использовать пакет `dplyr` из библиотеки `tidyverse` и функции `group_by()` и `summarise()`.
+
+Мы рассмотрим всё семейство функций `summarise()`, т.е. `summarise()`, `summarise_if()` и `summarise_at()`. 
+
+Список основных агрегирующих функций:
+sum - суммирование
+mean - среднее арифметическое
+min - минимальное
+max - максимальное
+median - медиана
+length - количество
+
+## Видео
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7zyL5apWm1M?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+## Материалы
+Все материалы к данному уроку можно найти по [ссылке](https://github.com/selesnow/r4excel_users/tree/master/lesson_6).
+
+## Код
+```{r eval=FALSE}
+# подключение пакетов
+library(vroom)
+library(dplyr)
+
+# загрузка данных
+ga_data <- vroom("https://raw.githubusercontent.com/selesnow/publications/master/code_example/from_excel_to_r/lesson_3/ga_nowember.csv")
+
+# сгруппировать данные по дням
+ga_data %>%
+  group_by(date) %>%
+  summarise(sessions = sum(sessions),
+            bounces  = sum(bounces))
+
+# другой вариант
+ga_data %>%
+  group_by(date) %>%
+  summarise_at(c("sessions", "bounces"), 
+               sum)
+
+# группировка по двум полям
+ga_data %>%
+  group_by(date, medium) %>%
+  summarise_at(c("sessions", "bounces"), 
+               sum)
+
+ga_data %>%
+  group_by(date, medium) %>%
+  summarise(ses = sum(sessions),
+            bounc = sum(bounces))
+
+# сумма по всем числовым столбцам
+ga_data %>%
+  group_by(medium) %>%
+  summarise_if(is.numeric, mean)
+
+# среднесуточное количество сеансов по каналам
+ndays <- unique( ga_data$date ) %>% length
+
+ga_data %>%
+  group_by(medium) %>%
+  summarise(daily_sessions = sum(sessions) / ndays)
+
+# применяем сразу несколько агрегирующий функций
+# сумма по всем числовым столбцам
+result <-
+ga_data %>%
+  group_by(medium) %>%
+  summarise_if(is.numeric, 
+               list( avg   = mean,
+                     med   = median,
+                     sum   = sum,
+                     count = length,
+                     min   = min,
+                     max   = max))
+```
+
+## Тест
+<iframe id="otpwgt-wt101824" src="https://onlinetestpad.com/hq5csabhvfezm" frameborder="0" style="width:100%;" onload="var f = document.getElementById('otpwgt-wt101824'); var h = 0; var listener = function (event) { if (event.origin.indexOf('onlinetestpad') == -1) { return; }; h = parseInt(event.data); if (!isNaN(h)) f.style.height = h + 'px'; }; function addEvent(elem, evnt, func) { if (elem.addEventListener) { elem.addEventListener(evnt, func, false); } else if (elem.attachEvent) { elem.attachEvent('on' + evnt, func); } else { elem['on' + evnt] = func; } }; addEvent(window, 'message', listener);" scrolling="no" ></iframe>

@@ -1,0 +1,16 @@
+# Устновка R и RStudio
+## Описание
+В этом уроке мы с вами установим необходимое програмное обеспечение:
+
+1. [Язык R (Windows)](https://cran.r-project.org/bin/windows/base/)
+2. [Язык R (MacOS)](https://cran.r-project.org/bin/macosx/)
+2. [Среду разработки RStudio](https://www.rstudio.com/products/rstudio/download/)
+
+## Видео
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wFUoaeGEMmY?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+## Тест
+<iframe id="otpwgt-wt101485" src="https://onlinetestpad.com/hslufgna375xa" frameborder="0" style="width:100%;" onload="var f = document.getElementById('otpwgt-wt101485'); var h = 0; var listener = function (event) { if (event.origin.indexOf('onlinetestpad') == -1) { return; }; h = parseInt(event.data); if (!isNaN(h)) f.style.height = h + 'px'; }; function addEvent(elem, evnt, func) { if (elem.addEventListener) { elem.addEventListener(evnt, func, false); } else if (elem.attachEvent) { elem.attachEvent('on' + evnt, func); } else { elem['on' + evnt] = func; } }; addEvent(window, 'message', listener);" scrolling="no" ></iframe>
+
+
+

@@ -1,0 +1,134 @@
+# Пакет tidyr: Преобразование таблиц из широкого формата в длинный и наоборот, pivot_longer, pivot_wider
+## Описание
+Большинство пользователей Excel используют сводные таблицы, это удобный инструмент с помощью которого вы можете в считанные секунды превратить массив сырых данных в читабельные отчёты.
+
+В этом уроке мы разберёмся с тем как вращать таблицы в R, и преобразовывать их из широко формата в длинный и наоборот.
+
+Большая часть урока посвящена пакету `tidyr` и функциям `pivot_longer()` и `pivot_wider()`.
+
+## Видео
+<iframe width="560" height="315" src="https://www.youtube.com/embed/C72nlpBo9Cc?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+## Материалы
+Все материалы к данному уроку можно найти по [ссылке](https://github.com/selesnow/r4excel_users/tree/master/lesson_9).
+
++ [sales.xlsx](https://github.com/selesnow/r4excel_users/raw/52ce5604b653ee0490c299907b7184992d5a5107/lesson_9/sales.xlsx)
++ [shop_data_2019.csv](https://github.com/selesnow/r4excel_users/raw/52ce5604b653ee0490c299907b7184992d5a5107/lesson_9/shop_data_2019.csv)
++ [shop_data_2020.csv](https://github.com/selesnow/r4excel_users/raw/52ce5604b653ee0490c299907b7184992d5a5107/lesson_9/shop_data_2020.csv)
+
+## Код
+```{r eval=FALSE}
+library(tidyr)
+library(dplyr)
+library(readxl)
+library(readr)
+
+# скачиваем файл
+# скачиваем файл из интернета
+download.file("https://github.com/selesnow/r4excel_users/blob/master/lesson_9/sales.xlsx?raw=true", 
+              destfile = "sales.xlsx", 
+              mode = "wb")
+
+# загрузка данных
+data <- read_excel('sales.xlsx', 
+                   sheet = 'data')
+
+# ==================
+# Задача: сравнить среднемесячные продажи между регионами
+# в первом квартале 2019 и 2020 года
+# ==================
+
+# заполняем стобец region
+data <- fill(data, region, .direction = 'down')
+
+# приводим таблицу в правильный вид
+data <- pivot_longer(
+              data, 
+              cols = `january 2019`:`march 2020`, 
+              names_to  = 'month', 
+              values_to = 'sales')
+
+# разделим столбец month на год и месяц
+data <- separate(data, 
+                 col = 'month', 
+                 into = c('month', 'year'), 
+                 remove = TRUE, sep = " ")
+
+# финальные рассчёты
+data <-
+  data %>%
+    filter(month %in% c('january', 'february', 'march')) %>%
+    group_by(region, year) %>%
+    summarise(sales = mean(sales))
+
+# расширяем таблицу
+data %>%
+  pivot_wider(names_from = year, 
+              values_from  = sales) %>%
+  mutate(grow = (`2020` - `2019`) / `2020` * 100) %>%
+  arrange(desc(grow))
+
+# запишем всё через пайплайны
+read_excel('sales.xlsx', 
+           sheet = 'data') %>%
+  fill(region, 
+           .direction = 'down') %>%
+  pivot_longer(
+           cols = `january 2019`:`march 2020`, 
+           names_to  = 'month', 
+           values_to = 'sales') %>%
+  separate(col = 'month', 
+           into = c('month', 'year'), 
+           remove = TRUE, sep = " ") %>%
+  filter(month %in% c('january', 'february', 'march')) %>%
+  group_by(region, year) %>%
+  summarise(sales = mean(sales)) %>%
+  pivot_wider(names_from = year, 
+              values_from  = sales) %>%
+  mutate(grow = (`2020` - `2019`) / `2020` * 100) %>%
+  arrange(desc(grow))
+
+
+# ###############################
+# Спецификации
+# Задача: посчитать % возвратов от суммы продажи
+# ###############################
+shop_data_2019 <- read_delim(
+                    'https://raw.githubusercontent.com/selesnow/r4excel_users/master/lesson_9/shop_data_2019.csv',
+                    delim = ';', locale = locale(decimal_mark = ",") )
+
+# строим спецификацию
+wild_spec <- build_wider_spec(shop_data_2019, 
+                              names_from = 'key', 
+                              values_from = 'value')
+
+# применяем спецификацию
+pivot_wider_spec(shop_data_2019, spec = wild_spec) %>%
+  mutate(refund_rate = refund / ( sale + upsale )) %>%
+  arrange(desc(refund_rate))
+
+# читаем данные аналогичой структуры
+shop_data_2020 <- read_delim(
+                    'https://raw.githubusercontent.com/selesnow/r4excel_users/master/lesson_9/shop_data_2020.csv',
+                    delim = ';', locale = locale(decimal_mark = ","))
+
+# применяем спецификацию
+shop_data_2020 %>%
+  pivot_wider_spec(spec = wild_spec) %>%
+  mutate(refund_rate = refund / ( sale + upsale )) %>%
+  arrange(desc(refund_rate))
+
+# сохранить спецификацию
+saveRDS(object = wild_spec, file = 'spec.rds')
+
+# загрузить спецификацию
+new_wild_spec <- readRDS('spec.rds')
+
+# применяем
+pivot_wider_spec(shop_data_2019, spec = new_wild_spec) %>%
+  mutate(refund_rate = refund / ( sale + upsale )) %>%
+  arrange(desc(refund_rate))
+```
+
+## Тест
+<iframe id="otpwgt-wt102213" src="https://onlinetestpad.com/hs7ub2f34d4e4" frameborder="0" style="width:100%;" onload="var f = document.getElementById('otpwgt-wt102213'); var h = 0; var listener = function (event) { if (event.origin.indexOf('onlinetestpad') == -1) { return; }; h = parseInt(event.data); if (!isNaN(h)) f.style.height = h + 'px'; }; function addEvent(elem, evnt, func) { if (elem.addEventListener) { elem.addEventListener(evnt, func, false); } else if (elem.attachEvent) { elem.attachEvent('on' + evnt, func); } else { elem['on' + evnt] = func; } }; addEvent(window, 'message', listener);" scrolling="no" ></iframe>

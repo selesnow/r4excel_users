@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Урок 3 Чтение данных из TSV, CSV, Excel файлов и Google Таблиц | Язык R для пользователей Excel</title>
+  <meta name="description" content="Бесплатный видео курс по языку R. Введение в tidyverse." />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Урок 3 Чтение данных из TSV, CSV, Excel файлов и Google Таблиц | Язык R для пользователей Excel" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/cover.png" />
+  <meta property="og:description" content="Бесплатный видео курс по языку R. Введение в tidyverse." />
+  <meta name="github-repo" content="selesnow/r4excel_users" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Урок 3 Чтение данных из TSV, CSV, Excel файлов и Google Таблиц | Язык R для пользователей Excel" />
+  
+  <meta name="twitter:description" content="Бесплатный видео курс по языку R. Введение в tidyverse." />
+  <meta name="twitter:image" content="/cover.png" />
+
+<meta name="author" content="Алексей Селезнёв" />
+
+
+<meta name="date" content="2022-08-12" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="основные-структуры-данных-в-r-и-установка-и-подключение-пакетов.html"/>
+<link rel="next" href="пакет-dplyr-фильтрация-по-строкам-продвинутый-выбор-столбцов-переименование-столбцов-пайплайны.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-114798296-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-114798296-1');
+</script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Язык R для пользователей Excel</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Введение</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#предисловие"><i class="fa fa-check"></i>Предисловие</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#о-курсе"><i class="fa fa-check"></i>О курсе</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#для-кого-этот-курс"><i class="fa fa-check"></i>Для кого этот курс</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#материалы-к-курсу"><i class="fa fa-check"></i>Материалы к курсу</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#об-авторе"><i class="fa fa-check"></i>Об авторе</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#программа-курса"><i class="fa fa-check"></i>Программа курса</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#благодарности"><i class="fa fa-check"></i>Благодарности</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#ссылки"><i class="fa fa-check"></i>Ссылки</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="устновка-r-и-rstudio.html"><a href="устновка-r-и-rstudio.html"><i class="fa fa-check"></i><b>1</b> Устновка R и RStudio</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="устновка-r-и-rstudio.html"><a href="устновка-r-и-rstudio.html#описание"><i class="fa fa-check"></i><b>1.1</b> Описание</a></li>
+<li class="chapter" data-level="1.2" data-path="устновка-r-и-rstudio.html"><a href="устновка-r-и-rstudio.html#видео"><i class="fa fa-check"></i><b>1.2</b> Видео</a></li>
+<li class="chapter" data-level="1.3" data-path="устновка-r-и-rstudio.html"><a href="устновка-r-и-rstudio.html#тест"><i class="fa fa-check"></i><b>1.3</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="основные-структуры-данных-в-r-и-установка-и-подключение-пакетов.html"><a href="основные-структуры-данных-в-r-и-установка-и-подключение-пакетов.html"><i class="fa fa-check"></i><b>2</b> Основные структуры данных в R и установка и подключение пакетов</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="основные-структуры-данных-в-r-и-установка-и-подключение-пакетов.html"><a href="основные-структуры-данных-в-r-и-установка-и-подключение-пакетов.html#описание-1"><i class="fa fa-check"></i><b>2.1</b> Описание</a></li>
+<li class="chapter" data-level="2.2" data-path="основные-структуры-данных-в-r-и-установка-и-подключение-пакетов.html"><a href="основные-структуры-данных-в-r-и-установка-и-подключение-пакетов.html#видео-1"><i class="fa fa-check"></i><b>2.2</b> Видео</a></li>
+<li class="chapter" data-level="2.3" data-path="основные-структуры-данных-в-r-и-установка-и-подключение-пакетов.html"><a href="основные-структуры-данных-в-r-и-установка-и-подключение-пакетов.html#материалы"><i class="fa fa-check"></i><b>2.3</b> Материалы</a></li>
+<li class="chapter" data-level="2.4" data-path="основные-структуры-данных-в-r-и-установка-и-подключение-пакетов.html"><a href="основные-структуры-данных-в-r-и-установка-и-подключение-пакетов.html#код"><i class="fa fa-check"></i><b>2.4</b> Код</a></li>
+<li class="chapter" data-level="2.5" data-path="основные-структуры-данных-в-r-и-установка-и-подключение-пакетов.html"><a href="основные-структуры-данных-в-r-и-установка-и-подключение-пакетов.html#тест-1"><i class="fa fa-check"></i><b>2.5</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html"><i class="fa fa-check"></i><b>3</b> Чтение данных из TSV, CSV, Excel файлов и Google Таблиц</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#описание-2"><i class="fa fa-check"></i><b>3.1</b> Описание</a></li>
+<li class="chapter" data-level="3.2" data-path="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#видео-2"><i class="fa fa-check"></i><b>3.2</b> Видео</a></li>
+<li class="chapter" data-level="3.3" data-path="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#материалы-1"><i class="fa fa-check"></i><b>3.3</b> Материалы</a></li>
+<li class="chapter" data-level="3.4" data-path="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#код-1"><i class="fa fa-check"></i><b>3.4</b> Код</a></li>
+<li class="chapter" data-level="3.5" data-path="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#тест-2"><i class="fa fa-check"></i><b>3.5</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="пакет-dplyr-фильтрация-по-строкам-продвинутый-выбор-столбцов-переименование-столбцов-пайплайны.html"><a href="пакет-dplyr-фильтрация-по-строкам-продвинутый-выбор-столбцов-переименование-столбцов-пайплайны.html"><i class="fa fa-check"></i><b>4</b> Пакет dplyr: Фильтрация по строкам, продвинутый выбор столбцов, переименование столбцов, пайплайны</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="пакет-dplyr-фильтрация-по-строкам-продвинутый-выбор-столбцов-переименование-столбцов-пайплайны.html"><a href="пакет-dplyr-фильтрация-по-строкам-продвинутый-выбор-столбцов-переименование-столбцов-пайплайны.html#описание-3"><i class="fa fa-check"></i><b>4.1</b> Описание</a></li>
+<li class="chapter" data-level="4.2" data-path="пакет-dplyr-фильтрация-по-строкам-продвинутый-выбор-столбцов-переименование-столбцов-пайплайны.html"><a href="пакет-dplyr-фильтрация-по-строкам-продвинутый-выбор-столбцов-переименование-столбцов-пайплайны.html#видео-3"><i class="fa fa-check"></i><b>4.2</b> Видео</a></li>
+<li class="chapter" data-level="4.3" data-path="пакет-dplyr-фильтрация-по-строкам-продвинутый-выбор-столбцов-переименование-столбцов-пайплайны.html"><a href="пакет-dplyr-фильтрация-по-строкам-продвинутый-выбор-столбцов-переименование-столбцов-пайплайны.html#материалы-2"><i class="fa fa-check"></i><b>4.3</b> Материалы</a></li>
+<li class="chapter" data-level="4.4" data-path="пакет-dplyr-фильтрация-по-строкам-продвинутый-выбор-столбцов-переименование-столбцов-пайплайны.html"><a href="пакет-dplyr-фильтрация-по-строкам-продвинутый-выбор-столбцов-переименование-столбцов-пайплайны.html#код-2"><i class="fa fa-check"></i><b>4.4</b> Код</a></li>
+<li class="chapter" data-level="4.5" data-path="пакет-dplyr-фильтрация-по-строкам-продвинутый-выбор-столбцов-переименование-столбцов-пайплайны.html"><a href="пакет-dplyr-фильтрация-по-строкам-продвинутый-выбор-столбцов-переименование-столбцов-пайплайны.html#тест-3"><i class="fa fa-check"></i><b>4.5</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="пакет-dplyr-добавление-новых-вычисляемых-столбцов-mutate-mutate_if-mutate_at-mutate_all.html"><a href="пакет-dplyr-добавление-новых-вычисляемых-столбцов-mutate-mutate_if-mutate_at-mutate_all.html"><i class="fa fa-check"></i><b>5</b> Пакет dplyr: Добавление новых вычисляемых столбцов, mutate, mutate_if, mutate_at, mutate_all</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="пакет-dplyr-добавление-новых-вычисляемых-столбцов-mutate-mutate_if-mutate_at-mutate_all.html"><a href="пакет-dplyr-добавление-новых-вычисляемых-столбцов-mutate-mutate_if-mutate_at-mutate_all.html#описание-4"><i class="fa fa-check"></i><b>5.1</b> Описание</a></li>
+<li class="chapter" data-level="5.2" data-path="пакет-dplyr-добавление-новых-вычисляемых-столбцов-mutate-mutate_if-mutate_at-mutate_all.html"><a href="пакет-dplyr-добавление-новых-вычисляемых-столбцов-mutate-mutate_if-mutate_at-mutate_all.html#видео-4"><i class="fa fa-check"></i><b>5.2</b> Видео</a></li>
+<li class="chapter" data-level="5.3" data-path="пакет-dplyr-добавление-новых-вычисляемых-столбцов-mutate-mutate_if-mutate_at-mutate_all.html"><a href="пакет-dplyr-добавление-новых-вычисляемых-столбцов-mutate-mutate_if-mutate_at-mutate_all.html#материалы-3"><i class="fa fa-check"></i><b>5.3</b> Материалы</a></li>
+<li class="chapter" data-level="5.4" data-path="пакет-dplyr-добавление-новых-вычисляемых-столбцов-mutate-mutate_if-mutate_at-mutate_all.html"><a href="пакет-dplyr-добавление-новых-вычисляемых-столбцов-mutate-mutate_if-mutate_at-mutate_all.html#код-3"><i class="fa fa-check"></i><b>5.4</b> Код</a></li>
+<li class="chapter" data-level="5.5" data-path="пакет-dplyr-добавление-новых-вычисляемых-столбцов-mutate-mutate_if-mutate_at-mutate_all.html"><a href="пакет-dplyr-добавление-новых-вычисляемых-столбцов-mutate-mutate_if-mutate_at-mutate_all.html#тест-4"><i class="fa fa-check"></i><b>5.5</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="пакет-dplyr-группировка-и-агрегация-данных-group_by-summarise.html"><a href="пакет-dplyr-группировка-и-агрегация-данных-group_by-summarise.html"><i class="fa fa-check"></i><b>6</b> Пакет dplyr: Группировка и агрегация данных, group_by, summarise</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="пакет-dplyr-группировка-и-агрегация-данных-group_by-summarise.html"><a href="пакет-dplyr-группировка-и-агрегация-данных-group_by-summarise.html#описание-5"><i class="fa fa-check"></i><b>6.1</b> Описание</a></li>
+<li class="chapter" data-level="6.2" data-path="пакет-dplyr-группировка-и-агрегация-данных-group_by-summarise.html"><a href="пакет-dplyr-группировка-и-агрегация-данных-group_by-summarise.html#видео-5"><i class="fa fa-check"></i><b>6.2</b> Видео</a></li>
+<li class="chapter" data-level="6.3" data-path="пакет-dplyr-группировка-и-агрегация-данных-group_by-summarise.html"><a href="пакет-dplyr-группировка-и-агрегация-данных-group_by-summarise.html#материалы-4"><i class="fa fa-check"></i><b>6.3</b> Материалы</a></li>
+<li class="chapter" data-level="6.4" data-path="пакет-dplyr-группировка-и-агрегация-данных-group_by-summarise.html"><a href="пакет-dplyr-группировка-и-агрегация-данных-group_by-summarise.html#код-4"><i class="fa fa-check"></i><b>6.4</b> Код</a></li>
+<li class="chapter" data-level="6.5" data-path="пакет-dplyr-группировка-и-агрегация-данных-group_by-summarise.html"><a href="пакет-dplyr-группировка-и-агрегация-данных-group_by-summarise.html#тест-5"><i class="fa fa-check"></i><b>6.5</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="пакет-dplyr-вертикальное-и-горизонтальное-объединение-таблиц-join-bind.html"><a href="пакет-dplyr-вертикальное-и-горизонтальное-объединение-таблиц-join-bind.html"><i class="fa fa-check"></i><b>7</b> Пакет dplyr: Вертикальное и горизонтальное объединение таблиц, join, bind</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="пакет-dplyr-вертикальное-и-горизонтальное-объединение-таблиц-join-bind.html"><a href="пакет-dplyr-вертикальное-и-горизонтальное-объединение-таблиц-join-bind.html#описание-6"><i class="fa fa-check"></i><b>7.1</b> Описание</a></li>
+<li class="chapter" data-level="7.2" data-path="пакет-dplyr-вертикальное-и-горизонтальное-объединение-таблиц-join-bind.html"><a href="пакет-dplyr-вертикальное-и-горизонтальное-объединение-таблиц-join-bind.html#видео-6"><i class="fa fa-check"></i><b>7.2</b> Видео</a></li>
+<li class="chapter" data-level="7.3" data-path="пакет-dplyr-вертикальное-и-горизонтальное-объединение-таблиц-join-bind.html"><a href="пакет-dplyr-вертикальное-и-горизонтальное-объединение-таблиц-join-bind.html#материалы-5"><i class="fa fa-check"></i><b>7.3</b> Материалы</a></li>
+<li class="chapter" data-level="7.4" data-path="пакет-dplyr-вертикальное-и-горизонтальное-объединение-таблиц-join-bind.html"><a href="пакет-dplyr-вертикальное-и-горизонтальное-объединение-таблиц-join-bind.html#код-5"><i class="fa fa-check"></i><b>7.4</b> Код</a></li>
+<li class="chapter" data-level="7.5" data-path="пакет-dplyr-вертикальное-и-горизонтальное-объединение-таблиц-join-bind.html"><a href="пакет-dplyr-вертикальное-и-горизонтальное-объединение-таблиц-join-bind.html#тест-6"><i class="fa fa-check"></i><b>7.5</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="оконные-функции-в-r.html"><a href="оконные-функции-в-r.html"><i class="fa fa-check"></i><b>8</b> Оконные функции в R</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="оконные-функции-в-r.html"><a href="оконные-функции-в-r.html#описание-7"><i class="fa fa-check"></i><b>8.1</b> Описание</a></li>
+<li class="chapter" data-level="8.2" data-path="оконные-функции-в-r.html"><a href="оконные-функции-в-r.html#видео-7"><i class="fa fa-check"></i><b>8.2</b> Видео</a></li>
+<li class="chapter" data-level="8.3" data-path="оконные-функции-в-r.html"><a href="оконные-функции-в-r.html#материалы-6"><i class="fa fa-check"></i><b>8.3</b> Материалы</a></li>
+<li class="chapter" data-level="8.4" data-path="оконные-функции-в-r.html"><a href="оконные-функции-в-r.html#код-6"><i class="fa fa-check"></i><b>8.4</b> Код</a></li>
+<li class="chapter" data-level="8.5" data-path="оконные-функции-в-r.html"><a href="оконные-функции-в-r.html#тест-7"><i class="fa fa-check"></i><b>8.5</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="пакет-tidyr-преобразование-таблиц-из-широкого-формата-в-длинный-и-наоборот-pivot_longer-pivot_wider.html"><a href="пакет-tidyr-преобразование-таблиц-из-широкого-формата-в-длинный-и-наоборот-pivot_longer-pivot_wider.html"><i class="fa fa-check"></i><b>9</b> Пакет tidyr: Преобразование таблиц из широкого формата в длинный и наоборот, pivot_longer, pivot_wider</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="пакет-tidyr-преобразование-таблиц-из-широкого-формата-в-длинный-и-наоборот-pivot_longer-pivot_wider.html"><a href="пакет-tidyr-преобразование-таблиц-из-широкого-формата-в-длинный-и-наоборот-pivot_longer-pivot_wider.html#описание-8"><i class="fa fa-check"></i><b>9.1</b> Описание</a></li>
+<li class="chapter" data-level="9.2" data-path="пакет-tidyr-преобразование-таблиц-из-широкого-формата-в-длинный-и-наоборот-pivot_longer-pivot_wider.html"><a href="пакет-tidyr-преобразование-таблиц-из-широкого-формата-в-длинный-и-наоборот-pivot_longer-pivot_wider.html#видео-8"><i class="fa fa-check"></i><b>9.2</b> Видео</a></li>
+<li class="chapter" data-level="9.3" data-path="пакет-tidyr-преобразование-таблиц-из-широкого-формата-в-длинный-и-наоборот-pivot_longer-pivot_wider.html"><a href="пакет-tidyr-преобразование-таблиц-из-широкого-формата-в-длинный-и-наоборот-pivot_longer-pivot_wider.html#материалы-7"><i class="fa fa-check"></i><b>9.3</b> Материалы</a></li>
+<li class="chapter" data-level="9.4" data-path="пакет-tidyr-преобразование-таблиц-из-широкого-формата-в-длинный-и-наоборот-pivot_longer-pivot_wider.html"><a href="пакет-tidyr-преобразование-таблиц-из-широкого-формата-в-длинный-и-наоборот-pivot_longer-pivot_wider.html#код-7"><i class="fa fa-check"></i><b>9.4</b> Код</a></li>
+<li class="chapter" data-level="9.5" data-path="пакет-tidyr-преобразование-таблиц-из-широкого-формата-в-длинный-и-наоборот-pivot_longer-pivot_wider.html"><a href="пакет-tidyr-преобразование-таблиц-из-широкого-формата-в-длинный-и-наоборот-pivot_longer-pivot_wider.html#тест-8"><i class="fa fa-check"></i><b>9.5</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="пакет-tidyr-работа-с-вложенными-столбцами-unnest_longer-unnest_wider.html"><a href="пакет-tidyr-работа-с-вложенными-столбцами-unnest_longer-unnest_wider.html"><i class="fa fa-check"></i><b>10</b> Пакет tidyr: Работа с вложенными столбцами, unnest_longer, unnest_wider</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="пакет-tidyr-работа-с-вложенными-столбцами-unnest_longer-unnest_wider.html"><a href="пакет-tidyr-работа-с-вложенными-столбцами-unnest_longer-unnest_wider.html#описание-9"><i class="fa fa-check"></i><b>10.1</b> Описание</a></li>
+<li class="chapter" data-level="10.2" data-path="пакет-tidyr-работа-с-вложенными-столбцами-unnest_longer-unnest_wider.html"><a href="пакет-tidyr-работа-с-вложенными-столбцами-unnest_longer-unnest_wider.html#видео-9"><i class="fa fa-check"></i><b>10.2</b> Видео</a></li>
+<li class="chapter" data-level="10.3" data-path="пакет-tidyr-работа-с-вложенными-столбцами-unnest_longer-unnest_wider.html"><a href="пакет-tidyr-работа-с-вложенными-столбцами-unnest_longer-unnest_wider.html#материалы-8"><i class="fa fa-check"></i><b>10.3</b> Материалы</a></li>
+<li class="chapter" data-level="10.4" data-path="пакет-tidyr-работа-с-вложенными-столбцами-unnest_longer-unnest_wider.html"><a href="пакет-tidyr-работа-с-вложенными-столбцами-unnest_longer-unnest_wider.html#код-8"><i class="fa fa-check"></i><b>10.4</b> Код</a></li>
+<li class="chapter" data-level="10.5" data-path="пакет-tidyr-работа-с-вложенными-столбцами-unnest_longer-unnest_wider.html"><a href="пакет-tidyr-работа-с-вложенными-столбцами-unnest_longer-unnest_wider.html#тест-9"><i class="fa fa-check"></i><b>10.5</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="пакет-ggplot2-быстрая-визуализация-данных-с-помощью-ggplot2-и-функции-qplot.html"><a href="пакет-ggplot2-быстрая-визуализация-данных-с-помощью-ggplot2-и-функции-qplot.html"><i class="fa fa-check"></i><b>11</b> Пакет ggplot2: Быстрая визуализация данных с помощью ggplot2 и функции qplot</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="пакет-ggplot2-быстрая-визуализация-данных-с-помощью-ggplot2-и-функции-qplot.html"><a href="пакет-ggplot2-быстрая-визуализация-данных-с-помощью-ggplot2-и-функции-qplot.html#описание-10"><i class="fa fa-check"></i><b>11.1</b> Описание</a></li>
+<li class="chapter" data-level="11.2" data-path="пакет-ggplot2-быстрая-визуализация-данных-с-помощью-ggplot2-и-функции-qplot.html"><a href="пакет-ggplot2-быстрая-визуализация-данных-с-помощью-ggplot2-и-функции-qplot.html#видео-10"><i class="fa fa-check"></i><b>11.2</b> Видео</a></li>
+<li class="chapter" data-level="11.3" data-path="пакет-ggplot2-быстрая-визуализация-данных-с-помощью-ggplot2-и-функции-qplot.html"><a href="пакет-ggplot2-быстрая-визуализация-данных-с-помощью-ggplot2-и-функции-qplot.html#материалы-9"><i class="fa fa-check"></i><b>11.3</b> Материалы</a></li>
+<li class="chapter" data-level="11.4" data-path="пакет-ggplot2-быстрая-визуализация-данных-с-помощью-ggplot2-и-функции-qplot.html"><a href="пакет-ggplot2-быстрая-визуализация-данных-с-помощью-ggplot2-и-функции-qplot.html#код-9"><i class="fa fa-check"></i><b>11.4</b> Код</a></li>
+<li class="chapter" data-level="11.5" data-path="пакет-ggplot2-быстрая-визуализация-данных-с-помощью-ggplot2-и-функции-qplot.html"><a href="пакет-ggplot2-быстрая-визуализация-данных-с-помощью-ggplot2-и-функции-qplot.html#тест-10"><i class="fa fa-check"></i><b>11.5</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="пакет-ggplot2-построение-графиков-слой-за-слоем-в-ggplot2.html"><a href="пакет-ggplot2-построение-графиков-слой-за-слоем-в-ggplot2.html"><i class="fa fa-check"></i><b>12</b> Пакет ggplot2: Построение графиков слой за слоем в ggplot2</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="пакет-ggplot2-построение-графиков-слой-за-слоем-в-ggplot2.html"><a href="пакет-ggplot2-построение-графиков-слой-за-слоем-в-ggplot2.html#описание-11"><i class="fa fa-check"></i><b>12.1</b> Описание</a></li>
+<li class="chapter" data-level="12.2" data-path="пакет-ggplot2-построение-графиков-слой-за-слоем-в-ggplot2.html"><a href="пакет-ggplot2-построение-графиков-слой-за-слоем-в-ggplot2.html#видео-11"><i class="fa fa-check"></i><b>12.2</b> Видео</a></li>
+<li class="chapter" data-level="12.3" data-path="пакет-ggplot2-построение-графиков-слой-за-слоем-в-ggplot2.html"><a href="пакет-ggplot2-построение-графиков-слой-за-слоем-в-ggplot2.html#материалы-10"><i class="fa fa-check"></i><b>12.3</b> Материалы</a></li>
+<li class="chapter" data-level="12.4" data-path="пакет-ggplot2-построение-графиков-слой-за-слоем-в-ggplot2.html"><a href="пакет-ggplot2-построение-графиков-слой-за-слоем-в-ggplot2.html#код-10"><i class="fa fa-check"></i><b>12.4</b> Код</a></li>
+<li class="chapter" data-level="12.5" data-path="пакет-ggplot2-построение-графиков-слой-за-слоем-в-ggplot2.html"><a href="пакет-ggplot2-построение-графиков-слой-за-слоем-в-ggplot2.html#тест-11"><i class="fa fa-check"></i><b>12.5</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="пакет-ggplot2-применение-тем-и-изменение-элементов-графика-в-ggplot2-ggthemes-ggthemr.html"><a href="пакет-ggplot2-применение-тем-и-изменение-элементов-графика-в-ggplot2-ggthemes-ggthemr.html"><i class="fa fa-check"></i><b>13</b> Пакет ggplot2: Применение тем и изменение элементов графика в ggplot2 (ggthemes, ggthemr)</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="пакет-ggplot2-применение-тем-и-изменение-элементов-графика-в-ggplot2-ggthemes-ggthemr.html"><a href="пакет-ggplot2-применение-тем-и-изменение-элементов-графика-в-ggplot2-ggthemes-ggthemr.html#описание-12"><i class="fa fa-check"></i><b>13.1</b> Описание</a></li>
+<li class="chapter" data-level="13.2" data-path="пакет-ggplot2-применение-тем-и-изменение-элементов-графика-в-ggplot2-ggthemes-ggthemr.html"><a href="пакет-ggplot2-применение-тем-и-изменение-элементов-графика-в-ggplot2-ggthemes-ggthemr.html#видео-12"><i class="fa fa-check"></i><b>13.2</b> Видео</a></li>
+<li class="chapter" data-level="13.3" data-path="пакет-ggplot2-применение-тем-и-изменение-элементов-графика-в-ggplot2-ggthemes-ggthemr.html"><a href="пакет-ggplot2-применение-тем-и-изменение-элементов-графика-в-ggplot2-ggthemes-ggthemr.html#материалы-11"><i class="fa fa-check"></i><b>13.3</b> Материалы</a></li>
+<li class="chapter" data-level="13.4" data-path="пакет-ggplot2-применение-тем-и-изменение-элементов-графика-в-ggplot2-ggthemes-ggthemr.html"><a href="пакет-ggplot2-применение-тем-и-изменение-элементов-графика-в-ggplot2-ggthemes-ggthemr.html#код-11"><i class="fa fa-check"></i><b>13.4</b> Код</a></li>
+<li class="chapter" data-level="13.5" data-path="пакет-ggplot2-применение-тем-и-изменение-элементов-графика-в-ggplot2-ggthemes-ggthemr.html"><a href="пакет-ggplot2-применение-тем-и-изменение-элементов-графика-в-ggplot2-ggthemes-ggthemr.html#тест-12"><i class="fa fa-check"></i><b>13.5</b> Тест</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="решение-задач-на-программирование-solutions.html"><a href="решение-задач-на-программирование-solutions.html"><i class="fa fa-check"></i>Решение задач на программирование (solutions)</a>
+<ul>
+<li class="chapter" data-level="" data-path="решение-задач-на-программирование-solutions.html"><a href="решение-задач-на-программирование-solutions.html#урок-6"><i class="fa fa-check"></i>Урок 6</a>
+<ul>
+<li class="chapter" data-level="" data-path="решение-задач-на-программирование-solutions.html"><a href="решение-задач-на-программирование-solutions.html#задание-4"><i class="fa fa-check"></i>Задание 4</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="решение-задач-на-программирование-solutions.html"><a href="решение-задач-на-программирование-solutions.html#урок-7"><i class="fa fa-check"></i>Урок 7</a>
+<ul>
+<li class="chapter" data-level="" data-path="решение-задач-на-программирование-solutions.html"><a href="решение-задач-на-программирование-solutions.html#задание-3"><i class="fa fa-check"></i>Задание 3</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="решение-задач-на-программирование-solutions.html"><a href="решение-задач-на-программирование-solutions.html#урок-8"><i class="fa fa-check"></i>Урок 8</a>
+<ul>
+<li class="chapter" data-level="" data-path="решение-задач-на-программирование-solutions.html"><a href="решение-задач-на-программирование-solutions.html#задание-2"><i class="fa fa-check"></i>Задание 2</a></li>
+<li class="chapter" data-level="" data-path="решение-задач-на-программирование-solutions.html"><a href="решение-задач-на-программирование-solutions.html#задание-3-1"><i class="fa fa-check"></i>Задание 3</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="решение-задач-на-программирование-solutions.html"><a href="решение-задач-на-программирование-solutions.html#урок-9"><i class="fa fa-check"></i>Урок 9</a>
+<ul>
+<li class="chapter" data-level="" data-path="решение-задач-на-программирование-solutions.html"><a href="решение-задач-на-программирование-solutions.html#задание-2-1"><i class="fa fa-check"></i>Задание 2</a></li>
+<li class="chapter" data-level="" data-path="решение-задач-на-программирование-solutions.html"><a href="решение-задач-на-программирование-solutions.html#задание-4-1"><i class="fa fa-check"></i>Задание 4</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="решение-задач-на-программирование-solutions.html"><a href="решение-задач-на-программирование-solutions.html#урок-10"><i class="fa fa-check"></i>Урок 10</a>
+<ul>
+<li class="chapter" data-level="" data-path="решение-задач-на-программирование-solutions.html"><a href="решение-задач-на-программирование-solutions.html#задание-2-2"><i class="fa fa-check"></i>Задание 2</a></li>
+<li class="chapter" data-level="" data-path="решение-задач-на-программирование-solutions.html"><a href="решение-задач-на-программирование-solutions.html#задание-3-2"><i class="fa fa-check"></i>Задание 3</a></li>
+<li class="chapter" data-level="" data-path="решение-задач-на-программирование-solutions.html"><a href="решение-задач-на-программирование-solutions.html#задание-4-2"><i class="fa fa-check"></i>Задание 4</a></li>
+<li class="chapter" data-level="" data-path="решение-задач-на-программирование-solutions.html"><a href="решение-задач-на-программирование-solutions.html#задание-5"><i class="fa fa-check"></i>Задание 5</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="решение-задач-на-программирование-solutions.html"><a href="решение-задач-на-программирование-solutions.html#урок-11"><i class="fa fa-check"></i>Урок 11</a>
+<ul>
+<li class="chapter" data-level="" data-path="решение-задач-на-программирование-solutions.html"><a href="решение-задач-на-программирование-solutions.html#задание-2-3"><i class="fa fa-check"></i>Задание 2</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Alexey Seleznev</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Язык R для пользователей Excel</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Урок 3</span> Чтение данных из TSV, CSV, Excel файлов и Google Таблиц<a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="описание-2" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Описание<a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#описание-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>В этом уроке мы разберёмся как загружать данные для дальнейшей обработки на языке R.</p>
+<p>Мы загрузим данные из csv, tsv, Excel файлов и Google Таблиц.</p>
+<p>Разберёмся с такими R пакетами как: <code>vroom</code>, <code>readxl</code>, <code>googlesheets4</code></p>
+</div>
+<div id="видео-2" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Видео<a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#видео-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/vVFFtgcBp-w?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+</div>
+<div id="материалы-1" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Материалы<a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#материалы-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Все материалы к данному уроку можно найти по <a href="https://github.com/selesnow/r4excel_users/tree/master/lesson_3">ссылке</a>.</p>
+<ul>
+<li><a href="https://github.com/selesnow/r4excel_users/raw/52ce5604b653ee0490c299907b7184992d5a5107/lesson_3/ga_december.csv">ga_december.csv</a></li>
+<li><a href="https://github.com/selesnow/r4excel_users/raw/52ce5604b653ee0490c299907b7184992d5a5107/lesson_3/ga_nowember.csv">ga_nowember.csv</a></li>
+<li><a href="https://github.com/selesnow/r4excel_users/raw/52ce5604b653ee0490c299907b7184992d5a5107/lesson_3/ga_examples.xlsx">ga_examples.xlsx</a></li>
+</ul>
+</div>
+<div id="код-1" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Код<a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#код-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Загрузка данных в R</span></span>
+<span id="cb2-2"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Установка пакетов</span></span>
+<span id="cb2-3"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;vroom&quot;</span>)</span>
+<span id="cb2-4"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readxl&quot;</span>)</span>
+<span id="cb2-5"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</span>
+<span id="cb2-6"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-6" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;tidyverse/googlesheets4&quot;</span>)</span>
+<span id="cb2-7"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># ###########################################</span></span>
+<span id="cb2-9"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># подключение пакетов</span></span>
+<span id="cb2-10"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;vroom&quot;</span>)</span>
+<span id="cb2-11"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># ###########################################</span></span>
+<span id="cb2-14"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Чтение CSV, TSV и прочих текстовых файлов</span></span>
+<span id="cb2-15"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="do">## чтение локальных файлов</span></span>
+<span id="cb2-17"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-17" aria-hidden="true" tabindex="-1"></a>ga_data <span class="ot">&lt;-</span> <span class="fu">vroom</span>(<span class="at">file =</span> <span class="st">&quot;D:/materials/lesson_3/ga_nowember.csv&quot;</span>, <span class="at">delim =</span> <span class="st">&quot;/t&quot;</span>)</span>
+<span id="cb2-18"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="do">## чтение файлов опубликованных в интернете</span></span>
+<span id="cb2-19"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-19" aria-hidden="true" tabindex="-1"></a>ga_data_i <span class="ot">&lt;-</span> <span class="fu">vroom</span>(<span class="st">&quot;https://raw.githubusercontent.com/selesnow/publications/master/data_example/russian_text_in_r/ga_nowember.csv&quot;</span>)</span>
+<span id="cb2-20"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="do">## чтение нескольких файлов в одну таблицу</span></span>
+<span id="cb2-22"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-22" aria-hidden="true" tabindex="-1"></a>files   <span class="ot">&lt;-</span> <span class="fu">dir</span>(<span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">.csv$&quot;</span>)</span>
+<span id="cb2-23"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-23" aria-hidden="true" tabindex="-1"></a>ga_full <span class="ot">&lt;-</span> <span class="fu">vroom</span>(files) </span>
+<span id="cb2-24"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-25"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-26"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="co"># ###########################################</span></span>
+<span id="cb2-27"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Чтение Excel файлов</span></span>
+<span id="cb2-28"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb2-29"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="do">## получить список листов из Excel файла</span></span>
+<span id="cb2-31"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="fu">excel_sheets</span>(<span class="st">&quot;D:/materials/lesson_3/ga_examples.xlsx&quot;</span>)</span>
+<span id="cb2-32"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-33"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="do">## считать данные с листа</span></span>
+<span id="cb2-34"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-34" aria-hidden="true" tabindex="-1"></a>xl_dec <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;D:/materials/lesson_3/ga_examples.xlsx&quot;</span>, <span class="at">sheet =</span> <span class="st">&quot;dec&quot;</span>)</span>
+<span id="cb2-35"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-36"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="co"># ###########################################</span></span>
+<span id="cb2-37"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Чтение Google Таблиц</span></span>
+<span id="cb2-38"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(googlesheets4)</span>
+<span id="cb2-39"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-40"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="do">## Авторихация</span></span>
+<span id="cb2-41"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="fu">sheets_auth</span>(<span class="at">email =</span> <span class="st">&quot;selesnow@gmail.com&quot;</span>)</span>
+<span id="cb2-42"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="fu">sheets_find</span>()</span>
+<span id="cb2-43"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="do">## Подклбчение к доксу</span></span>
+<span id="cb2-44"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-44" aria-hidden="true" tabindex="-1"></a>ss_id <span class="ot">&lt;-</span> <span class="fu">as_sheets_id</span>(<span class="st">&quot;1xu_beKZVpJJTHTvAab_vN3ZiMB03BytKArGjJUO8cck&quot;</span>)</span>
+<span id="cb2-45"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-46"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="do">## открыть докс в браузере</span></span>
+<span id="cb2-47"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="fu">sheets_browse</span>(ss)</span>
+<span id="cb2-48"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-49"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="do">## посмотреть список листов</span></span>
+<span id="cb2-50"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="fu">sheets_sheet_names</span>(ss)</span>
+<span id="cb2-51"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-52"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="do">## получить данные из листа</span></span>
+<span id="cb2-53"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-53" aria-hidden="true" tabindex="-1"></a>gs_ga_data <span class="ot">&lt;-</span> <span class="fu">sheets_read</span>(<span class="at">ss =</span> ss_id, </span>
+<span id="cb2-54"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-54" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sheet =</span> <span class="st">&quot;dec&quot;</span>)</span>
+<span id="cb2-55"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-56"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="do">## получить данные из диапазона на листе</span></span>
+<span id="cb2-57"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-57" aria-hidden="true" tabindex="-1"></a>gs_ga_data <span class="ot">&lt;-</span> <span class="fu">sheets_read</span>(<span class="at">ss =</span> ss, </span>
+<span id="cb2-58"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-58" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sheet =</span> <span class="st">&quot;dec&quot;</span>, </span>
+<span id="cb2-59"><a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#cb2-59" aria-hidden="true" tabindex="-1"></a>                          <span class="at">range =</span> <span class="st">&quot;A1:C10&quot;</span>)</span></code></pre></div>
+</div>
+<div id="тест-2" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Тест<a href="чтение-данных-из-tsv-csv-excel-файлов-и-google-таблиц.html#тест-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<iframe id="otpwgt-wt101545" src="https://onlinetestpad.com/hrjuikkvlaif2" frameborder="0" style="width:100%;" onload="var f = document.getElementById(&#39;otpwgt-wt101545&#39;); var h = 0; var listener = function (event) { if (event.origin.indexOf(&#39;onlinetestpad&#39;) == -1) { return; }; h = parseInt(event.data); if (!isNaN(h)) f.style.height = h + &#39;px&#39;; }; function addEvent(elem, evnt, func) { if (elem.addEventListener) { elem.addEventListener(evnt, func, false); } else if (elem.attachEvent) { elem.attachEvent(&#39;on&#39; + evnt, func); } else { elem[&#39;on&#39; + evnt] = func; } }; addEvent(window, &#39;message&#39;, listener);" scrolling="no">
+</iframe>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="основные-структуры-данных-в-r-и-установка-и-подключение-пакетов.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="пакет-dplyr-фильтрация-по-строкам-продвинутый-выбор-столбцов-переименование-столбцов-пайплайны.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/03-reading-data.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["r-for-excel-users.pdf", "r-for-excel-users.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

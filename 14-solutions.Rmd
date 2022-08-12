@@ -1,0 +1,275 @@
+# Решение задач на программирование (solutions){-}
+В этом разделе приведены примеры решений представленных в курсе практических задач. Т.е. данный раздел предназначен для того, что бы вы могли сравнить свои решения с приведёнными тут, или же найти подсказку, если в течении длительного времени у вас не получается решить какую-либо из практических задач.
+
+## Урок 6 {-}
+### Задание 4 {-}
+
+```{r eval=FALSE}
+library(dplyr)
+
+# создаём набор данных
+set.seed(50)
+
+df <- tibble(col1 = sample(c("a", "b", "c"), size = 50, replace = TRUE),
+             col2 = rnorm(n = 50, 5, 10),
+             col3 = runif(n = 50, 15, 50),
+             col4 = sample(letters, 50, TRUE),
+             col5 = sample(LETTERS, 50, TRUE))
+
+# решение
+df %>% 
+  group_by(col1) %>%               # группируем
+  summarise(avg = mean(col2)) %>%  # считаем среднее
+  filter(col1 == 'b') %>%          # фильтруем по нужной группе
+  select(avg)                      # выбираем нужный столбец
+```
+
+## Урок 7 {-}
+### Задание 3 {-}
+
+```{r eval=FALSE}
+# код для генерации таблиц
+library(dplyr)
+
+set.seed(50)
+
+xdf <- tibble(xkey  = sample(c("a", "c", "d"), size = 150, replace = TRUE),
+              count = sample(2:10, 150, TRUE))
+
+
+ydf <- tibble(xcode = c("a", "b", "c", "d", "e"),
+              name  = c("banan", "apple", "orange", "kiwi", "cherry"),
+              price = c(4.3, 2.1, 3.3, 4.7, 3.7))
+
+# решение
+left_join(
+    xdf,
+    ydf,
+    by = c("xkey" = "xcode")
+) %>% 
+  mutate(
+    sum = count * price
+  ) %>% 
+  group_by(name) %>% 
+  summarise(total = sum(sum)) %>% 
+  filter(name == "kiwi")
+```
+
+## Урок 8 {-}
+### Задание 2 {-}
+
+```{r eval=FALSE}
+library(dplyr)
+
+# создаём таблицу с которой будем работать
+set.seed(50)
+
+df <- tibble(step  = rep(1:60, 2),
+             group = c(rep("A", 60), rep("B", 60)),
+             val   = round(runif(120, 100, 1000), 0)) %>%
+  arrange(step)
+
+# объект в который запишем результат вычислений
+# нарастающий итог обязательно надо записывать в столбец run
+res <- df %>% 
+       group_by(group) %>% 
+       mutate(run = cumsum(val))
+
+# выводим в консоль результат который надо скопировать и вставить в виде ответа
+res %>%
+  filter( step %in% c(4, 32, 18) & group == "A" | step %in% c(10, 48, 51) & group == "B") %>%
+  arrange( group, step ) %>%
+  .$run %>%
+  cat
+```
+
+### Задание 3 {-}
+
+```{r eval=FALSE}
+library(dplyr)
+
+# создаём таблицу с которой будем работать
+set.seed(50)
+
+df <- tibble(step  = rep(1:60, 2),
+             group = c(rep("A", 60), rep("B", 60)),
+             val   = round(runif(120, 100, 1000), 0)) %>%
+  arrange(step)
+
+# решение
+df %>% 
+  group_by(group) %>% 
+  mutate(growth = val - lag(val)) %>% 
+  summarise(avg_growth = mean(growth, na.rm=TRUE)) %>% 
+  filter(group == "B") %>% 
+  select(avg_growth)
+```
+
+## Урок 9 {-}
+### Задание 2 {-}
+
+```{r eval=FALSE}
+library(dplyr)
+library(tidyr)
+
+set.seed(50)
+
+df <- tibble(shop = c("starMarket", "euroshop", "wowsales"),
+             jan  = runif(3, 10000, 25000),
+             feb  = runif(3, 10000, 25000),
+             mar  = runif(3, 10000, 25000),
+             apr  = runif(3, 10000, 25000),
+             may  = runif(3, 10000, 25000),
+             jun  = runif(3, 10000, 25000),
+             jul  = runif(3, 10000, 25000),
+             aug  = runif(3, 10000, 25000),
+             sep  = runif(3, 10000, 25000),
+             oct  = runif(3, 10000, 25000),
+             nov  = runif(3, 10000, 25000),
+             dec  = runif(3, 10000, 25000))
+
+# решение
+df %>% 
+  pivot_longer(
+    jan:dec, 
+    names_to = 'month', 
+    values_to = "sales"
+    ) %>% 
+  group_by(shop) %>% 
+  summarise(sales = sum(sales)) %>% 
+  slice_max(sales) %>% 
+  select(shop)
+```
+
+### Задание 4 {-}
+
+```{r eval=FALSE}
+library(dplyr)
+library(tidyr)
+
+set.seed(50)
+
+df <-
+  tibble(name = c(rep('Alex', 3), rep('John', 3), rep('Tom', 3)),
+         key  = rep(c("sale", 'refund', 'discount'), 3),
+         val  = c(runif(1, 1000, 2000), runif(1, 100, 250), runif(1, 50, 150),
+                  runif(1, 1000, 2000), runif(1, 100, 250), runif(1, 50, 150),
+                  runif(1, 1000, 2000), runif(1, 100, 250), runif(1, 50, 150)))
+
+# решение
+df %>% 
+  pivot_wider(
+    names_from  = key,
+    values_from =  val
+  ) %>% 
+  mutate(
+    total_sum = sale - refund - discount
+  ) %>% 
+  slice_max(total_sum) %>% 
+  select(name, total_sum)
+```
+
+## Урок 10 {-}
+### Задание 2 {-}
+
+```{r eval=FALSE}
+library(jsonlite)
+library(tidyr)
+library(dplyr)
+
+json <- read_json(path = 'https://raw.githubusercontent.com/selesnow/r4excel_users/master/test/t10-1.json')
+
+# решение
+json <- tibble(json = json)
+
+json %>%
+  unnest_wider(json) %>%
+  group_by(department) %>%
+  summarise(avgage = mean(age)) %>% 
+  filter(department == "IT") %>% 
+  select(avgage)
+```
+
+### Задание 3 {-}
+
+```{r eval=FALSE}
+library(jsonlite)
+library(tidyr)
+library(dplyr)
+
+json <- read_json(path = 'https://raw.githubusercontent.com/selesnow/r4excel_users/master/test/t10-2.json')
+
+# решение
+data <- tibble(data = json)
+
+# cредняя площадь магазина
+data %>%
+  unnest_longer(data) %>%
+  unnest_wider(data) %>%
+  select(square) %>%
+  unlist %>%
+  mean
+```
+
+### Задание 4 {-}
+
+```{r eval=FALSE}
+library(jsonlite)
+library(tidyr)
+library(dplyr)
+
+json <- read_json(path = 'https://raw.githubusercontent.com/selesnow/r4excel_users/master/test/t10-2.json')
+
+# решение
+data <- tibble(data = json)
+
+data %>%
+  unnest_longer(data) %>%
+  unnest_wider(data) %>%
+  unnest_longer(schedule) %>%
+  select(data_id, schedule_id, schedule) %>%
+  filter( schedule_id == 'sun' & schedule == 0) %>% 
+  select(data_id)
+```
+
+### Задание 5 {-}
+
+```{r eval=FALSE}
+library(tidyr)
+library(dplyr)
+library(readr)
+library(stringr)
+
+data <- read.csv("https://raw.githubusercontent.com/selesnow/r4excel_users/master/test/production_calendar.csv")
+
+# решение
+data %>% 
+  pivot_longer(January:December, names_to = "month", values_to = "days") %>%
+  mutate(days = str_split(days, ",")) %>%
+  unnest_longer(days) %>%
+  filter( Year %in% c(2005, 2008, 2012, 2017) & str_detect(days, "\\*") ) %>%
+  nrow
+```
+
+## Урок 11 {-}
+### Задание 2 {-}
+
+```{r eval=FALSE}
+library(readr)
+library(ggplot2)
+library(dplyr)
+
+sales_data <- 
+  read_csv2('https://raw.githubusercontent.com/selesnow/r4excel_users/master/lesson_11/sales_data.csv')
+
+# решение
+sales_data %>% 
+  group_by(shop, brand) %>%
+  summarise(count = sum(count)) %>%
+  qplot(data = .,
+        x = brand, 
+        y = count,
+        fill = brand,
+        geom = 'col',
+        facets = ~ shop)
+```

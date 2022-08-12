@@ -1,0 +1,90 @@
+# Пакет dplyr: Фильтрация по строкам, продвинутый выбор столбцов, переименование столбцов, пайплайны
+## Описание
+Этот урок посвящён пакету `dplyr`. В нём мы разберёмся как фильтровать датафреймы, выбирать нужные столбцы и переименовывать их.
+
+Также узнаем что такое пайпланы и как они помогают делать ваш код на языке R более читаемым.
+
+## Видео
+<iframe width="560" height="315" src="https://www.youtube.com/embed/uI0fc3foQQE?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+## Материалы
+Все материалы к данному уроку можно найти по [ссылке](https://github.com/selesnow/r4excel_users/tree/master/lesson_4).
+
+## Код
+```{r eval=FALSE}
+# установка пакетов
+install.packages("dplyr")
+
+# подключение пакетов
+library(vroom)
+library(dplyr)
+
+# загрузка данных
+ga_data <- vroom("https://raw.githubusercontent.com/selesnow/publications/master/code_example/from_excel_to_r/lesson_3/ga_nowember.csv")
+
+# ######################################################
+# фильтраци¤ строк
+## простейший фильтр с одним условием
+ga_data_organic <- filter(ga_data, medium == "organic")
+
+## несколько условий
+ga_data_organic_10 <- filter(ga_data, medium == "organic" & sessions > 10 )
+
+## провер¤ем на соответвию значению из списка
+google_yandex <- filter(ga_data, source %in% c("google", "yandex", "bing"))
+
+## создаЄм вектор дл¤ фильтрации
+search_eng <- c("google", "yandex", "bing")
+## используем вектор дл¤ фильтрации
+not_searcj_eng <- filter(ga_data, ! source %in% search_eng)
+
+# ######################################################
+# выбор столбцов
+## простой выбор столбцов по названи¤м
+ga_data_с1 <- select(ga_data, date, sessions)
+
+## срез по столбцам
+ga_data_с2 <- select(ga_data, source:sessions)
+
+## получить столбцы по названию использу¤ регул¤рные выражени¤
+match_s  <- select_at(ga_data, vars(matches("s")))     # содержит s
+match_s2 <- select_at(ga_data, vars(contains("s")))    # содержит s
+last_s1  <- select_at(ga_data, vars(matches("s$")))    # заканчиваетс¤ на s
+last_s2  <- select_at(ga_data, vars(ends_with("s")))   # заканчиваетс¤ на s
+start_s1 <- select_at(ga_data, vars(matches("^s")))    # начинаетс¤ на s
+start_s2 <- select_at(ga_data, vars(starts_with("s"))) # начинаетс¤ на s
+
+## выбрать только числовые столбцы
+ga_num_column <- select_if(ga_data, is.numeric)
+ga_str_column <- select_if(ga_data, is.character)
+
+## шпаргалка
+# select - выбор столбцов по названию
+# select_at - выбор по названию с попощью доп операторов и регул¤рных выражений
+# select_if - выбор по типу пол¤, например все строковые или все числовые пол¤
+
+# ######################################################
+# переименовываем столбцы
+new_ga_data <- rename(ga_data,
+                      channel  = medium,
+                      refferer = source)
+
+# мен¤ем стиль имЄн столбцов
+rename_if(ga_data, is.numeric, paste0, "_n")
+rename_at(ga_data, vars(matches("^s")), paste0, "_s")
+rename_all(ga_data, toupper)         
+
+# ######################################################
+# пайплайны
+## вложенные функции (как в Excel)
+rename_all(select_if(filter(ga_data, source %in% search_eng), is.numeric), toupper)
+
+## тоже самое но через пайплайн %>%
+result <- ga_data %>%
+            filter(source %in% search_eng) %>%
+            select_if(is.numeric) %>%
+            rename_all(toupper)
+```
+
+## Тест
+<iframe id="otpwgt-wt101563" src="https://onlinetestpad.com/hraspc33hmk2s" frameborder="0" style="width:100%;" onload="var f = document.getElementById('otpwgt-wt101563'); var h = 0; var listener = function (event) { if (event.origin.indexOf('onlinetestpad') == -1) { return; }; h = parseInt(event.data); if (!isNaN(h)) f.style.height = h + 'px'; }; function addEvent(elem, evnt, func) { if (elem.addEventListener) { elem.addEventListener(evnt, func, false); } else if (elem.attachEvent) { elem.attachEvent('on' + evnt, func); } else { elem['on' + evnt] = func; } }; addEvent(window, 'message', listener);" scrolling="no" ></iframe>

@@ -1,0 +1,226 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{book}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Язык R для пользователей Excel},
+  pdfauthor={Алексей Селезнёв},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{booktabs}
+\usepackage{amsthm}
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=8pt plus 2pt minus 4pt
+  \thm@postskip=\thm@preskip
+}
+\makeatother
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
+
+\title{Язык R для пользователей Excel}
+\author{Алексей Селезнёв}
+\date{2021-05-25}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{ux432ux432ux435ux434ux435ux43dux438ux435}{%
+\chapter*{Введение}\label{ux432ux432ux435ux434ux435ux43dux438ux435}}
+\addcontentsline{toc}{chapter}{Введение}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{ux43fux440ux435ux434ux438ux441ux43bux43eux432ux438ux435}{%
+\section*{Предисловие}\label{ux43fux440ux435ux434ux438ux441ux43bux43eux432ux438ux435}}
+\addcontentsline{toc}{section}{Предисловие}
+
+В связи с карантином многие сейчас львиную долю времени проводят дома, и это время можно, и даже нужно провести с пользой.
+
+В начале карантина я решил довести до ума некоторые проекты начатые несколько месяцев назад. Одним из таких проектов был видео курс ``Язык R для пользователей Excel''. Этим курсом я хотел снизить порог вхождения в R, и немного восполнить существующий дефицит обучающих материалов по данной теме на русском языке.
+
+Если всю работу с данными в компании, в котороый вы работаете принято по-прежнему вести в Excel, то предлагаю вам познакомится с более современным, и при этом совершенно бесплатным инструментом анализа данных.
+
+\hypertarget{ux43e-ux43aux443ux440ux441ux435}{%
+\section*{О курсе}\label{ux43e-ux43aux443ux440ux441ux435}}
+\addcontentsline{toc}{section}{О курсе}
+
+Курс построен вокруг архитектуры \texttt{tidyverse}, и входящих в неё пакетов: \texttt{readr}, \texttt{vroom}, \texttt{dplyr}, \texttt{tidyr}, \texttt{ggplot2}. Конечно в R есть и другие хорошие пакеты выполняющие подобные операции, например \texttt{data.table}, но синтаксис \texttt{tidyverse} интуитивно понятен, его легко читать даже неподготовленному пользователю, поэтому я думаю, что начинать обучение языку R лучше именно с \texttt{tidyverse}.
+
+Курс проведёт вас через все операции анализа данных, от загрузки до визуализации готового результата.
+
+Почему именно язык R, а не Python? Потому, что R функциональный язык, пользователям Excel на него перейти легче, т.к. не надо вникать в традиционное объектно-ориентированное программирование.
+
+К каждому из уроков предусмотрен тест. Тест состоит как из теоритических вопросов так и из задач на программирование. Решать тесты или нет лично ваш выбор, но они однозначно помогут вам закрепить полученный в видео лекциях материал.
+
+\hypertarget{ux434ux43bux44f-ux43aux43eux433ux43e-ux44dux442ux43eux442-ux43aux443ux440ux441}{%
+\section*{Для кого этот курс}\label{ux434ux43bux44f-ux43aux43eux433ux43e-ux44dux442ux43eux442-ux43aux443ux440ux441}}
+\addcontentsline{toc}{section}{Для кого этот курс}
+
+Думаю это понятно из названия, тем не менее опишу более подробно.
+
+Курс ориентирован на тех, кто в работе активно использует Microsoft Excel и там же реализует всю работу с данными. В общем, если вы открываете приложение Microsoft Excel хотя бы раз в неделю то курс вам подойдёт.
+
+Навыков программирования для прохождения курса от вас не требуется, т.к. курс ориентирован на начинающих.
+
+Но, возможно начиная с 4 урока найдётся материал интересный и для активных пользователей R, т.к. основной функционал таких пакетов как \texttt{dplyr} и \texttt{tidyr} будет рассмотрен достаточно подробно.
+
+\hypertarget{ux443ux440ux43eux43a-1-ux443ux441ux442ux43dux43eux432ux43aux430-r-ux438-rstudio}{%
+\chapter{Урок 1: Устновка R и RStudio}\label{ux443ux440ux43eux43a-1-ux443ux441ux442ux43dux43eux432ux43aux430-r-ux438-rstudio}}
+
+\hypertarget{ux43eux43fux438ux441ux430ux43dux438ux435}{%
+\section{Описание}\label{ux43eux43fux438ux441ux430ux43dux438ux435}}
+
+В этом уроке мы с вами установим необходимое програмное обеспечение:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \href{https://cran.r-project.org/bin/windows/base/}{Язык R (Windows)}
+\item
+  \href{https://cran.r-project.org/bin/macosx/}{Язык R (MacOS)}
+\item
+  \href{https://www.rstudio.com/products/rstudio/download/}{Среду разработки RStudio}
+\end{enumerate}
+
+\hypertarget{ux432ux438ux434ux435ux43e}{%
+\section{Видео}\label{ux432ux438ux434ux435ux43e}}
+
+\hypertarget{ux442ux435ux441ux442}{%
+\section{Тест}\label{ux442ux435ux441ux442}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{\textless{}!{-}{-}}\NormalTok{ Online Test Pad Test }\FunctionTok{Widget}\NormalTok{ (\#}\DecValTok{101485}\NormalTok{)}\OperatorTok{{-}{-}\textgreater{}}
+\OperatorTok{\textless{}}\NormalTok{div id}\OperatorTok{=}\StringTok{"otp\_wgt\_fqqn45fe7pm5q"}\OperatorTok{\textgreater{}\textless{}/}\NormalTok{div}\OperatorTok{\textgreater{}}
+\OperatorTok{\textless{}}\NormalTok{script type}\OperatorTok{=}\StringTok{"text/javascript"}\OperatorTok{\textgreater{}}
+    \KeywordTok{var}\NormalTok{ otp\_wjs\_dt }\OperatorTok{=}\NormalTok{ (}\KeywordTok{new} \BuiltInTok{Date}\NormalTok{)}\OperatorTok{.}\FunctionTok{getTime}\NormalTok{()}\OperatorTok{;}
+\NormalTok{    (}\KeywordTok{function}\NormalTok{ (w}\OperatorTok{,}\NormalTok{ d}\OperatorTok{,}\NormalTok{ n}\OperatorTok{,}\NormalTok{ s}\OperatorTok{,}\NormalTok{ rp) \{}
+\NormalTok{        w[n] }\OperatorTok{=}\NormalTok{ w[n] }\OperatorTok{||}\NormalTok{ []}\OperatorTok{;}
+\NormalTok{        rp }\OperatorTok{=}\NormalTok{ \{\}}\OperatorTok{;}
+\NormalTok{        w[n]}\OperatorTok{.}\FunctionTok{push}\NormalTok{(}\KeywordTok{function}\NormalTok{ () \{}
+            \FunctionTok{otp\_render\_widget}\NormalTok{(d}\OperatorTok{.}\FunctionTok{getElementById}\NormalTok{(}\StringTok{"otp\_wgt\_fqqn45fe7pm5q"}\NormalTok{)}\OperatorTok{,} \StringTok{\textquotesingle{}onlinetestpad.com\textquotesingle{}}\OperatorTok{,} \StringTok{\textquotesingle{}fqqn45fe7pm5q\textquotesingle{}}\OperatorTok{,}\NormalTok{ rp)}\OperatorTok{;}
+\NormalTok{        \})}\OperatorTok{;} 
+\NormalTok{        s }\OperatorTok{=}\NormalTok{ d}\OperatorTok{.}\FunctionTok{createElement}\NormalTok{(}\StringTok{"script"}\NormalTok{)}\OperatorTok{;}
+\NormalTok{        s}\OperatorTok{.}\AttributeTok{type} \OperatorTok{=} \StringTok{"text/javascript"}\OperatorTok{;}
+\NormalTok{        s}\OperatorTok{.}\AttributeTok{src} \OperatorTok{=} \StringTok{"//onlinetestpad.com/js/widget.js?"} \OperatorTok{+}\NormalTok{ otp\_wjs\_dt}\OperatorTok{;}
+\NormalTok{        s}\OperatorTok{.}\AttributeTok{async} \OperatorTok{=} \KeywordTok{true}\OperatorTok{;}
+\NormalTok{        d}\OperatorTok{.}\FunctionTok{getElementsByTagName}\NormalTok{(}\StringTok{"head"}\NormalTok{)[}\DecValTok{0}\NormalTok{]}\OperatorTok{.}\FunctionTok{appendChild}\NormalTok{(s)}\OperatorTok{;}
+\NormalTok{    \})(}\KeywordTok{this}\OperatorTok{,} \KeywordTok{this}\OperatorTok{.}\AttributeTok{document}\OperatorTok{,} \StringTok{"otp\_widget\_callbacks"}\NormalTok{)}\OperatorTok{;}
+\OperatorTok{\textless{}/}\NormalTok{script}\OperatorTok{\textgreater{}}
+\end{Highlighting}
+\end{Shaded}
+
+
+  \bibliography{book.bib}
+
+\end{document}

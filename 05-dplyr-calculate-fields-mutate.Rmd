@@ -1,0 +1,49 @@
+# Пакет dplyr: Добавление новых вычисляемых столбцов, mutate, mutate_if, mutate_at, mutate_all
+## Описание
+В этом видео мы продолжаем знакомство с библиотекой `tidyverse` и пакетом `dplyr`.
+Мы разберём семейство функций `mutate()`, и научимся с их помощью добавлять в таблицу новые вычисляемые столбцы.
+
+## Видео
+<iframe width="560" height="315" src="https://www.youtube.com/embed/lYYOKPcJ6Gc?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+## Материалы
+Все материалы к данному уроку можно найти по [ссылке](https://github.com/selesnow/r4excel_users/tree/master/lesson_5).
+
+## Код
+```{r eval=FALSE}
+# подключение пакетов
+library(vroom)
+library(dplyr)
+
+# загрузка данных
+ga_data <- vroom("https://raw.githubusercontent.com/selesnow/publications/master/code_example/from_excel_to_r/lesson_3/ga_nowember.csv")
+
+# mutate
+# добавл¤ем новый столбец
+ga_data <- mutate(ga_data,
+                  bounce_rate = bounces / sessions)
+
+ga_data <- mutate(ga_data,
+                  bounce_rate = bounces / sessions,
+                  br_group    = if_else(bounce_rate > 0.6, "high_br", "normal_br"))
+
+# примен¤ем преобразование к уже существующим столбцам
+ga_data %>% mutate_if(is.character, toupper)
+
+# преобразуем значени¤ существующих столбцов примен¤¤ регул¤рные выражени¤
+ga_data %>% mutate_at(vars(matches("s$")), sqrt )
+
+# transemute
+# убираем все столбцы кроме преобразованных
+transmute(ga_data,
+          bounce_rate = bounces / sessions,
+          date        = format(date, "%d %B %Y"),
+          source)
+
+# преобразовываем столбцы по их признаку и удал¤ем все остальные
+transmute_if(ga_data, 
+             is.character, toupper)
+```
+
+## Тест
+<iframe id="otpwgt-wt101791" src="https://onlinetestpad.com/hrsxbocwedwmc" frameborder="0" style="width:100%;" onload="var f = document.getElementById('otpwgt-wt101791'); var h = 0; var listener = function (event) { if (event.origin.indexOf('onlinetestpad') == -1) { return; }; h = parseInt(event.data); if (!isNaN(h)) f.style.height = h + 'px'; }; function addEvent(elem, evnt, func) { if (elem.addEventListener) { elem.addEventListener(evnt, func, false); } else if (elem.attachEvent) { elem.attachEvent('on' + evnt, func); } else { elem['on' + evnt] = func; } }; addEvent(window, 'message', listener);" scrolling="no" ></iframe>
