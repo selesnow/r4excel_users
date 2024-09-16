@@ -1,36 +1,35 @@
 # переменная
 x <- 1
-
-# вектор
+mycell <- 1
+# вектор, набор данных, некий диапозон, данные должны быть 1 типа (числа, строки)
 y <- 1:10
-typeof(y)
+typeof(y) #проверка типа данных вектора
 strings <- c("string", "vector")
 typeof(strings)
-vec <- c(3, "string")
+vec <- c(3, "string") #cмешанные данные, возращает конвертируя их в строку, vec[1] = "3"
 typeof(vec)
 
 # обраение к элементу вектора
 strings[1]
 strings[2]
 y[3:6]
-y[c(2, 5, 9)]
+y[c(2, 5, 9)] #элементы вектора
 
-# таблица, data frame
+# таблица, data frame, a,b = столбцы
 df1 <- data.frame(a = 1:3,
                   b = c("a", "b", "c"))
 
 # обратиться к определённому столбцу таблицы
-df1$a
-df1['a']
-
+df1$a #получаем вектор
+df1['a']  #получаем столбец
 # списки
-typeof(df1)
-class(df1)
+typeof(df1) #list
+class(df1)  #dataframe
 list1 <- list(y, strings, vec, df1)
-list2 <- list(node1 = c(1, 5, 8),
+list2 <- list(node1 = c(1, 5, 8), #создание узлов с данными внутри, подобие json
               node2 = list("y", 3, "p"))
 
-# структура объекта
+# структура объекта, тип данных ФАКТОР???
 str(df1)
-str(list2)
+str(list2) #list['node2'] - обращаемся к 2-ому узлу, обращаемся к элементу узла - list[['node2']][[2]] -> 3
 str(vec)
