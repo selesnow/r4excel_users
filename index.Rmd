@@ -3,12 +3,13 @@ title: "Язык R для пользователей Excel"
 author: "Алексей Селезнёв"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
+url: https://alexey-seleznev.pro/r4excel_users
 output: bookdown::gitbook
 documentclass: book
 bibliography: [book.bib]
 biblio-style: apalike
 link-citations: yes
-cover-image: "cover.png"
+cover-image: cover.png
 github-repo: "selesnow/r4excel_users"
 description: "Бесплатный видео курс по языку R. Введение в tidyverse."
 ---
@@ -26,7 +27,7 @@ description: "Бесплатный видео курс по языку R. Вве
 Если всю работу с данными в компании, в котороый вы работаете принято по-прежнему вести в Excel, то предлагаю вам познакомится с более современным, и при этом совершенно бесплатным инструментом анализа данных.
 
 ## О курсе {-}
-<a href="https://selesnow.github.io"><img src="cover.png" width="250" height="366" align="right" alt="Cover image" /></a>
+<a href="https://alexey-seleznev.pro"><img src="cover.png" width="250" height="366" align="right" alt="Cover image" /></a>
 
 Курс построен вокруг архитектуры `tidyverse`, и входящих в неё пакетов: `readr`, `vroom`, `dplyr`, `tidyr`, `ggplot2`.
 Конечно в R есть и другие хорошие пакеты выполняющие подобные операции, например `data.table`, но синтаксис `tidyverse` интуитивно понятен, его легко читать даже неподготовленному пользователю, поэтому я думаю, что начинать обучение языку R лучше именно с `tidyverse`. 
@@ -53,17 +54,17 @@ description: "Бесплатный видео курс по языку R. Вве
 
 ## Об авторе {-}
 Меня зовут Алексей Селезнёв, с 2008 года я являюсь практикующим аналитиком. На данный момент основной моей деятельностью является развитие отдела аналитики в агентстве интернет-маркетинга Netpeak.
-<a href="https://selesnow.github.io"><img src="author.png" width="200" height="200" align="left" alt="Алексей Селезнёв" hspace="20" vspace="7" /></a>
+<a href="https://alexey-seleznev.pro"><img src="author.png" width="200" height="200" align="left" alt="Алексей Селезнёв" hspace="20" vspace="7" /></a>
 
 Мною были разработаны такие R пакеты как: `ryandexdirect`, `rfacebookstat`, `timeperiodsR`, `rvkstat` и некоторые другие. 
 
 Также я являюсь автором ряда других курсов по языку R:
 
-* [Введение в dplyr 1.0.0](https://selesnow.github.io/dplyr_1_0_0_course).
-* [Циклы и функционалы в языке R](https://selesnow.github.io/iterations_in_r/).
-* [Разработка пакетов на языке R](https://selesnow.github.io/r_package_course/).
-* [Язык R для разработки AI инструментов](https://selesnow.github.io/build_ai_tools_using_r/).
-* [Разработка telegram ботов на языке R](https://selesnow.github.io/build_telegram_bot_using_r/)
+* [Введение в dplyr 1.0.0](https://alexey-seleznev.pro/dplyr_1_0_0_course).
+* [Циклы и функционалы в языке R](https://alexey-seleznev.pro/iterations_in_r/).
+* [Разработка пакетов на языке R](https://alexey-seleznev.pro/r_package_course/).
+* [Язык R для разработки AI инструментов](https://alexey-seleznev.pro/build_ai_tools_using_r/).
+* [Разработка telegram ботов на языке R](https://alexey-seleznev.pro/build_telegram_bot_using_r/)
 * [Язык R для интернет-маркетинга](https://www.youtube.com/playlist?list=PLD2LDq8edf4o6dSZ4BIr7J08gT97nimH_).
 
 Все мои курсы являются бесплатными, и находятся в открытом доступе со всеми сопуствующими материалами.
